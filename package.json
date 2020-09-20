@@ -1,21 +1,33 @@
 {
   "name": "custom",
+  "description": "Parafia pw. Wniebowzięcia Najświętszej Maryi Panny w Złotowie",
+  "author": "Radosław Mikrut",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@devloco/react-scripts-wptheme": "3.4.1-wp.1",
+    "@react-hook/window-size": "^3.0.7",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "axios": "^0.20.0",
+    "framer-motion": "^2.6.15",
+    "prop-types": "^15.7.2",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-outside-click-handler": "^1.3.0",
+    "react-redux": "^7.2.1",
+    "react-router-dom": "^5.2.0",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^5.2.0"
   },
   "scripts": {
     "crabuild": "react-scripts build",
     "craeject": "react-scripts eject",
     "crastart": "react-scripts start",
     "cratest": "react-scripts test",
-    "build": "wptheme-scripts build",
+    "build": "GENERATE_SOURCEMAP=false wptheme-scripts build",
     "start": "wptheme-scripts start",
     "wpbuild": "wptheme-scripts wpbuild",
     "wpstart": "wptheme-scripts wpstart"
@@ -34,5 +46,17 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "homepage": "/msfzlotow/wp-content/themes/custom",
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.20.6",
+    "eslint-plugin-react-hooks": "^4.0.0",
+    "prettier": "^2.1.1"
   }
 }

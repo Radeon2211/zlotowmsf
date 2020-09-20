@@ -1,37 +1,27 @@
 <?php
-  $_reactSrc = realpath(__DIR__) . "/react-src";
-  $_publicPath = $_reactSrc . "/public";
-  $_postInstallerPath = $_publicPath . "/post_installer.php";
-
-  if (file_exists($_postInstallerPath)) {
-    // read the package.json file
-    $packagePath = $_reactSrc . "/package.json";
-    $json = json_decode(file_get_contents($packagePath), true);
-
-    // set the "homepage" correctly in the JSON
-    // this ensures all WebPack produced links will work
-    $templatePath = get_template_directory_uri();
-    $templatePath = parse_url($templatePath, PHP_URL_PATH);
-    $json["homepage"] = $templatePath;
-    // set browserLaunchTo to the site's root
-    $json["browserLaunchTo"] = site_url();
-
-    // rewrite the package.json file with the new value for "homepage"
-    $fp = fopen($packagePath, "w");
-    fwrite($fp, json_encode($json, JSON_PRETTY_PRINT));
-    fclose($fp);
-
-    // delete the current index.php page (which is this page you are currently reading)
-    unlink($_publicPath . "/index.php");
-    // rename the "post_installer.php" to make it the new index.php file
-    rename($_postInstallerPath, $_publicPath . "/index.php");
-  }
+  $TEMPLATE_PATH = parse_url(get_template_directory_uri(), PHP_URL_PATH);
 ?>
-
-Now, back in your command prompt, rerun the "start" script again...
-
-<script>
-  setTimeout(function() {
-    window.location.replace(window.location);
-  }, 3000);
-</script>
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#FAFAFA" />
+    <meta
+      name="description"
+      content="Parafia pw. Wniebowzięcia Najświętszej Maryi Panny w Złotowie"
+    />
+    <meta name="keywords" content="Złotów, parafia, MSF, WNMP, pw. Wniebowzięcia NMP, MSF Złotów, parafia MSF Złotów" />
+    <link rel="apple-touch-icon" href="<?php echo $TEMPLATE_PATH; ?>/logo192.png" />
+    <link rel="manifest" href="<?php echo $TEMPLATE_PATH; ?>/manifest.json" />
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@700&family=Kavoon&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Parafia Wniebowzięcia NMP w Złotowie</title>
+  </head>
+  <body>
+    <noscript>
+      Musisz włączyć obsługę JavaScript w przeglądarce, aby strona działała prawidłowo
+    </noscript>
+    <div id="root"></div>
+  </body>
+</html>
