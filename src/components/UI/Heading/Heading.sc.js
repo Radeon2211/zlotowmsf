@@ -41,18 +41,18 @@ const StyledHeading = styled.h1`
         `;
       case 'h2':
         return `
-          font-size: 5.7rem;
+          font-size: 6rem;
           font-family: ${theme.fonts.heading};
           letter-spacing: 2px;
           line-height: 1.1;
           word-wrap: break-word;
 
           @media only screen and (max-width: 37.5em) {
-            font-size: 4.5rem;
+            font-size: 4.6rem;
           }
 
-          @media only screen and (max-width: 360px) {
-            font-size: 3.8rem;
+          @media only screen and (max-width: 375px) {
+            font-size: 3.9rem;
           }
         `;
       case 'h3':

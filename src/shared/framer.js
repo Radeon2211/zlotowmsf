@@ -45,7 +45,7 @@ export const slideVariants = {
   visible: {
     opacity: 1,
     pointerEvents: 'initial',
-    transition: { duration: theme.durations.level3, ease: 'easeInOut' },
+    transition: { duration: theme.durations.level4, ease: 'easeInOut' },
   },
 };
 
@@ -68,7 +68,7 @@ export const slideForegroundElementVariants = {
     x: 0,
     transition: {
       type: 'spring',
-      mass: 1.3,
+      mass: 1.4,
       damping: 10,
     },
   },

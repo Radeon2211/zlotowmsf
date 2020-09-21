@@ -22,7 +22,7 @@ export const fetchBasicData = () => {
   return async (dispatch) => {
     dispatch(fetchStart());
     try {
-      const fetchSlides = axios.get('/slides');
+      const fetchSlides = axios.get('/slides?order=asc');
       const [{ value: { data: slides } }] = await Promise.allSettled([fetchSlides]);
       dispatch(setBasicData({ slides }));
       dispatch(fetchSuccess());

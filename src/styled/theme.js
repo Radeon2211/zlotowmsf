@@ -2,11 +2,12 @@ const theme = {
   colors: {
     light1: '#FAFAFA',
     light1Transparent: '#FAFAFA88',
-    light2: '#DADFE1',
-    light3: '#BFBFBF',
+    light2: '#DCDCDC',
+    light3: '#CBCBCB',
     light4: '#777',
     blue: '#3A539B',
     blueLight: '#19B5FE',
+    darkTransparent: '#00000066',
   },
   shadows: {
     level1: '0 0 1px rgba(0, 0, 0, .1)',
@@ -42,6 +43,7 @@ const theme = {
     level1: 0.1,
     level2: 0.2,
     level3: 0.3,
+    level4: 0.5,
   },
 };
 

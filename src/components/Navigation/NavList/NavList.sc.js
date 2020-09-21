@@ -51,10 +51,11 @@ export const Wrapper = styled.nav`
     margin-right: 0;
     margin-left: ${({ theme }) => theme.spacings.level1};
     transition: transform ${({ theme }) => theme.durations.level2}s;
+    transform: rotate(90deg);
     width: 1.2rem;
 
     &.rotated {
-      transform: rotate(180deg);
+      transform: rotate(-90deg);
     }
   }
 

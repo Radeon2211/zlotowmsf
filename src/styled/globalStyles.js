@@ -14,7 +14,7 @@ const GlobalStyles = createGlobalStyle`
 
   html {
     font-size: 62.5%;
-    background-color: ${({ theme }) => theme.colors.light1};
+    background-color: ${({ theme }) => theme.colors.light2};
   }
 
   @media only screen and (min-width: 112.5em) {

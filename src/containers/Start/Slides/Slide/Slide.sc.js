@@ -30,10 +30,10 @@ export const Wrapper = styled(motion.div)`
     flex-direction: column;
     height: 100%;
     justify-content: center;
-    left: 10%;
+    left: 15%;
     position: absolute;
     top: 0;
-    width: 50rem;
+    width: 60rem;
     z-index: ${({ theme }) => theme.zIndexes.level2};
   }
 
@@ -52,7 +52,6 @@ export const Wrapper = styled(motion.div)`
       left: 0;
       max-width: 100%;
       padding: 0 ${({ theme }) => theme.spacings.level3};
-      width: 60rem;
     }
   }
 `;
