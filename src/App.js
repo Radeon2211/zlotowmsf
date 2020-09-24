@@ -9,6 +9,12 @@ import MobileNavigation from './components/Navigation/MobileNavigation/MobileNav
 import StartLoader from './components/UI/Loaders/StartLoader';
 
 import Start from './containers/Start/Start';
+import HolyMassesOrder from './containers/HolyMassesOrder';
+import History from './containers/History';
+import Contact from './containers/Contact';
+import MassIntentions from './containers/MassIntentions';
+import MarriageCounceling from './containers/MarriageCounceling';
+import ParishOffice from './containers/ParishOffice';
 
 const App = () => {
   const windowWidth = useWindowWidth();
@@ -29,6 +35,12 @@ const App = () => {
         {navigation}
         <Main>
           <Switch>
+            <Route path="/parafia/historia" component={History} />
+            <Route path="/parafia/porzadek-mszy-swietych" component={HolyMassesOrder} />
+            <Route path="/intencje" component={MassIntentions} />
+            <Route path="/kancelaria" component={ParishOffice} />
+            <Route path="/poradnia-malzenska" component={MarriageCounceling} />
+            <Route path="/kontakt" component={Contact} />
             <Route path="/" component={Start} />
           </Switch>
         </Main>

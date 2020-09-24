@@ -3,12 +3,18 @@ import { updateObject } from '../../../shared/utility';
 
 const initialState = {
   basic: null,
+  sites: {},
   isLoading: false,
   error: '',
 };
 
 const setBasicData = (state, action) => {
   return updateObject(state, { basic: action.basic });
+};
+
+const setSite = (state, action) => {
+  const updatedSites = { ...state.sites, ...action.site };
+  return updateObject(state, { sites: updatedSites });
 };
 
 const fetchStart = (state) => {
@@ -27,6 +33,8 @@ const dataReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.SET_BASIC_DATA:
       return setBasicData(state, action);
+    case actionTypes.SET_SITE:
+      return setSite(state, action);
     case actionTypes.FETCH_START:
       return fetchStart(state);
     case actionTypes.FETCH_SUCCESS:

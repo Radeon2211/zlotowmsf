@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const StyledHeading = styled.h1`
   max-width: 100%;
+  margin: 0;
 
   ${({ uppercase }) => {
     if (uppercase) {

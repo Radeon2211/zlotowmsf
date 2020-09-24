@@ -7,7 +7,7 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  body, ul, ol, h1, h2, h3, h4, h5, h6, p {
+  body, ul, ol, figure {
     margin: 0;
     padding: 0;
   }
@@ -42,6 +42,33 @@ const GlobalStyles = createGlobalStyle`
   a:visited {
     color: inherit;
     text-decoration: none;
+  }
+
+  table {
+    border-collapse: collapse;
+  }
+
+  td,
+  th {
+    border: 1px solid #000;
+  }
+
+  figure {
+    max-width: 100%;
+  }
+
+  figcaption {
+    text-align: center;
+  }
+
+  img {
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+  }
+
+  .aligncenter {
+    text-align: center;
   }
 `;
 

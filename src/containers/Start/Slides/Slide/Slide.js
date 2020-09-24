@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { slideVariants, slideForegroundVariants, slideForegroundElementVariants } from '../../../../shared/framer';
 import * as SC from './Slide.sc';
-import { isDevMobile } from '../../../../shared/utility';
-import { machineIP } from '../../../../shared/constants';
 import Heading from '../../../../components/UI/Heading/Heading';
 import Button from '../../../../components/UI/Button/Button';
 
@@ -13,7 +11,6 @@ const Slide = (props) => {
   const { data, isVisible } = props;
   const { title, acf: { firstLine, imageURL, secondLine, thirdLine, btnText, btnInnerLink, btnOuterLink } } = data;
 
-  const correctImageURL = isDevMobile() ? imageURL.replace('localhost', machineIP) : imageURL;
   const secondLineNode = secondLine ? (
     <motion.div variants={slideForegroundElementVariants}>
       <Heading variant="h3" uppercase margin="medium">{secondLine}</Heading>
@@ -49,7 +46,7 @@ const Slide = (props) => {
           animate="visible"
           exit="hidden"
         >
-          <img src={correctImageURL} alt={title.rendered} className="bg-image" />
+          <img src={imageURL} alt={title.rendered} className="bg-image" />
           <div className="overlay" />
           <motion.div
             className="foreground"

@@ -4,7 +4,7 @@ import * as SC from './Slides.sc';
 import Slide from './Slide/Slide';
 import { ReactComponent as ArrowIcon } from '../../../images/SVG/arrow.svg';
 
-const SLIDE_CHANGE_TIME = 10000;
+const SLIDE_CHANGE_TIME = 6000;
 
 const Slides = () => {
   const slideInterval = useRef(null);
@@ -30,13 +30,11 @@ const Slides = () => {
       if (prevState + 1 > slides.length - 1) return 0;
       return prevState + 1;
     });
-  }, [setSlideNumber]);
+  }, [setSlideNumber, slides.length]);
 
   useEffect(() => {
     slideInterval.current = setInterval(goToNextSlide, SLIDE_CHANGE_TIME);
-    return () => {
-      clearInterval(slideInterval.current);
-    }
+    return () => clearInterval(slideInterval.current);
   }, [goToNextSlide]);
 
   const prevButtonClickHandle = () => {

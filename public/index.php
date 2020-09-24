@@ -17,11 +17,13 @@
     <link rel="manifest" href="<?php echo $TEMPLATE_PATH; ?>/manifest.json" />
     <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@700&family=Kavoon&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <title>Parafia Wniebowzięcia NMP w Złotowie</title>
+    <?php wp_head() ?>
   </head>
   <body>
     <noscript>
       Musisz włączyć obsługę JavaScript w przeglądarce, aby strona działała prawidłowo
     </noscript>
     <div id="root"></div>
+    <?php wp_footer(); ?>
   </body>
 </html>

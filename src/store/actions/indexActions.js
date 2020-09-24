@@ -1,1 +1,1 @@
-export { fetchBasicData } from './dataActions';
+export { fetchBasicData, fetchSite } from './dataActions';

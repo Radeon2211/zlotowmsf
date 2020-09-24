@@ -6,6 +6,11 @@ export const setBasicData = (data) => ({
   basic: data,
 });
 
+export const setSite = (site) => ({
+  type: actionTypes.SET_SITE,
+  site,
+});
+
 export const fetchStart = () => ({
   type: actionTypes.FETCH_START,
 });
@@ -31,3 +36,17 @@ export const fetchBasicData = () => {
     }
   };
 };
+
+export const fetchSite = (siteSlug) => {
+  return async (dispatch) => {
+    dispatch(fetchStart());
+    try {
+      const { data } = await axios.get(`/pages?slug=${siteSlug}`);
+      dispatch(setSite({ [siteSlug]: data[0] }));
+      dispatch(fetchSuccess());
+    } catch (error) {
+      dispatch(fetchFail());
+    }
+  };
+};
+
