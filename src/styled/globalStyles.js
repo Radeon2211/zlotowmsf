@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import background from '../images/background.png'; // This pattern is downloaded from www.subtlepatterns.com
 
 const GlobalStyles = createGlobalStyle`
   *,
@@ -14,7 +15,6 @@ const GlobalStyles = createGlobalStyle`
 
   html {
     font-size: 62.5%;
-    background-color: ${({ theme }) => theme.colors.light2};
   }
 
   @media only screen and (min-width: 112.5em) {
@@ -30,7 +30,12 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
+    background-color: ${({ theme }) => theme.colors.light2};
+    background-image: url(${background});
+    background-repeat: repeat;
+    background-attachment: fixed;
     font-family: ${({ theme }) => theme.fonts.text};
+    min-height: 100vh;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }

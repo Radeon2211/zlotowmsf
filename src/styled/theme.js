@@ -5,8 +5,8 @@ const theme = {
     light2: '#DCDCDC',
     light3: '#CBCBCB',
     light4: '#777',
-    blue: '#3A539B',
-    blueLight: '#19B5FE',
+    blue: '#006bc7',
+    blueLight: '#3dd5ff',
     darkTransparent: '#00000066',
   },
   shadows: {

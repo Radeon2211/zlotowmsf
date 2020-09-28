@@ -19,6 +19,7 @@ const Slide = (props) => {
   const thirdLineNode = thirdLine ? (
     <motion.span variants={slideForegroundElementVariants} className="third-line">{thirdLine}</motion.span>
   ) : null;
+
   let buttonWrapper = null
   if (btnText) {
     const button = <Button>{btnText}</Button>;

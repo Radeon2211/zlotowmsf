@@ -3,9 +3,14 @@ import styled from 'styled-components';
 
 const SC = {};
 SC.Wrapper = styled.div`
-  width: 5.7rem;
-  height: 5.7rem;
-  margin: 10rem auto;
+  display: flex;
+  justify-content: center;
+  padding: 10rem 0;
+
+  .sk-cube-grid {
+    height: 5.7rem;
+    width: 5.7rem;
+  }
 
   & .sk-cube {
     animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
@@ -42,16 +47,18 @@ SC.Wrapper = styled.div`
 
 const StartLoader = () => {
   return (
-    <SC.Wrapper className="sk-cube-grid">
-      <div className="sk-cube sk-cube1" />
-      <div className="sk-cube sk-cube2" />
-      <div className="sk-cube sk-cube3" />
-      <div className="sk-cube sk-cube4" />
-      <div className="sk-cube sk-cube5" />
-      <div className="sk-cube sk-cube6" />
-      <div className="sk-cube sk-cube7" />
-      <div className="sk-cube sk-cube8" />
-      <div className="sk-cube sk-cube9" />
+    <SC.Wrapper>
+      <div className="sk-cube-grid">
+        <div className="sk-cube sk-cube1" />
+        <div className="sk-cube sk-cube2" />
+        <div className="sk-cube sk-cube3" />
+        <div className="sk-cube sk-cube4" />
+        <div className="sk-cube sk-cube5" />
+        <div className="sk-cube sk-cube6" />
+        <div className="sk-cube sk-cube7" />
+        <div className="sk-cube sk-cube8" />
+        <div className="sk-cube sk-cube9" />
+      </div>
     </SC.Wrapper>
   );
 };

@@ -17,15 +17,17 @@ SC.Wrapper = styled.div`
   z-index: ${({ theme }) => theme.zIndexes.level3};
 
   & .logo {
-    margin: ${({ theme }) => theme.spacings.level5} 0;
+    display: inline-block;
+    margin: ${({ theme }) => theme.spacings.level4} 0;
+    padding: 0 ${({ theme }) => theme.spacings.level2};
     width: 100%;
   }
 `;
 
 const DesktopNavigation = () => (
   <SC.Wrapper>
-    <Link to="/">
-      <img src={logo} alt="Parafia pw. WNMP w Złotowie" className="logo" />
+    <Link to="/" className="logo">
+      <img src={logo} alt="Parafia pw. Wniebowzięcia NMP w Złotowie" />
     </Link>
     <NavList />
   </SC.Wrapper>

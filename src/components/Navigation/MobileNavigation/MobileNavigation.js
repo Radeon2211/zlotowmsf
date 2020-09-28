@@ -12,7 +12,7 @@ const MobileNavigation = () => {
     <SC.Wrapper>
       <Link to="/">
         <header className="header">
-          <img src={logo} alt="logo MSF Złotów" className="logo" />
+          <img src={logo} alt="Parafia pw. Wniebowzięcia NMP w Złotowie" className="logo" />
           <Heading variant="h1">MSF Złotów</Heading>
         </header>
       </Link>
