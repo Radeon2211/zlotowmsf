@@ -4,9 +4,9 @@ import OutsideClickHandler from 'react-outside-click-handler';
 import { AnimatePresence } from 'framer-motion';
 import { useWindowWidth } from '@react-hook/window-size';
 import { NavLink } from 'react-router-dom';
-import * as SC from './Submenu.sc';
-import { deviceTypes } from '../../../../shared/constants';
-import { submenuVariants } from '../../../../shared/framer';
+import * as SC from '../Submenu.sc';
+import { deviceTypes } from '../../../../../shared/constants';
+import { submenuVariants } from '../../../../../shared/framer';
 
 const SacramentsSubmenu = (props) => {
   const { isVisible, sidebarClosed, submenuClosed } = props;

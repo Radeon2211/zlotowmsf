@@ -5,6 +5,7 @@ import styled from 'styled-components';
 const SC = {};
 SC.Wrapper = styled.main`
   padding-left: 19rem;
+  min-height: 100vh;
 
   @media only screen and (max-width: 56.25em) {
     padding-left: 0;

@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import * as SC from './NavList.sc';
-import ParishSubmenu from './Submenus/ParishSubmenu';
-import SacramentsSubmenu from './Submenus/SacramentsSubmenu';
+import ParishSubmenu from './Submenus/ParishSubmenu/ParishSubmenu';
+import SacramentsSubmenu from './Submenus/SacramentsSubmenu/SacramentsSubmenu';
 import { ReactComponent as StartIcon } from '../../../images/SVG/start.svg';
 import { ReactComponent as NewsIcon } from '../../../images/SVG/news.svg';
 import { ReactComponent as ParishIcon } from '../../../images/SVG/parish.svg';
@@ -13,6 +13,7 @@ import { ReactComponent as SacramentsIcon } from '../../../images/SVG/sacraments
 import { ReactComponent as OfficeIcon } from '../../../images/SVG/office.svg';
 import { ReactComponent as MarriageCounselingIcon } from '../../../images/SVG/marriage-counseling.svg';
 import { ReactComponent as FacebookIcon } from '../../../images/SVG/facebook.svg';
+import { ReactComponent as KostkaProjectIcon } from '../../../images/SVG/kostka-project.svg';
 import { ReactComponent as GalleryIcon } from '../../../images/SVG/gallery.svg';
 import { ReactComponent as LinksIcon } from '../../../images/SVG/links.svg';
 import { ReactComponent as ContactIcon } from '../../../images/SVG/contact.svg';
@@ -123,6 +124,21 @@ const NavList = (props) => {
             <LinksIcon />
             Linki
           </NavLink>
+        </li>
+        <li>
+          <a
+            href="https://projektkostka.pl"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="link"
+            onClick={sidebarClosed}
+          >
+            <KostkaProjectIcon />
+            <div className="column">
+              <span>Projekt</span>
+              <span>Kostka</span>
+            </div>
+          </a>
         </li>
         <li>
           <NavLink to="/kontakt" className="link" activeClassName="active-link" onClick={sidebarClosed}>

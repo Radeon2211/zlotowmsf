@@ -1,7 +1,7 @@
 import React from 'react';
-import MajorSiteTemplete from '../components/MajorSiteTemplate/MajorSiteTemplate';
+import MajorSiteTemplate from '../components/MajorSiteTemplate/MajorSiteTemplate';
 import { siteNames } from '../shared/constants';
 
-const MassIntentions = () => <MajorSiteTemplete siteSlug={siteNames.MASS_INTENTIONS} />;
+const MassIntentions = () => <MajorSiteTemplate siteSlug={siteNames.MASS_INTENTIONS} />;
 
 export default MassIntentions;

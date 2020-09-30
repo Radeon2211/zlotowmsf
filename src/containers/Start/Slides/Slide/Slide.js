@@ -12,7 +12,7 @@ const Slide = (props) => {
   const { title, acf: { firstLine, imageURL, secondLine, thirdLine, btnText, btnInnerLink, btnOuterLink } } = data;
 
   const secondLineNode = secondLine ? (
-    <motion.div variants={slideForegroundElementVariants}>
+    <motion.div variants={slideForegroundElementVariants} data-test="second-line">
       <Heading variant="h3" uppercase margin="medium">{secondLine}</Heading>
     </motion.div>
   ) : null;
@@ -20,19 +20,19 @@ const Slide = (props) => {
     <motion.span variants={slideForegroundElementVariants} className="third-line">{thirdLine}</motion.span>
   ) : null;
 
-  let buttonWrapper = null
+  let buttonWrapper = null;
   if (btnText) {
     const button = <Button>{btnText}</Button>;
     if (btnInnerLink) {
       buttonWrapper = (
-        <motion.div variants={slideForegroundElementVariants}>
-          <Link to={btnInnerLink}>{button}</Link>
+        <motion.div variants={slideForegroundElementVariants} data-test="button-wrapper">
+          <Link to={btnInnerLink} data-test="router-link">{button}</Link>
         </motion.div>
       );
     } else {
       buttonWrapper = (
-        <motion.div variants={slideForegroundElementVariants}>
-          <a href={btnOuterLink} target="_blank" rel="noopener noreferrer">{button}</a>
+        <motion.div variants={slideForegroundElementVariants} data-test="button-wrapper">
+          <a href={btnOuterLink} target="_blank" rel="noopener noreferrer" data-test="html-link">{button}</a>
         </motion.div>
       );
     }

@@ -15,6 +15,7 @@ import Contact from './containers/Contact';
 import MassIntentions from './containers/MassIntentions';
 import MarriageCounceling from './containers/MarriageCounceling';
 import ParishOffice from './containers/ParishOffice';
+import Footer from './components/Footer/Footer';
 
 const App = () => {
   const windowWidth = useWindowWidth();
@@ -44,6 +45,7 @@ const App = () => {
             <Route path="/" component={Start} />
           </Switch>
         </Main>
+        <Footer />
       </>
     );
   }

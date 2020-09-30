@@ -7,6 +7,7 @@ import logo from '../../images/logo.png';
 const SC = {};
 SC.Wrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.blue};
+  box-shadow: 1px 0 5px rgba(0, 0, 0, .3);
   height: 100vh;
   left: 0;
   padding: 0 0 ${({ theme }) => theme.spacings.level5} 0;
@@ -18,7 +19,7 @@ SC.Wrapper = styled.div`
 
   & .logo {
     display: inline-block;
-    margin: ${({ theme }) => theme.spacings.level4} 0;
+    margin: ${({ theme }) => theme.spacings.level3} 0;
     padding: 0 ${({ theme }) => theme.spacings.level2};
     width: 100%;
   }

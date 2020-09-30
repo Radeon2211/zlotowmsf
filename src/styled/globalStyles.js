@@ -35,9 +35,17 @@ const GlobalStyles = createGlobalStyle`
     background-repeat: repeat;
     background-attachment: fixed;
     font-family: ${({ theme }) => theme.fonts.text};
-    min-height: 100vh;
+    overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    text-transform: uppercase;
+  }
+
+  button {
+    font-family: inherit;
   }
 
   a:active,
@@ -74,6 +82,14 @@ const GlobalStyles = createGlobalStyle`
 
   .aligncenter {
     text-align: center;
+  }
+
+  .wp-block-image {
+    margin: 0;
+
+    & > img {
+      display: block;
+    }
   }
 `;
 
