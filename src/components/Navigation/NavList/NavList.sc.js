@@ -45,7 +45,6 @@ export const Wrapper = styled.nav`
     flex-direction: column;
   }
 
-
   & .arrow {
     height: 1.2rem;
     margin-right: 0;

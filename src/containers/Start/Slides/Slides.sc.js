@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.section`
   height: 100vh;
   position: relative;
 
@@ -19,16 +19,16 @@ export const Wrapper = styled.div`
     border-radius: 5px;
     cursor: pointer;
     display: flex;
-    height: 4rem;
+    height: 5rem;
     justify-content: center;
     outline: none;
     transition: all ${({ theme }) => theme.durations.level2}s;
-    width: 4rem;
+    width: 5rem;
 
     & > svg {
       fill: ${({ theme }) => theme.colors.light1};
-      height: 1.6rem;
-      width: 1.6rem;
+      height: ${({ theme }) => theme.fontSizes.level5};
+      width: ${({ theme }) => theme.fontSizes.level5};
     }
 
     &:hover {
@@ -50,7 +50,7 @@ export const Wrapper = styled.div`
     bottom: ${({ theme }) => theme.spacings.level3};
     display: flex;
     flex-wrap: wrap;
-    max-width: 70%;
+    padding-right: calc(2.5 * ${({ theme }) => theme.spacings.level5});
     position: absolute;
     left: 15%;
     z-index: ${({ theme }) => theme.zIndexes.level2};
@@ -64,13 +64,13 @@ export const Wrapper = styled.div`
     color: ${({ theme }) => theme.colors.light1};
     cursor: pointer;
     display: flex;
-    font-size: ${({ theme }) => theme.fontSizes.level3};
+    font-size: ${({ theme }) => theme.fontSizes.level5};
     font-weight: 700;
-    height: 4rem;
+    height: 5rem;
     justify-content: center;
     outline: none;
     transition: all ${({ theme }) => theme.durations.level2}s;
-    width: 4rem;
+    width: 5rem;
 
     &:hover {
       border: 2px solid ${({ theme }) => theme.colors.light1};
@@ -87,17 +87,11 @@ export const Wrapper = styled.div`
   }
 
   @media only screen and (max-width: 56.25em) {
-    height: 70vh;
+    height: 80vh;
 
     .cs-list {
       left: 0;
       padding-left: ${({ theme }) => theme.spacings.level3};
-    }
-
-    .list-button {
-      font-size: ${({ theme }) => theme.fontSizes.level4};
-      height: 4rem;
-      width: 4rem;
     }
   }
 `;
