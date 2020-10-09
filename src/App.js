@@ -9,6 +9,8 @@ import MobileNavigation from './components/Navigation/MobileNavigation/MobileNav
 import StartLoader from './components/UI/Loaders/StartLoader';
 
 import Start from './containers/Start/Start';
+import News from './containers/News/News';
+import NewsDetails from './containers/NewsDetails/NewsDetails';
 import HolyMassesOrder from './containers/HolyMassesOrder';
 import History from './containers/History';
 import Contact from './containers/Contact';
@@ -36,6 +38,8 @@ const App = () => {
         {navigation}
         <Main>
           <Switch>
+            <Route path="/aktualnosci/:slug" component={NewsDetails} />
+            <Route path="/aktualnosci" component={News} />
             <Route path="/parafia/historia" component={History} />
             <Route path="/parafia/porzadek-mszy-swietych" component={HolyMassesOrder} />
             <Route path="/intencje" component={MassIntentions} />

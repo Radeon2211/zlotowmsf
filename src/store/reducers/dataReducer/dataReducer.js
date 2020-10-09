@@ -4,6 +4,8 @@ import { updateObject } from '../../../shared/utility';
 const initialState = {
   basic: null,
   sites: {},
+  news: null,
+  newsDetails: null,
   isLoading: false,
   error: '',
 };
@@ -15,6 +17,14 @@ const setBasicData = (state, action) => {
 const setSite = (state, action) => {
   const updatedSites = { ...state.sites, ...action.site };
   return updateObject(state, { sites: updatedSites });
+};
+
+const setNews = (state, action) => {
+  return updateObject(state, { news: action.news });
+};
+
+const setNewsDetails = (state, action) => {
+  return updateObject(state, { newsDetails: action.newsDetails });
 };
 
 const fetchStart = (state) => {
@@ -35,6 +45,10 @@ const dataReducer = (state = initialState, action) => {
       return setBasicData(state, action);
     case actionTypes.SET_SITE:
       return setSite(state, action);
+    case actionTypes.SET_NEWS:
+      return setNews(state, action);
+    case actionTypes.SET_NEWS_DETAILS:
+      return setNewsDetails(state, action);
     case actionTypes.FETCH_START:
       return fetchStart(state);
     case actionTypes.FETCH_SUCCESS:

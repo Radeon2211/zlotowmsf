@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const SC = {};
 SC.Wrapper = styled.div`
-  background-color: ${({ theme }) => theme.colors.light3};
+  background-color: ${({ theme }) => theme.colors.light2};
   height: 4px;
   width: 60rem;
 
@@ -20,6 +20,10 @@ SC.Wrapper = styled.div`
     } else if (mgBottom === 'big') {
       return `
         margin-bottom: ${theme.spacings.level4};
+      `;
+    } else if (mgBottom === 'large') {
+      return `
+        margin-bottom: ${theme.spacings.level5};
       `;
     }
     return ``;

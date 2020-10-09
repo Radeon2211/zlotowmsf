@@ -23,6 +23,10 @@ export const Wrapper = styled.div`
     margin-right: ${({ theme }) => theme.spacings.level2};
     width: 4.9rem;
   }
+
+  @media only screen and (max-width: 37.5em) {
+    padding: ${({ theme }) => theme.spacings.level1} ${({ theme }) => theme.spacings.level2};
+  }
 `;
 
 export const Toggler = styled.div`

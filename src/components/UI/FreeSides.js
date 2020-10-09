@@ -7,7 +7,7 @@ SC.Wrapper = styled.div`
   margin: 0 auto;
   max-width: 100%;
   padding: 0 ${({ theme }) => theme.spacings.level2};
-  width: 110rem;
+  width: 100rem;
 `;
 
 const FreeSides = (props) => {

@@ -14,7 +14,7 @@ export const Wrapper = styled.section`
 
   .pn-button {
     align-items: center;
-    background-color: ${({ theme }) => theme.colors.darkTransparent};
+    background-color: ${({ theme }) => theme.colors.darkTransparent1};
     border: 2px solid transparent;
     border-radius: 5px;
     cursor: pointer;
@@ -58,7 +58,7 @@ export const Wrapper = styled.section`
 
   .list-button {
     align-items: center;
-    background-color: ${({ theme }) => theme.colors.darkTransparent};
+    background-color: ${({ theme }) => theme.colors.darkTransparent1};
     border: 2px solid transparent;
     border-radius: 50%;
     color: ${({ theme }) => theme.colors.light1};

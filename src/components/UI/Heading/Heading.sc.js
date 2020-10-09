@@ -26,6 +26,10 @@ const StyledHeading = styled.h1`
       return `
         margin-bottom: ${theme.spacings.level4};
       `;
+    } else if (margin === 'large') {
+      return `
+        margin-bottom: ${theme.spacings.level5};
+      `;
     } else {
       return ``;
     }
@@ -58,7 +62,7 @@ const StyledHeading = styled.h1`
         `;
       case 'h3':
         return `
-          font-size: 2.4rem;
+          font-size: 2.6rem;
           font-family: ${theme.fonts.heading};
           letter-spacing: 1px;
           line-height: 1;

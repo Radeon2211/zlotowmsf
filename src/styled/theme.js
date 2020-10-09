@@ -7,7 +7,8 @@ const theme = {
     light4: '#777',
     blue: '#006bc7',
     blueLight: '#3dd5ff',
-    darkTransparent: '#00000066',
+    darkTransparent1: '#00000066',
+    darkTransparent2: '#00000008',
   },
   shadows: {
     level1: '0 0 1px rgba(0, 0, 0, .1)',
