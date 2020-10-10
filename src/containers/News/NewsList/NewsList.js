@@ -2,7 +2,7 @@ import React, { useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import * as SC from './NewsList.sc';
 import * as actions from '../../../store/actions/indexActions';
-import Loader from '../../../components/UI/Loaders/StartLoader';
+import Loader from '../../../components/UI/Loader';
 import NewsItem from './NewsItem/NewsItem';
 import Heading from '../../../components/UI/Heading/Heading';
 

@@ -22,7 +22,7 @@ export const Wrapper = styled.section`
     height: 5rem;
     justify-content: center;
     outline: none;
-    transition: all ${({ theme }) => theme.durations.level2}s;
+    transition: border-color ${({ theme }) => theme.durations.level2}s;
     width: 5rem;
 
     & > svg {
@@ -32,7 +32,7 @@ export const Wrapper = styled.section`
     }
 
     &:hover {
-      border: 2px solid ${({ theme }) => theme.colors.light1};
+      border-color: 2px solid ${({ theme }) => theme.colors.light1};
     }
 
     &:not(:last-child) {

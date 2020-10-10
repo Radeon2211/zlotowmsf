@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import * as SC from './MajorSiteTemplate.sc';
 import * as actions from '../../store/actions/indexActions';
 import FreeSides from '../UI/FreeSides';
-import StartLoader from '../UI/Loaders/StartLoader';
+import Loader from '../UI/Loader';
 
 const MajorSiteTemplate = (props) => {
   const { siteSlug } = props;
@@ -19,7 +19,7 @@ const MajorSiteTemplate = (props) => {
     onFetchSite(siteSlug);
   }, [onFetchSite, siteSlug, siteData]);
 
-  let siteContent = <StartLoader />;
+  let siteContent = <Loader />;
   if (siteData) {
     siteContent = (
       <SC.Wrapper>

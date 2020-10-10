@@ -15,4 +15,17 @@ export const Wrapper = styled.div`
   & .content {
     font-size: ${({ theme }) => theme.fontSizes.level4};
   }
+
+  & .gallery-separator {
+    background-color: ${({ theme }) => theme.colors.blue};
+    height: 2px;
+    margin: ${({ theme }) => theme.spacings.level3} 0;
+  }
+
+  & .gallery-info {
+    display: block;
+    font-size: ${({ theme }) => theme.fontSizes.level3};
+    margin-bottom: ${({ theme }) => theme.spacings.level2};
+    text-align: center;
+  }
 `;

@@ -19,11 +19,17 @@ export const Wrapper = styled.nav`
   }
 
   & svg {
-    height: 1.7rem;
+    height: ${({ theme }) => theme.fontSizes.level4};
     fill: ${({ theme }) => theme.colors.light1};
     margin-right: ${({ theme }) => theme.spacings.level1};
     transition: color ${({ theme }) => theme.durations.level1}s;
-    width: 1.7rem;
+    width: ${({ theme }) => theme.fontSizes.level4};
+  }
+
+  & .kostka-project-logo {
+    height: auto;
+    margin-right: ${({ theme }) => theme.spacings.level1};
+    width: calc(2 * ${({ theme }) => theme.fontSizes.level4});
   }
 
   & .link:hover,

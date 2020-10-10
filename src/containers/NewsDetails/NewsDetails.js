@@ -6,7 +6,8 @@ import * as actions from '../../store/actions/dataActions';
 import FreeSides from '../../components/UI/FreeSides';
 import * as SC from './NewsDetails.sc';
 import Heading from '../../components/UI/Heading/Heading';
-import Loader from '../../components/UI/Loaders/StartLoader';
+import Loader from '../../components/UI/Loader';
+import NewsGallery from './NewsGallery/NewsGallery';
 
 moment.locale('pl');
 
@@ -30,12 +31,23 @@ const NewsDetails = (props) => {
     newsDetailsNode = <Heading variant="h3">Nie ma takich aktualności</Heading>;
   } else if (newsDetails) {
     const { title, acf: { thumbnail }, date, content, images } = newsDetails;
+
+    const gallerySection = images ? (
+      <section>
+        <div className="gallery-separator" />
+        <Heading variant="h3" margin="medium">Galeria</Heading>
+        <span className="gallery-info">Kliknij na zdjęcie, żeby powiększyć</span>
+        <NewsGallery images={images} />
+      </section>
+    ) : null;
+
     newsDetailsNode = (
       <SC.Wrapper>
         <img src={thumbnail} alt="miniaturka" className="thumbnail" />
         <Heading variant="h3" margin="medium">{title.rendered}</Heading>
         <span className="date">{moment(date).format('LL')}</span>
-        <div dangerouslySetInnerHTML={{ __html: content.rendered }} className="content" />
+        <article dangerouslySetInnerHTML={{ __html: content.rendered }} className="content" />
+        {gallerySection}
       </SC.Wrapper>
     );
   }

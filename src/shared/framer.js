@@ -77,3 +77,15 @@ export const slideForegroundElementVariants = {
     transition: { ease: 'easeInOut' },
   },
 };
+
+export const imageSliderVariants = {
+  hidden: {
+    opacity: 0,
+    pointerEvents: 'none',
+  },
+  visible: {
+    opacity: 1,
+    transition: { delay: theme.durations.level2 },
+    pointerEvents: 'initial',
+  },
+};

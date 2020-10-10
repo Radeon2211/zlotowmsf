@@ -23,17 +23,17 @@ SC.Wrapper = styled.div`
   & .sk-cube1,
   & .sk-cube5,
   & .sk-cube9 {
-    animation-delay: 0.2s;
+    animation-delay: ${({ theme }) => theme.durations.level2}s;
   }
   & .sk-cube2,
   & .sk-cube6 {
-    animation-delay: 0.3s;
+    animation-delay: ${({ theme }) => theme.durations.level3}s;
   }
   & .sk-cube4,
   & .sk-cube8 {
-    animation-delay: 0.1s;
+    animation-delay: ${({ theme }) => theme.durations.level1}s;
   }
-  & .sk-cube3 { animation-delay: 0.4s; }
+  & .sk-cube3 { animation-delay: ${({ theme }) => theme.durations.level4}s; }
   & .sk-cube7 { animation-delay: 0; }
 
   @keyframes sk-cubeGridScaleDelay {

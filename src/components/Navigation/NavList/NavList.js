@@ -13,11 +13,11 @@ import { ReactComponent as SacramentsIcon } from '../../../images/SVG/sacraments
 import { ReactComponent as OfficeIcon } from '../../../images/SVG/office.svg';
 import { ReactComponent as MarriageCounselingIcon } from '../../../images/SVG/marriage-counseling.svg';
 import { ReactComponent as FacebookIcon } from '../../../images/SVG/facebook.svg';
-import { ReactComponent as KostkaProjectIcon } from '../../../images/SVG/kostka-project.svg';
 import { ReactComponent as GalleryIcon } from '../../../images/SVG/gallery.svg';
 import { ReactComponent as LinksIcon } from '../../../images/SVG/links.svg';
 import { ReactComponent as ContactIcon } from '../../../images/SVG/contact.svg';
 import { ReactComponent as ArrowIcon } from '../../../images/SVG/arrow.svg';
+import kostkaProjectLogo from '../../../images/kostka-project-logo.png';
 
 const NavList = (props) => {
   const { sidebarClosed } = props;
@@ -133,7 +133,7 @@ const NavList = (props) => {
             className="link"
             onClick={sidebarClosed}
           >
-            <KostkaProjectIcon />
+            <img src={kostkaProjectLogo} alt="Logo - Projekt Kostka" className="kostka-project-logo" />
             <div className="column">
               <span>Projekt</span>
               <span>Kostka</span>

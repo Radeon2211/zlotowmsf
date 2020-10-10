@@ -65,7 +65,6 @@ export const fetchNews = () => {
     dispatch(fetchStart());
     try {
       const { data } = await axios.get(`/wp/v2/posts?per_page=20&page=1`);
-      console.log(data);
       dispatch(setNews(data));
       dispatch(fetchSuccess());
     } catch (error) {
