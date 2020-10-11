@@ -24,7 +24,7 @@ export const Wrapper = styled.div`
 
   & .gallery-info {
     display: block;
-    font-size: ${({ theme }) => theme.fontSizes.level3};
+    font-size: ${({ theme }) => theme.fontSizes.level4};
     margin-bottom: ${({ theme }) => theme.spacings.level2};
     text-align: center;
   }

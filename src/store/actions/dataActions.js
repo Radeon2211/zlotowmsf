@@ -38,8 +38,13 @@ export const fetchBasicData = () => {
     dispatch(fetchStart());
     try {
       const fetchSlides = axios.get('/wp/v2/slides?order=asc');
-      const [{ value: { data: slides } }] = await Promise.allSettled([fetchSlides]);
-      dispatch(setBasicData({ slides }));
+      const fetchLastNews = axios.get('/wp/v2/posts?per_page=1');
+      const [{ value: { data: slides } }, { value: { data: news } }] = await Promise.allSettled([fetchSlides, fetchLastNews]);
+      let lastNewsSlug = '';
+      if (news.length > 0) {
+        lastNewsSlug = news[0].slug;
+      }
+      dispatch(setBasicData({ slides, lastNewsSlug }));
       dispatch(fetchSuccess());
     } catch (error) {
       dispatch(fetchFail());

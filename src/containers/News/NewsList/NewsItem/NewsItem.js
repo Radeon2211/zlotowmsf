@@ -5,7 +5,7 @@ import 'moment/locale/pl';
 import { Link } from 'react-router-dom';
 import * as SC from './NewsItem.sc';
 import Heading from '../../../../components/UI/Heading/Heading';
-import Button from '../../../../components/UI/Button/Button';
+import MainButton from '../../../../components/UI/Buttons/MainButton/MainButton';
 
 moment.locale('pl');
 
@@ -24,7 +24,7 @@ const NewsItem = (props) => {
       <span className="date">{moment(date).format('LL')}</span>
       <div dangerouslySetInnerHTML={{ __html: excerpt.rendered }} className="excerpt" />
       <Link to={`/aktualnosci/${slug}`}>
-        <Button>Zobacz więcej</Button>
+        <MainButton>Zobacz więcej</MainButton>
       </Link>
     </SC.Wrapper>
   );

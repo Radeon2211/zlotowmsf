@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import Button from '../../../components/UI/Button/Button';
+import MainButton from '../../../components/UI/Buttons/MainButton/MainButton';
 import { ReactComponent as AnnoucementsIcon } from '../../../images/SVG/annoucements.svg';
 import { ReactComponent as IntentionsIcon } from '../../../images/SVG/intentions.svg';
 import { ReactComponent as FacebookIcon } from '../../../images/SVG/facebook.svg';
@@ -49,9 +49,11 @@ SC.Wrapper = styled.section`
         width: 1.9rem;
       }
 
-      &:hover {
-        & > svg {
-          fill: ${({ theme }) => theme.colors.blueLight};
+      @media (hover: hover) {
+        &:hover {
+          & > svg {
+            fill: ${({ theme }) => theme.colors.blueLight};
+          }
         }
       }
     }
@@ -64,16 +66,16 @@ const CommonVisitedLinks = () => {
       <div className="bg-image" />
       <div className="buttons-wrapper">
         <Link to="/ogloszenia" className="link">
-          <Button>
+          <MainButton>
             <AnnoucementsIcon />
             Ogłoszenia
-          </Button>
+          </MainButton>
         </Link>
         <Link to="/intencje" className="link">
-          <Button>
+          <MainButton>
             <IntentionsIcon />
             Intencje
-          </Button>
+          </MainButton>
         </Link>
         <a
           href="https://www.facebook.com/Parafia-Wniebowzi%C4%99cia-NMP-w-Z%C5%82otowie-101235951660702"
@@ -81,10 +83,10 @@ const CommonVisitedLinks = () => {
           rel="noopener noreferrer"
           className="link"
         >
-          <Button>
+          <MainButton>
             <FacebookIcon />
             Facebook
-          </Button>
+          </MainButton>
         </a>
       </div>
     </SC.Wrapper>

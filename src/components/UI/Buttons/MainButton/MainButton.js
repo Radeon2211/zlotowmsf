@@ -1,6 +1,9 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-export const Button = styled.button`
+const SC = {};
+SC.Wrapper = styled.button`
   background-color: ${({ theme }) => theme.colors.blue};
   border: none;
   border-radius: 1px;
@@ -14,7 +17,20 @@ export const Button = styled.button`
   text-transform: uppercase;
   transition: all ${({ theme }) => theme.durations.level1}s;
 
-  &:hover {
-    color: ${({ theme }) => theme.colors.blueLight};
+  @media (hover: hover) {
+    &:hover {
+      color: ${({ theme }) => theme.colors.blueLight};
+    }
   }
 `;
+
+const MainButton = (props) => {
+  const { children } = props;
+  return <SC.Wrapper>{children}</SC.Wrapper>;
+};
+
+MainButton.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+export default MainButton;

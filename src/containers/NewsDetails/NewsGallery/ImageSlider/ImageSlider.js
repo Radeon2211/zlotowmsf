@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { AnimatePresence, motion } from 'framer-motion';
 import * as SC from './ImageSlider.sc';
+import DarkButton from '../../../../components/UI/Buttons/DarkButton/DarkButton';
 import { imageSliderVariants, backdropVariants } from '../../../../shared/framer';
 import { ReactComponent as ArrowIcon } from '../../../../images/SVG/arrow.svg';
 import { ReactComponent as CrossIcon } from '../../../../images/SVG/cross.svg';
@@ -26,30 +27,33 @@ const ImageSlider = (props) => {
             animate="visible"
             exit="hidden"
             className="close-icon"
-            onClick={closed}
           >
-            <CrossIcon />
+            <DarkButton size="big" shape="circle" clicked={closed}>
+              <CrossIcon />
+            </DarkButton>
           </motion.div>
-          <motion.button
+          <motion.div
             variants={backdropVariants}
             initial="hidden"
             animate="visible"
             exit="hidden"
             className="pn-button p-button"
-            onClick={goToPrev}
           >
-            <ArrowIcon />
-          </motion.button>
-          <motion.button
+            <DarkButton size="big" shape="circle" clicked={goToPrev} childRotation={180}>
+              <ArrowIcon />
+            </DarkButton>
+          </motion.div>
+          <motion.div
             variants={backdropVariants}
             initial="hidden"
             animate="visible"
             exit="hidden"
             className="pn-button n-button"
-            onClick={goToNext}
           >
-            <ArrowIcon />
-          </motion.button>
+            <DarkButton size="big" shape="circle" clicked={goToNext}>
+              <ArrowIcon />
+            </DarkButton>
+          </motion.div>
           <SC.Slider variants={imageSliderVariants} initial="hidden" animate="visible" exit="hidden">
             {children}
           </SC.Slider>

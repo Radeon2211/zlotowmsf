@@ -1,15 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { slideVariants, slideForegroundVariants, slideForegroundElementVariants } from '../../../../shared/framer';
 import * as SC from './Slide.sc';
 import Heading from '../../../../components/UI/Heading/Heading';
-import Button from '../../../../components/UI/Button/Button';
+import MainButton from '../../../../components/UI/Buttons/MainButton/MainButton';
+import { slidesExtraInfo } from '../../../../shared/constants';
 
 const Slide = (props) => {
   const { data, isVisible } = props;
-  const { title, acf: { firstLine, imageURL, secondLine, thirdLine, btnText, btnInnerLink, btnOuterLink } } = data;
+  const { title, acf: { firstLine, imageURL, secondLine, thirdLine, btnText, btnInnerLink, btnOuterLink, extraInfo } } = data;
+
+  const { lastNewsSlug } = useSelector((state) => state.data.basic);
 
   const secondLineNode = secondLine ? (
     <motion.div variants={slideForegroundElementVariants} data-test="second-line">
@@ -22,8 +26,14 @@ const Slide = (props) => {
 
   let buttonWrapper = null;
   if (btnText) {
-    const button = <Button>{btnText}</Button>;
-    if (btnInnerLink) {
+    const button = <MainButton>{btnText}</MainButton>;
+    if (extraInfo === slidesExtraInfo.LATEST_NEWS) {
+      buttonWrapper = (
+        <motion.div variants={slideForegroundElementVariants} data-test="button-wrapper">
+          <Link to={`/aktualnosci/${lastNewsSlug}`} data-test="router-link">{button}</Link>
+        </motion.div>
+      );
+    } else if (btnInnerLink) {
       buttonWrapper = (
         <motion.div variants={slideForegroundElementVariants} data-test="button-wrapper">
           <Link to={btnInnerLink} data-test="router-link">{button}</Link>

@@ -24,9 +24,12 @@ SC.Wrapper = styled.footer`
     color: ${({ theme }) => theme.colors.light2};
     transition: color ${({ theme }) => theme.durations.level1}s;
 
-    &:hover {
-      color: ${({ theme }) => theme.colors.light1};
+    @media (hover: hover) {
+      &:hover {
+        color: ${({ theme }) => theme.colors.light1};
+      }
     }
+
   }
 
   @media only screen and (max-width: 56.25em) {

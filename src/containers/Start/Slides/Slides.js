@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import * as SC from './Slides.sc';
 import Slide from './Slide/Slide';
+import DarkButton from '../../../components/UI/Buttons/DarkButton/DarkButton';
 import { ReactComponent as ArrowIcon } from '../../../images/SVG/arrow.svg';
 
 const SLIDE_CHANGE_TIME = 6000;
@@ -56,13 +57,16 @@ const Slides = () => {
   const changeSlideListItems = [];
   for (let i = 0; i < slides.length; i++) {
     changeSlideListItems.push(
-      <button
+      <DarkButton
         key={i}
-        className={`list-button${slideNumber === i ? ' active' : ''}`}
-        onClick={() => listButtonClickHandle(i)}
+        size="big"
+        shape="circle"
+        childRotation={180}
+        active={slideNumber === i}
+        clicked={() => listButtonClickHandle(i)}
       >
         {i + 1}
-      </button>
+      </DarkButton>
     );
   }
 
@@ -75,12 +79,12 @@ const Slides = () => {
       {slideList}
       <div className="cs-list">{changeSlideListItems}</div>
       <div className="cs-prev-next">
-        <button className="pn-button p-button" onClick={prevButtonClickHandle}>
+        <DarkButton size="big" shape="square" childRotation={180} clicked={prevButtonClickHandle}>
           <ArrowIcon />
-        </button>
-        <button className="pn-button n-button" onClick={nextButtonClickHandle}>
+        </DarkButton>
+        <DarkButton size="big" shape="square" clicked={nextButtonClickHandle}>
           <ArrowIcon />
-        </button>
+        </DarkButton>
       </div>
     </SC.Wrapper>
   );

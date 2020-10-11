@@ -8,11 +8,11 @@ export const Wrapper = styled.div`
 
   & .gallery-item {
     cursor: pointer;
+    height: 25rem;
 
     & img {
       display: block;
       height: 100%;
-      max-height: 30rem;
     }
   }
 `;

@@ -32,11 +32,10 @@ export const Wrapper = styled.nav`
     width: calc(2 * ${({ theme }) => theme.fontSizes.level4});
   }
 
-  & .link:hover,
   & .active-link {
     color: ${({ theme }) => theme.colors.blueLight};
 
-    & svg {
+    & > svg {
       fill: ${({ theme }) => theme.colors.blueLight};
     }
   }
@@ -61,6 +60,16 @@ export const Wrapper = styled.nav`
 
     &.rotated {
       transform: rotate(-90deg);
+    }
+  }
+
+  @media (hover: hover) {
+    & .link:hover {
+      color: ${({ theme }) => theme.colors.blueLight};
+
+      & > svg {
+        fill: ${({ theme }) => theme.colors.blueLight};
+      }
     }
   }
 
