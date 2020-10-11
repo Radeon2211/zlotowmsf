@@ -5,6 +5,7 @@ const initialState = {
   basic: null,
   sites: {},
   news: null,
+  newsCount: 0,
   newsDetails: null,
   isLoading: false,
   error: '',
@@ -20,7 +21,7 @@ const setSite = (state, action) => {
 };
 
 const setNews = (state, action) => {
-  return updateObject(state, { news: action.news });
+  return updateObject(state, { news: action.news, newsCount: action.newsCount });
 };
 
 const setNewsDetails = (state, action) => {

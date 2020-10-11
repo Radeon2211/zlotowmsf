@@ -57,13 +57,13 @@ SC.Wrapper = styled.button`
       `;
     } else {
       return `
-        font-size: ${theme.fontSizes.level3};
-        height: 3rem;
-        width: 3rem;
+        font-size: ${theme.fontSizes.level4};
+        height: 4rem;
+        width: 4rem;
 
         & > svg {
-          height: ${theme.fontSizes.level3};
-          width: ${theme.fontSizes.level3};
+          height: ${theme.fontSizes.level4};
+          width: ${theme.fontSizes.level4};
         }
       `;
     }
@@ -86,6 +86,27 @@ SC.Wrapper = styled.button`
     }
   }}
 
+  ${({ disabled, theme }) => {
+    if (disabled) {
+      return `
+        color: ${theme.colors.light2};
+        cursor: default;
+
+        &:hover {
+          border-color: transparent;
+
+          & > svg {
+            fill: ${theme.colors.light2};
+          }
+        }
+
+        & > svg {
+          fill: ${theme.colors.light2};
+        }
+      `;
+    }
+  }}
+
   ${({ childRotation }) => {
     if (childRotation) {
       return `
@@ -98,14 +119,15 @@ SC.Wrapper = styled.button`
 `;
 
 const DarkButton = (props) => {
-  const { children, clicked } = props;
-  return <SC.Wrapper onClick={clicked} {...props}>{children}</SC.Wrapper>;
+  const { children, disabled, clicked } = props;
+  return <SC.Wrapper onClick={clicked} disabled={disabled} {...props}>{children}</SC.Wrapper>;
 };
 
 DarkButton.defaultProps = {
   active: false,
   childRotation: undefined,
   clicked: () => {},
+  disabled: false,
 };
 
 DarkButton.propTypes = {
@@ -114,6 +136,7 @@ DarkButton.propTypes = {
   children: PropTypes.node.isRequired,
   clicked: PropTypes.func,
   active: PropTypes.bool,
+  disabled: PropTypes.bool,
   childRotation: PropTypes.number,
 };
 

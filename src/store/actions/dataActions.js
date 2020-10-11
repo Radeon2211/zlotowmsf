@@ -1,5 +1,6 @@
 import * as actionTypes from './actionTypes';
 import axios from '../../axios';
+import { MAX_QUANTITY_PER_PAGE } from '../../shared/constants';
 
 export const setBasicData = (data) => ({
   type: actionTypes.SET_BASIC_DATA,
@@ -11,9 +12,10 @@ export const setSite = (site) => ({
   site,
 });
 
-export const setNews = (news) => ({
+export const setNews = (news, newsCount) => ({
   type: actionTypes.SET_NEWS,
   news,
+  newsCount,
 });
 
 export const setNewsDetails = (newsDetails) => ({
@@ -65,12 +67,14 @@ export const fetchSite = (siteSlug) => {
   };
 };
 
-export const fetchNews = () => {
+export const fetchNews = (pageNumber, oneExtra) => {
   return async (dispatch) => {
     dispatch(fetchStart());
     try {
-      const { data } = await axios.get(`/wp/v2/posts?per_page=20&page=1`);
-      dispatch(setNews(data));
+      const perPage = oneExtra ? MAX_QUANTITY_PER_PAGE + 1 : MAX_QUANTITY_PER_PAGE;
+      const offset = pageNumber === 1 ? 0 : ((pageNumber - 1) * MAX_QUANTITY_PER_PAGE) + 1;
+      const { data, headers } = await axios.get(`/wp/v2/posts?per_page=${perPage}&offset=${offset}`);
+      dispatch(setNews(data, +headers['x-wp-total']));
       dispatch(fetchSuccess());
     } catch (error) {
       dispatch(fetchFail());

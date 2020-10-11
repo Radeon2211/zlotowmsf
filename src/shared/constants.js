@@ -28,3 +28,5 @@ export const machineIP = '192.168.1.109';
 export const slidesExtraInfo = {
   LATEST_NEWS: 'LATEST_NEWS',
 };
+
+export const MAX_QUANTITY_PER_PAGE = 10;

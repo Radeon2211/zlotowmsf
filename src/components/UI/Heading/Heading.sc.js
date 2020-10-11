@@ -56,7 +56,7 @@ const StyledHeading = styled.h1`
             font-size: 4.6rem;
           }
 
-          @media only screen and (max-width: 375px) {
+          @media only screen and (max-width: 23.5em) {
             font-size: 3.9rem;
           }
         `;

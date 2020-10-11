@@ -27,7 +27,7 @@ export const Wrapper = styled(motion.div)`
           padding: ${theme.spacings.level2};
         }
 
-        @media only screen and (max-width: 900px) and (min-width: 600px) {
+        @media only screen and (max-width: 56.25em) and (min-width: 37.5em) {
           width: 100%;
         }
       `;

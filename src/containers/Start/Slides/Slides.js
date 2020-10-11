@@ -61,9 +61,9 @@ const Slides = () => {
         key={i}
         size="big"
         shape="circle"
-        childRotation={180}
         active={slideNumber === i}
         clicked={() => listButtonClickHandle(i)}
+        data-test="slide-number-button"
       >
         {i + 1}
       </DarkButton>
@@ -79,10 +79,16 @@ const Slides = () => {
       {slideList}
       <div className="cs-list">{changeSlideListItems}</div>
       <div className="cs-prev-next">
-        <DarkButton size="big" shape="square" childRotation={180} clicked={prevButtonClickHandle}>
+        <DarkButton
+          size="big"
+          shape="square"
+          childRotation={180}
+          clicked={prevButtonClickHandle}
+          data-test="prev-slide-button"
+        >
           <ArrowIcon />
         </DarkButton>
-        <DarkButton size="big" shape="square" clicked={nextButtonClickHandle}>
+        <DarkButton size="big" shape="square" clicked={nextButtonClickHandle} data-test="next-slide-button">
           <ArrowIcon />
         </DarkButton>
       </div>

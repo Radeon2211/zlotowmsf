@@ -33,7 +33,7 @@ describe('<Slides />', () => {
         data: { basic: { slides: [createSlide(1), createSlide(2), createSlide(3)] }},
       });
       const wrapper = setUp(store);
-      expect(wrapper.find('.list-button')).toHaveLength(3);
+      expect(wrapper.find('[data-test="slide-number-button"]')).not.toBeNull();
       expect(wrapper.find(Slide)).toHaveLength(3);
     });
     it('Should render one previous and next button', () => {
@@ -41,8 +41,8 @@ describe('<Slides />', () => {
         data: { basic: { slides: [createSlide(1)] }},
       });
       const wrapper = setUp(store);
-      expect(wrapper.find('.p-button')).toHaveLength(1);
-      expect(wrapper.find('.n-button')).toHaveLength(1);
+      expect(wrapper.find('[data-test="prev-slide-button"]')).not.toBeNull();
+      expect(wrapper.find('[data-test="next-slide-button"]')).not.toBeNull();
     });
   });
 });

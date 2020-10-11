@@ -1,11 +1,16 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import { ThemeProvider } from 'styled-components';
-import { BrowserRouter as Router, Link } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
+import configureMockStore from 'redux-mock-store';
+import { BrowserRouter as Router } from 'react-router-dom';
 import theme from '../../../../styled/theme';
 import { checkProps } from '../../../../shared/utility';
 import * as SC from './Slide.sc';
 import Slide from './Slide';
+
+const mockStore = configureMockStore([thunk]);
 
 const defaultProps = {
   isVisible: true,
@@ -22,12 +27,20 @@ const defaultProps = {
   },
 };
 
-const setUp = (props) => {
+const defaultStore = mockStore({
+  data: {
+    basic: {},
+  },
+});
+
+const setUp = (props, store = defaultStore) => {
   return mount(
     <Router>
-      <ThemeProvider theme={theme}>
-        <Slide {...props} />
-      </ThemeProvider>
+      <Provider store={store}>
+        <ThemeProvider theme={theme}>
+          <Slide {...props} />
+        </ThemeProvider>
+      </Provider>
     </Router>
   );
 };
