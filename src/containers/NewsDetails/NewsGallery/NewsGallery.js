@@ -29,12 +29,10 @@ const NewsGallery = (props) => {
     setIsSliderVisible(true);
   };
 
-  const imageList = images.map((imageItem) => (
-    <img key={imageItem.id} src={imageItem.source_url} alt={imageItem.alt_text} />
-  ));
-
-  const galleryItems = imageList.map((imageItem, idx) => (
-    <div key={idx} className="gallery-item" onClick={() => clickImageHandle(idx)}>{imageItem}</div>
+  const galleryItems = images.map((imageItem, idx) => (
+    <div key={imageItem.id} className="gallery-item" onClick={() => clickImageHandle(idx)}>
+      <img src={imageItem.source_url} alt={imageItem.alt_text} />
+    </div>
   ));
 
   const imageSlides = images.map((imageItem, idx) => (

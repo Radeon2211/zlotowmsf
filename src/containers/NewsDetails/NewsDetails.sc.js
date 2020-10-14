@@ -16,10 +16,10 @@ export const Wrapper = styled.div`
     font-size: ${({ theme }) => theme.fontSizes.level4};
   }
 
-  & .gallery-separator {
-    background-color: ${({ theme }) => theme.colors.blue};
-    height: 2px;
-    margin: ${({ theme }) => theme.spacings.level3} 0;
+  & .gallery-section {
+    border-top: 2px solid ${({ theme }) => theme.colors.blue};
+    margin-top: ${({ theme }) => theme.spacings.level3};
+    padding-top: ${({ theme }) => theme.spacings.level3};
   }
 
   & .gallery-info {

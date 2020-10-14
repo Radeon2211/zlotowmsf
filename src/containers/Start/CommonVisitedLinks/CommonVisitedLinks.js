@@ -60,37 +60,35 @@ SC.Wrapper = styled.section`
   }
 `;
 
-const CommonVisitedLinks = () => {
-  return (
-    <SC.Wrapper>
-      <div className="bg-image" />
-      <div className="buttons-wrapper">
-        <Link to="/ogloszenia" className="link">
-          <MainButton>
-            <AnnoucementsIcon />
-            Ogłoszenia
-          </MainButton>
-        </Link>
-        <Link to="/intencje" className="link">
-          <MainButton>
-            <IntentionsIcon />
-            Intencje
-          </MainButton>
-        </Link>
-        <a
-          href="https://www.facebook.com/Parafia-Wniebowzi%C4%99cia-NMP-w-Z%C5%82otowie-101235951660702"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="link"
-        >
-          <MainButton>
-            <FacebookIcon />
-            Facebook
-          </MainButton>
-        </a>
-      </div>
-    </SC.Wrapper>
-  );
-};
+const CommonVisitedLinks = () => (
+  <SC.Wrapper>
+    <div className="bg-image" />
+    <div className="buttons-wrapper">
+      <Link to="/ogloszenia" className="link">
+        <MainButton>
+          <AnnoucementsIcon />
+          Ogłoszenia
+        </MainButton>
+      </Link>
+      <Link to="/intencje" className="link">
+        <MainButton>
+          <IntentionsIcon />
+          Intencje
+        </MainButton>
+      </Link>
+      <a
+        href="https://www.facebook.com/Parafia-Wniebowzi%C4%99cia-NMP-w-Z%C5%82otowie-101235951660702"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="link"
+      >
+        <MainButton>
+          <FacebookIcon />
+          Facebook
+        </MainButton>
+      </a>
+    </div>
+  </SC.Wrapper>
+);
 
 export default CommonVisitedLinks;

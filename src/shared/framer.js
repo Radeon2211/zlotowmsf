@@ -85,7 +85,18 @@ export const imageSliderVariants = {
   },
   visible: {
     opacity: 1,
-    transition: { delay: theme.durations.level2 },
+    backdropFilter: 'blur(3px)',
+    transition: { duration: theme.durations.level2 },
     pointerEvents: 'initial',
+  },
+};
+
+export const SCSliderVariants = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    transition: { delay: theme.durations.level1, duration: theme.durations.level1 },
   },
 };

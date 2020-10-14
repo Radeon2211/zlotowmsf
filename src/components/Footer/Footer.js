@@ -32,13 +32,16 @@ SC.Wrapper = styled.footer`
 
   }
 
-  @media only screen and (max-width: 56.25em) {
+  @media only screen and (max-width: 75em) {
     flex-direction: column;
-    margin-left: 0;
 
     & > *:not(:last-child) {
       margin-bottom: ${({ theme }) => theme.spacings.level3};
     }
+  }
+
+  @media only screen and (max-width: 56.25em) {
+    margin-left: 0;
   }
 `;
 

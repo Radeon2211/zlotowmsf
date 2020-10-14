@@ -33,8 +33,7 @@ const NewsDetails = (props) => {
     const { title, acf: { thumbnail }, date, content, images } = newsDetails;
 
     const gallerySection = images ? (
-      <section>
-        <div className="gallery-separator" />
+      <section className="gallery-section">
         <Heading variant="h3" margin="medium">Galeria</Heading>
         <span className="gallery-info">Kliknij na zdjęcie, żeby powiększyć</span>
         <NewsGallery images={images} />

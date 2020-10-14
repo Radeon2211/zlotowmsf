@@ -6,6 +6,7 @@ import * as SC from './NewsList.sc';
 import Loader from '../../../components/UI/Loader';
 import NewsItem from './NewsItem/NewsItem';
 import Heading from '../../../components/UI/Heading/Heading';
+import LoadingOverlay from '../../../components/UI/LoadingOverlay';
 
 const NewsList = (props) => {
   const { news, isNewsLoading } = props;
@@ -16,7 +17,7 @@ const NewsList = (props) => {
   let newsList = <Loader />;
   if (news) {
     if (news.length <= 0) {
-      newsList = <Heading variant="h3">Nie znaleziono żadnych aktualności</Heading>;
+      newsList = <Heading variant="h3" data-test="">Nie znaleziono żadnych aktualności</Heading>;
     } else {
       const { p: urlPage } = queryString.parse(search);
       const urlPageNumber = +urlPage || 1;
@@ -39,14 +40,7 @@ const NewsList = (props) => {
         </>
       );
 
-      let loadingOverlay = null;
-      if (isNewsLoading) {
-        loadingOverlay = (
-          <SC.Overlay>
-            <Loader />
-          </SC.Overlay>
-        );
-      }
+      let loadingOverlay = isNewsLoading ? <LoadingOverlay /> : null;
 
       newsList = (
         <>

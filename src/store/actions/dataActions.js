@@ -77,6 +77,7 @@ export const fetchNews = (pageNumber, oneExtra) => {
       dispatch(setNews(data, +headers['x-wp-total']));
       dispatch(fetchSuccess());
     } catch (error) {
+      dispatch(setNews([], 0));
       dispatch(fetchFail());
     }
   };

@@ -15,12 +15,3 @@ export const Wrapper = styled.div`
     grid-template-columns: 1fr;
   }
 `;
-
-export const Overlay = styled.div`
-  background-color: ${({ theme }) => theme.colors.light1Transparent};
-  height: 100%;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 100%;
-`;

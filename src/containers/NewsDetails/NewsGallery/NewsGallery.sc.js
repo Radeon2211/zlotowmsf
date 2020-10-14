@@ -9,10 +9,16 @@ export const Wrapper = styled.div`
   & .gallery-item {
     cursor: pointer;
     height: 25rem;
+    overflow: hidden;
 
-    & img {
+    & > img {
       display: block;
       height: 100%;
+      transition: transform ${({ theme }) => theme.durations.level3}s;
+
+      &:hover {
+        transform: scale(1.04);
+      }
     }
   }
 `;

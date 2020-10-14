@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 
 export const Wrapper = styled(motion.div)`
   align-items: center;
-  backdrop-filter: blur(3px);
   display: flex;
   height: 100vh;
   justify-content: center;

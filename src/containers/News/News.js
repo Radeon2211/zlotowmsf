@@ -9,6 +9,7 @@ import styled from 'styled-components';
 import Heading from '../../components/UI/Heading/Heading';
 import Line from '../../components/UI/Line';
 import Pagination from '../../components/Pagination/Pagination';
+import { MAX_QUANTITY_PER_PAGE } from '../../shared/constants';
 
 const SC = {};
 SC.Wrapper = styled.div`
@@ -32,13 +33,18 @@ const News = () => {
     onFetchNews(urlPageNumber, oneExtra);
   }, [onFetchNews, search]);
 
+  const numberOfPages = Math.ceil((newsCount - 1) / MAX_QUANTITY_PER_PAGE);
+  const pagination = numberOfPages > 1 ? (
+    <Pagination itemQuantity={newsCount} oneExtra maxQuantityPerPage={MAX_QUANTITY_PER_PAGE} />
+  ) : null;
+
   return (
     <FreeSides>
       <SC.Wrapper>
         <Heading variant="h2" margin="small">Aktualności</Heading>
         <Line mgBottom="large" />
         <NewsList news={news} isNewsLoading={isLoading} />
-        <Pagination itemQuantity={newsCount} oneExtra />
+        {pagination}
       </SC.Wrapper>
     </FreeSides>
   );

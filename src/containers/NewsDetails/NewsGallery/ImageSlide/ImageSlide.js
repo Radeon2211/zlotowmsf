@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { AnimatePresence, motion } from 'framer-motion';
 import { slideVariants } from '../../../../shared/framer';
 
-const SC = {};
+export const SC = {};
 SC.Wrapper = styled(motion.div)`
   align-items: center;
   display: flex;

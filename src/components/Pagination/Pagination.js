@@ -6,10 +6,9 @@ import * as SC from './Pagination.sc';
 import DarkButton from '../UI/Buttons/DarkButton/DarkButton';
 import { ReactComponent as ArrowIcon } from '../../images/SVG/arrow.svg';
 import { ReactComponent as DoubleArrowIcon } from '../../images/SVG/double-arrow.svg';
-import { MAX_QUANTITY_PER_PAGE } from '../../shared/constants';
 
 const Pagination = (props) => {
-  const { itemQuantity, oneExtra } = props;
+  const { itemQuantity, oneExtra, maxQuantityPerPage } = props;
 
   const history = useHistory();
   const { search, pathname } = history.location;
@@ -17,7 +16,7 @@ const Pagination = (props) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const totalItemQuantity = oneExtra ? itemQuantity - 1 : itemQuantity;
-  const numberOfPages = Math.ceil(totalItemQuantity / MAX_QUANTITY_PER_PAGE);
+  const numberOfPages = Math.ceil(totalItemQuantity / maxQuantityPerPage);
 
   useEffect(() => {
     const { p: urlPage } = queryString.parse(search);
@@ -56,7 +55,6 @@ const Pagination = (props) => {
 
   let pagination = null;
   if (itemQuantity > 0) {
-
     const numberButtons = [];
     for (let i = 1; i <= numberOfPages; i += 1) {
       numberButtons.push(
@@ -66,6 +64,7 @@ const Pagination = (props) => {
           shape="circle"
           active={currentPage === i}
           clicked={() => numberPageClickHandle(i)}
+          data-test={`number-button${i}`}
         >
           {i}
         </DarkButton>
@@ -80,6 +79,7 @@ const Pagination = (props) => {
           childRotation={180}
           disabled={currentPage === 1}
           clicked={firstPageClickHandle}
+          data-test="first-page-button"
         >
           <DoubleArrowIcon />
         </DarkButton>
@@ -89,14 +89,27 @@ const Pagination = (props) => {
           childRotation={180}
           disabled={currentPage === 1}
           clicked={prevPageClickHandle}
+          data-test="prev-page-button"
         >
           <ArrowIcon />
         </DarkButton>
         {numberButtons}
-        <DarkButton size="small" shape="circle" disabled={currentPage === numberOfPages} clicked={nextPageClickHandle}>
+        <DarkButton
+          size="small"
+          shape="circle"
+          disabled={currentPage === numberOfPages}
+          clicked={nextPageClickHandle}
+          data-test="next-page-button"
+        >
           <ArrowIcon />
         </DarkButton>
-        <DarkButton size="small" shape="circle" disabled={currentPage === numberOfPages} clicked={lastPageClickHandle}>
+        <DarkButton
+          size="small"
+          shape="circle"
+          disabled={currentPage === numberOfPages}
+          clicked={lastPageClickHandle}
+          data-test="last-page-button"
+        >
           <DoubleArrowIcon />
         </DarkButton>
       </SC.Wrapper>
@@ -113,6 +126,7 @@ Pagination.defaultProps = {
 Pagination.propTypes = {
   itemQuantity: PropTypes.number.isRequired,
   oneExtra: PropTypes.bool,
+  maxQuantityPerPage: PropTypes.number.isRequired,
 };
 
 export default Pagination;

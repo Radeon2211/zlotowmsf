@@ -18,9 +18,9 @@ const NewsItem = (props) => {
       <Link to={`/aktualnosci/${slug}`} className="thumbnail-link">
         <img src={thumbnail} alt="miniaturka" />
       </Link>
-        <Heading variant="h3" margin="medium" className="title">
-          <Link to={`/aktualnosci/${slug}`}>{title.rendered}</Link>
-        </Heading>
+      <Heading variant="h3" margin="medium" className="title">
+        <Link to={`/aktualnosci/${slug}`}>{title.rendered}</Link>
+      </Heading>
       <span className="date">{moment(date).format('LL')}</span>
       <div dangerouslySetInnerHTML={{ __html: excerpt.rendered }} className="excerpt" />
       <Link to={`/aktualnosci/${slug}`}>

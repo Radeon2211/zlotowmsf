@@ -1,7 +1,7 @@
 import * as actionTypes from '../../actions/actionTypes';
 import { updateObject } from '../../../shared/utility';
 
-const initialState = {
+export const initialState = {
   basic: null,
   sites: {},
   news: null,
