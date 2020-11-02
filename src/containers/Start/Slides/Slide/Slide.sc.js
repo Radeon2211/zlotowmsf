@@ -37,12 +37,6 @@ export const Wrapper = styled(motion.div)`
     z-index: ${({ theme }) => theme.zIndexes.level2};
   }
 
-  .third-line {
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: ${({ theme }) => theme.spacings.level3};
-  }
-
   @media only screen and (max-width: 56.25em) {
     .overlay {
       background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.1) 90%, rgba(0, 0, 0, 0));

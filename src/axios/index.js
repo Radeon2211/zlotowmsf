@@ -6,6 +6,9 @@ const baseURLLocalhost = `http://${machineIP}/msfzlotow/wp-json`;
 
 const instance = axios.create({
   baseURL: baseURLServer,
+  headers: {
+    ['Cache-Control']: 'no-cache',
+  },
 });
 
 export default instance;

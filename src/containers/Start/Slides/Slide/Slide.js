@@ -13,15 +13,24 @@ const Slide = (props) => {
   const { data, isVisible } = props;
   const { title, acf: { firstLine, imageURL, secondLine, thirdLine, btnText, btnInnerLink, btnOuterLink, extraInfo } } = data;
 
-  const { lastNewsSlug } = useSelector((state) => state.data.basic);
+  const { latestNews } = useSelector((state) => state.data.basic);
 
-  const secondLineNode = secondLine ? (
+  let thirdLineText = thirdLine;
+  let backgroundImage = imageURL;
+  if (extraInfo === slidesExtraInfo.LATEST_NEWS) {
+    backgroundImage = latestNews.thumbnail || imageURL;
+    thirdLineText = latestNews.title;
+  }
+
+  let secondLineNode = secondLine ? (
     <motion.div variants={slideForegroundElementVariants} data-test="second-line">
       <Heading variant="h3" uppercase margin="medium">{secondLine}</Heading>
     </motion.div>
   ) : null;
-  const thirdLineNode = thirdLine ? (
-    <motion.span variants={slideForegroundElementVariants} className="third-line">{thirdLine}</motion.span>
+  const thirdLineNode = thirdLineText ? (
+    <motion.span variants={slideForegroundElementVariants} data-test="third-line">
+      <Heading variant="h4" margin={secondLineNode ? 'medium' : 'big'} data-test="third-line-heading">{thirdLineText}</Heading>
+    </motion.span>
   ) : null;
 
   let buttonWrapper = null;
@@ -30,7 +39,7 @@ const Slide = (props) => {
     if (extraInfo === slidesExtraInfo.LATEST_NEWS) {
       buttonWrapper = (
         <motion.div variants={slideForegroundElementVariants} data-test="button-wrapper">
-          <Link to={`/aktualnosci/${lastNewsSlug}`} data-test="router-link">{button}</Link>
+          <Link to={`/aktualnosci/${latestNews.slug}`} data-test="router-link">{button}</Link>
         </motion.div>
       );
     } else if (btnInnerLink) {
@@ -57,7 +66,7 @@ const Slide = (props) => {
           animate="visible"
           exit="hidden"
         >
-          <img src={imageURL} alt={title.rendered} className="bg-image" />
+          <img src={backgroundImage} alt={title.rendered} className="bg-image" />
           <div className="overlay" />
           <motion.div
             className="foreground"

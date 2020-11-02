@@ -40,13 +40,19 @@ export const fetchBasicData = () => {
     dispatch(fetchStart());
     try {
       const fetchSlides = axios.get('/wp/v2/slides?order=asc');
-      const fetchLastNews = axios.get('/wp/v2/posts?per_page=1');
-      const [{ value: { data: slides } }, { value: { data: news } }] = await Promise.allSettled([fetchSlides, fetchLastNews]);
-      let lastNewsSlug = '';
+      const fetchLastestNews = axios.get('/wp/v2/posts?per_page=1');
+      const [{ value: { data: slides } }, { value: { data: news } }] = await Promise.allSettled([fetchSlides, fetchLastestNews]);
+      const latestNews = {
+        title: '',
+        slug: '',
+        thumbnail: '',
+      };
       if (news.length > 0) {
-        lastNewsSlug = news[0].slug;
+        latestNews.title = news[0].title.rendered;
+        latestNews.slug = news[0].slug;
+        latestNews.thumbnail = news[0].acf.thumbnail;
       }
-      dispatch(setBasicData({ slides, lastNewsSlug }));
+      dispatch(setBasicData({ slides, latestNews }));
       dispatch(fetchSuccess());
     } catch (error) {
       dispatch(fetchFail());
@@ -91,7 +97,7 @@ export const fetchNewsDetails = (newsSlug) => {
       if (newsDetails.length > 0) {
         const { data: { gallery }} = await axios.get(`/acf/v3/posts/${newsDetails[0].id}/gallery`);
         if (gallery) {
-          const { data: images } = await axios.get(`/wp/v2/media?include=${gallery}`);
+          const { data: images } = await axios.get(`/wp/v2/media?include=${gallery}&per_page=100`);
           newsDetails[0].images = images;
         }
         dispatch(setNewsDetails(newsDetails[0]));

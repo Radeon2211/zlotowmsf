@@ -5,7 +5,7 @@ import { AnimatePresence} from 'framer-motion';
 import { useWindowWidth } from '@react-hook/window-size';
 import { NavLink } from 'react-router-dom';
 import * as SC from '../Submenu.sc';
-import { deviceTypes } from '../../../../../shared/constants';
+import { deviceTypes, parishMenuItems } from '../../../../../shared/constants';
 import { submenuVariants } from '../../../../../shared/framer';
 
 const ParishSubmenu = (props) => {
@@ -13,6 +13,14 @@ const ParishSubmenu = (props) => {
   const windowWidth = useWindowWidth();
 
   const deviceType = windowWidth > 900 ? deviceTypes.DESKTOP : deviceTypes.MOBILE;
+
+  const menuItems = parishMenuItems.map(({ slug, name }) => (
+    <li key={slug}>
+      <NavLink to={`/parafia/${slug}`} className="link" activeClassName="active-link" onClick={sidebarClosed}>
+        {name}
+      </NavLink>
+    </li>
+  ));
 
   return (
     <OutsideClickHandler
@@ -31,43 +39,7 @@ const ParishSubmenu = (props) => {
             animate="visible"
             exit="hidden"
           >
-            <ul className="list">
-              <li>
-                <NavLink to="/parafia/historia" className="link" activeClassName="active-link" onClick={sidebarClosed}>
-                  Historia
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/parafia/duszpasterze" className="link" activeClassName="active-link" onClick={sidebarClosed}>
-                  Duszpasterze
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/parafia/porzadek-mszy-swietych" className="link" activeClassName="active-link" onClick={sidebarClosed}>
-                  Porządek Mszy Świętych
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/parafia/kaplice-dojazdowe" className="link" activeClassName="active-link" onClick={sidebarClosed}>
-                  Kaplice dojazdowe
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/parafia/wspolnoty-parafialne" className="link" activeClassName="active-link" onClick={sidebarClosed}>
-                  Wspólnoty Parafialne
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/parafia/hospicjum" className="link" activeClassName="active-link" onClick={sidebarClosed}>
-                  Hospicjum
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/parafia/szpital-miejski" className="link" activeClassName="active-link" onClick={sidebarClosed}>
-                  Szpital Miejski
-                </NavLink>
-              </li>
-            </ul>
+            <ul className="list">{menuItems}</ul>
           </SC.Wrapper>
         )}
       </AnimatePresence>

@@ -69,8 +69,9 @@ const StyledHeading = styled.h1`
         `;
       case 'h4':
         return `
-          font-size: ${theme.fontSizes.heading};
+          font-family: ${theme.fonts.heading};
           font-size: 2.1rem;
+          letter-spacing: 1px;
           line-height: 1;
         `;
       default:

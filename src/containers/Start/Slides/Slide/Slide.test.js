@@ -4,21 +4,24 @@ import { ThemeProvider } from 'styled-components';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import configureMockStore from 'redux-mock-store';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { HashRouter as Router, Link } from 'react-router-dom';
 import theme from '../../../../styled/theme';
 import { checkProps } from '../../../../shared/utility';
 import * as SC from './Slide.sc';
 import Slide from './Slide';
+import Heading from '../../../../components/UI/Heading/Heading';
+import { slidesExtraInfo } from '../../../../shared/constants';
 
 const mockStore = configureMockStore([thunk]);
 
+const defaultImageURL = 'default image URL';
 const defaultProps = {
   isVisible: true,
   data: {
     title: { rendered: 'test title' },
     acf: {
       firstLine: 'test heading',
-      imageURL: '../../../../images/background.png',
+      imageURL: defaultImageURL,
       secondLine: 'test second line',
       thirdLine: 'test third line',
       btnText: 'test btn text',
@@ -77,16 +80,44 @@ describe('<Slides />', () => {
         expect(wrapper.find('[data-test="second-line"]')).not.toBeNull();
       });
       it('Should render third line node', () => {
-        expect(wrapper.find('.third-line')).not.toBeNull();
+        expect(wrapper.find('[data-test="third-line"]')).not.toBeNull();
+      });
+      it('Should third line heading have medium margin', () => {
+        expect(
+          wrapper.find(Heading).filterWhere((item) => (
+            item.prop('margin') === 'medium' && item.prop('data-test') === 'third-line-heading'
+          )),
+        ).toHaveLength(1);
       });
       it('Should render button wrapper', () => {
         expect(wrapper.find('[data-test="button-wrapper"]')).not.toBeNull();
       });
     });
 
+    describe('Data without second line', () => {
+      const props = {
+        ...defaultProps,
+        data: {
+          title: { rendered: 'test title' },
+          acf: {
+            ...defaultProps.data.acf,
+            secondLine: '',
+          },
+        },
+      };
+      const wrapper = setUp(props);
+      it('Should third line heading have big margin', () => {
+        expect(
+          wrapper.find(Heading).filterWhere((item) => (
+            item.prop('margin') === 'big' && item.prop('data-test') === 'third-line-heading'
+          )),
+        ).toHaveLength(1);
+      });
+    });
+
     describe('Minimum slide data', () => {
       const props = {
-        isVisible: true,
+        ...defaultProps,
         data: {
           title: { rendered: 'test title' },
           acf: {
@@ -127,6 +158,76 @@ describe('<Slides />', () => {
         const wrapper = setUp(props);
         expect(wrapper.find('[data-test="html-link"]')).not.toBeNull();
         expect(wrapper.find('[data-test="router-link"]')).toHaveLength(0);
+      });
+    });
+
+    describe('Latest news slide with thumbnail', () => {
+      const props = {
+        ...defaultProps,
+        data: {
+          title: { rendered: 'test title' },
+          acf: {
+            ...defaultProps.data.acf,
+            extraInfo: slidesExtraInfo.LATEST_NEWS,
+          },
+        },
+      };
+      const store = mockStore({
+        data: {
+          basic: {
+            latestNews: {
+              title: 'test title',
+              slug: 'test-slug',
+              thumbnail: 'test url',
+            },
+          },
+        },
+      });
+      const wrapper = setUp(props, store);
+      it('Should button link to correct article', () => {
+        expect(
+          wrapper.find(Link).filterWhere((item) => (
+            item.prop('to') === '/aktualnosci/test-slug' && item.prop('data-test') === 'router-link'
+          )),
+        ).toHaveLength(1);
+      });
+      it('Should third line heading have correct title', () => {
+        expect(
+          wrapper.find(Heading).filterWhere((item) => (
+            item.prop('children') === 'test title' && item.prop('data-test') === 'third-line-heading'
+          )),
+        ).toHaveLength(1);
+      });
+      it('Should image background have correct src', () => {
+        expect(wrapper.find('.bg-image').prop('src')).toBe('test url');
+      });
+    });
+
+    describe('Latest news slide without thumbnail', () => {
+      const props = {
+        ...defaultProps,
+        data: {
+          title: { rendered: 'test title' },
+          acf: {
+            ...defaultProps.data.acf,
+            extraInfo: slidesExtraInfo.LATEST_NEWS,
+          },
+        },
+      };
+      const store = mockStore({
+        data: {
+          basic: {
+            latestNews: {
+              title: 'test title',
+              slug: 'test-slug',
+              thumbnail: '',
+            },
+          },
+        },
+      });
+      const wrapper = setUp(props, store);
+      it('Should image background have correct src', () => {
+        expect(wrapper.find('.bg-image').prop('src')).toBe(defaultImageURL);
       });
     });
   });

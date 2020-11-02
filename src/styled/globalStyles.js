@@ -40,10 +40,6 @@ const GlobalStyles = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    text-transform: uppercase;
-  }
-
   button {
     font-family: inherit;
   }

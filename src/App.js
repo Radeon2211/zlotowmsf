@@ -1,23 +1,41 @@
-import React, { useCallback, useEffect } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import React, { lazy, Suspense, useCallback, useEffect } from 'react';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { useWindowWidth } from '@react-hook/window-size';
 import { useDispatch, useSelector } from 'react-redux';
 import * as actions from './store/actions/dataActions';
+import Start from './containers/Start/Start';
 import Main from './components/UI/Main';
 import DesktopNavigation from './components/Navigation/DesktopNavigation';
 import MobileNavigation from './components/Navigation/MobileNavigation/MobileNavigation';
 import Loader from './components/UI/Loader';
-
-import Start from './containers/Start/Start';
-import News from './containers/News/News';
-import NewsDetails from './containers/NewsDetails/NewsDetails';
-import HolyMassesOrder from './containers/HolyMassesOrder';
-import History from './containers/History';
-import Contact from './containers/Contact';
-import MassIntentions from './containers/MassIntentions';
-import MarriageCounceling from './containers/MarriageCounceling';
-import ParishOffice from './containers/ParishOffice';
 import Footer from './components/Footer/Footer';
+
+const News = lazy(() => import('./containers/News/News'));
+const NewsDetails = lazy(() => import('./containers/NewsDetails/NewsDetails'));
+const Annoucements = lazy(() => import('./containers/PlainSites/Annoucements'));
+const HolyMassesOrder = lazy(() => import('./containers/PlainSites/HolyMassesOrder'));
+const History = lazy(() => import('./containers/PlainSites/History'));
+const MassIntentions = lazy(() => import('./containers/PlainSites/MassIntentions'));
+const ParishOffice = lazy(() => import('./containers/PlainSites/ParishOffice'));
+const HolyBaptism = lazy(() => import('./containers/PlainSites/Sacraments/HolyBaptism'));
+const Confirmation = lazy(() => import('./containers/PlainSites/Sacraments/Confirmation'));
+const FirstHolyCommunion = lazy(() => import('./containers/PlainSites/Sacraments/FirstHolyCommunion'));
+const Eucharist = lazy(() => import('./containers/PlainSites/Sacraments/Eucharist'));
+const Atonement = lazy(() => import('./containers/PlainSites/Sacraments/Atonement'));
+const AnointingOfTheSick = lazy(() => import('./containers/PlainSites/Sacraments/AnointingOfTheSick'));
+const Ordination = lazy(() => import('./containers/PlainSites/Sacraments/Ordination'));
+const Marriage = lazy(() => import('./containers/PlainSites/Sacraments/Marriage'));
+const MarriageCounceling = lazy(() => import('./containers/PlainSites/MarriageCounceling'));
+const Links = lazy(() => import('./containers/PlainSites/Links'));
+const Contact = lazy(() => import('./containers/PlainSites/Contact'));
+
+const WaitingComponent = (Component) => {
+  return (props) => (
+    <Suspense fallback={<Loader />}>
+      <Component {...props} />
+    </Suspense>
+  );
+};
 
 const App = () => {
   const windowWidth = useWindowWidth();
@@ -38,15 +56,26 @@ const App = () => {
         {navigation}
         <Main>
           <Switch>
-            <Route path="/aktualnosci/:slug" component={NewsDetails} />
-            <Route path="/aktualnosci" component={News} />
-            <Route path="/parafia/historia" component={History} />
-            <Route path="/parafia/porzadek-mszy-swietych" component={HolyMassesOrder} />
-            <Route path="/intencje" component={MassIntentions} />
-            <Route path="/kancelaria" component={ParishOffice} />
-            <Route path="/poradnia-malzenska" component={MarriageCounceling} />
-            <Route path="/kontakt" component={Contact} />
-            <Route path="/" component={Start} />
+            <Route exact path="/aktualnosci/:slug" component={WaitingComponent(NewsDetails)} />
+            <Route exact path="/aktualnosci" component={WaitingComponent(News)} />
+            <Route exact path="/parafia/historia" component={WaitingComponent(History)} />
+            <Route exact path="/parafia/porzadek-mszy-swietych" component={WaitingComponent(HolyMassesOrder)} />
+            <Route exact path="/ogloszenia" component={WaitingComponent(Annoucements)} />
+            <Route exact path="/intencje" component={WaitingComponent(MassIntentions)} />
+            <Route exact path="/sakramenty/chrzest-swiety" component={WaitingComponent(HolyBaptism)} />
+            <Route exact path="/sakramenty/bierzmowanie" component={WaitingComponent(Confirmation)} />
+            <Route exact path="/sakramenty/1-komunia-swieta" component={WaitingComponent(FirstHolyCommunion)} />
+            <Route exact path="/sakramenty/eucharystia" component={WaitingComponent(Eucharist)} />
+            <Route exact path="/sakramenty/pokuta" component={WaitingComponent(Atonement)} />
+            <Route exact path="/sakramenty/namaszczenie-chorych" component={WaitingComponent(AnointingOfTheSick)} />
+            <Route exact path="/sakramenty/swiecenia" component={WaitingComponent(Ordination)} />
+            <Route exact path="/sakramenty/malzenstwo" component={WaitingComponent(Marriage)} />
+            <Route exact path="/kancelaria" component={WaitingComponent(ParishOffice)} />
+            <Route exact path="/poradnia-malzenska" component={WaitingComponent(MarriageCounceling)} />
+            <Route exact path="/linki" component={WaitingComponent(Links)} />
+            <Route exact path="/kontakt" component={WaitingComponent(Contact)} />
+            <Route exact path="/" component={Start} />
+            <Redirect to="/" />
           </Switch>
         </Main>
         <Footer />
