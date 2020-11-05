@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import MainButton from '../../../components/UI/Buttons/MainButton/MainButton';
+import MainButton from '../../../components/UI/Buttons/MainButton';
 import { ReactComponent as AnnoucementsIcon } from '../../../images/SVG/annoucements.svg';
 import { ReactComponent as IntentionsIcon } from '../../../images/SVG/intentions.svg';
 import { ReactComponent as FacebookIcon } from '../../../images/SVG/facebook.svg';
@@ -17,7 +17,8 @@ SC.Wrapper = styled.section`
   position: relative;
 
   & .bg-image {
-    background-image: linear-gradient(to right, rgba(0, 0, 0, .55), rgba(0, 0, 0, .55)), url(${churchIndoor});
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+      url(${churchIndoor});
     background-position: center;
     background-size: cover;
     height: 100%;

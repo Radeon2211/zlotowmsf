@@ -20,11 +20,12 @@ const defaultNewsDetails = {
   images: [{ id: 1, source_url: 'data:image' }],
 };
 
-const createStore = (newsDetails) => mockStore({
-  data: { newsDetails },
-});
+const createStore = (newsDetails) =>
+  mockStore({
+    data: { newsDetails },
+  });
 
-const defaultProps = { match: { params: { slug: 'test slug' }} };
+const defaultProps = { match: { params: { slug: 'test slug' } } };
 
 const setUp = (newsDetails) => {
   const store = createStore(newsDetails);

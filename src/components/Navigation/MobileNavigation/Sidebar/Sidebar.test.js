@@ -13,7 +13,7 @@ const setUp = (props) => {
       <ThemeProvider theme={theme}>
         <Sidebar {...props} />
       </ThemeProvider>
-    </Router>
+    </Router>,
   );
 };
 

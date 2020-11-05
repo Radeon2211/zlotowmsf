@@ -21,7 +21,6 @@ export const siteNames = {
   MASS_INTENTIONS: 'intencje',
   HOLY_BAPTISM: 'sakramenty-chrzest-swiety',
   CONFIRMATION: 'sakramenty-bierzmowanie',
-  FIRST_HOLY_COMMUNION: 'sakramenty-1-komunia-swieta',
   EUCHARIST: 'sakramenty-eucharystia',
   ATONEMENT: 'sakramenty-pokuta',
   ANOINTING_OF_THE_SICK: 'sakramenty-namaszczenie-chorych',
@@ -41,10 +40,6 @@ export const sacramentsMenuItems = [
   {
     slug: 'bierzmowanie',
     name: 'Bierzmowanie',
-  },
-  {
-    slug: '1-komunia-swieta',
-    name: 'I Komunia Święta',
   },
   {
     slug: 'eucharystia',

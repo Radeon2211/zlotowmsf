@@ -5,13 +5,20 @@ import 'moment/locale/pl';
 import { Link } from 'react-router-dom';
 import * as SC from './NewsItem.sc';
 import Heading from '../../../../components/UI/Heading/Heading';
-import MainButton from '../../../../components/UI/Buttons/MainButton/MainButton';
+import MainButton from '../../../../components/UI/Buttons/MainButton';
+import { sanitizeHtml } from '../../../../shared/utility';
 
 moment.locale('pl');
 
 const NewsItem = (props) => {
   const { data, newest } = props;
-  const { title, acf: { thumbnail }, date, excerpt, slug } = data;
+  const {
+    title,
+    acf: { thumbnail },
+    date,
+    excerpt,
+    slug,
+  } = data;
 
   return (
     <SC.Wrapper newest={newest}>
@@ -22,7 +29,11 @@ const NewsItem = (props) => {
         <Link to={`/aktualnosci/${slug}`}>{title.rendered}</Link>
       </Heading>
       <span className="date">{moment(date).format('LL')}</span>
-      <div dangerouslySetInnerHTML={{ __html: excerpt.rendered }} className="excerpt" />
+      <div
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: sanitizeHtml(excerpt.rendered) }}
+        className="excerpt"
+      />
       <Link to={`/aktualnosci/${slug}`}>
         <MainButton>Zobacz więcej</MainButton>
       </Link>

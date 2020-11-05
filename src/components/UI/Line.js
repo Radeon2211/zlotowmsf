@@ -13,15 +13,18 @@ SC.Wrapper = styled.div`
       return `
         margin-bottom: ${theme.spacings.level2};
       `;
-    } else if (mgBottom === 'medium') {
+    }
+    if (mgBottom === 'medium') {
       return `
         margin-bottom: ${theme.spacings.level3};
       `;
-    } else if (mgBottom === 'big') {
+    }
+    if (mgBottom === 'big') {
       return `
         margin-bottom: ${theme.spacings.level4};
       `;
-    } else if (mgBottom === 'large') {
+    }
+    if (mgBottom === 'large') {
       return `
         margin-bottom: ${theme.spacings.level5};
       `;

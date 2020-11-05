@@ -33,7 +33,7 @@ describe('Data reducer', () => {
       dataReducer(undefined, {
         type: actionTypes.SET_NEWS,
         news,
-        newsCount
+        newsCount,
       }),
     ).toEqual({
       ...initialState,

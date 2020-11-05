@@ -13,7 +13,7 @@ const setUp = (props = defaultProps) => {
   return mount(
     <ThemeProvider theme={theme}>
       <ImageSlide {...props}>
-        <img src="data:image" />
+        <img src="data:image" alt="" />
       </ImageSlide>
     </ThemeProvider>,
   );
@@ -42,4 +42,3 @@ describe('<ImageSlide />', () => {
     });
   });
 });
-

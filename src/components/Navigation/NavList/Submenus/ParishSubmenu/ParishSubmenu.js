@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import OutsideClickHandler from 'react-outside-click-handler';
-import { AnimatePresence} from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 import { useWindowWidth } from '@react-hook/window-size';
 import { NavLink } from 'react-router-dom';
 import * as SC from '../Submenu.sc';
@@ -16,7 +16,12 @@ const ParishSubmenu = (props) => {
 
   const menuItems = parishMenuItems.map(({ slug, name }) => (
     <li key={slug}>
-      <NavLink to={`/parafia/${slug}`} className="link" activeClassName="active-link" onClick={sidebarClosed}>
+      <NavLink
+        to={`/parafia/${slug}`}
+        className="link"
+        activeClassName="active-link"
+        onClick={sidebarClosed}
+      >
         {name}
       </NavLink>
     </li>

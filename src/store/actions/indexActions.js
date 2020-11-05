@@ -1,1 +1,7 @@
-export { fetchBasicData, fetchSite, fetchNews, fetchNewsDetails, setNewsDetails } from './dataActions';
+export {
+  fetchBasicData,
+  fetchSite,
+  fetchNews,
+  fetchNewsDetails,
+  setNewsDetails,
+} from './dataActions';

@@ -17,8 +17,8 @@ const setUp = (props = defaultProps) => {
   return mount(
     <ThemeProvider theme={theme}>
       <ImageSlider {...props}>
-        <ImageSlide isVisible={true} closed={jest.fn()}>
-          <img src="data:image" />
+        <ImageSlide isVisible closed={jest.fn()}>
+          <img src="data:image" alt="" />
         </ImageSlide>
       </ImageSlider>
     </ThemeProvider>,
@@ -66,4 +66,3 @@ describe('<ImageSlider />', () => {
     });
   });
 });
-

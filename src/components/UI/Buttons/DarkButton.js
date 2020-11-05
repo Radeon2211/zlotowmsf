@@ -26,7 +26,6 @@ SC.Wrapper = styled.button`
     }
   }
 
-
   ${({ shape }) => {
     switch (shape) {
       case 'circle':
@@ -55,8 +54,8 @@ SC.Wrapper = styled.button`
           width: ${theme.fontSizes.level5};
         }
       `;
-    } else {
-      return `
+    }
+    return `
         font-size: ${theme.fontSizes.level4};
         height: 4rem;
         width: 4rem;
@@ -66,7 +65,6 @@ SC.Wrapper = styled.button`
           width: ${theme.fontSizes.level4};
         }
       `;
-    }
   }}
 
   ${({ active, theme }) => {
@@ -84,6 +82,7 @@ SC.Wrapper = styled.button`
         }
       `;
     }
+    return ``;
   }}
 
   ${({ disabled, theme }) => {
@@ -105,6 +104,7 @@ SC.Wrapper = styled.button`
         }
       `;
     }
+    return ``;
   }}
 
   ${({ childRotation }) => {
@@ -115,12 +115,17 @@ SC.Wrapper = styled.button`
         }
       `;
     }
+    return ``;
   }}
 `;
 
 const DarkButton = (props) => {
   const { children, disabled, clicked } = props;
-  return <SC.Wrapper onClick={clicked} disabled={disabled} {...props}>{children}</SC.Wrapper>;
+  return (
+    <SC.Wrapper onClick={clicked} disabled={disabled} {...props}>
+      {children}
+    </SC.Wrapper>
+  );
 };
 
 DarkButton.defaultProps = {

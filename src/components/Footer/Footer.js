@@ -29,7 +29,6 @@ SC.Wrapper = styled.footer`
         color: ${({ theme }) => theme.colors.light1};
       }
     }
-
   }
 
   @media only screen and (max-width: 75em) {

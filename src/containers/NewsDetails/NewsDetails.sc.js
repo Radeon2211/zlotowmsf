@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
+// eslint-disable-next-line import/prefer-default-export
 export const Wrapper = styled.div`
-  padding: ${({ theme }) => theme.spacings.level5} 0;
-
   & .thumbnail {
     margin-bottom: ${({ theme }) => theme.spacings.level3};
   }

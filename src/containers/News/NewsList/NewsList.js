@@ -17,20 +17,16 @@ const NewsList = (props) => {
   let newsList = <Loader />;
   if (news) {
     if (news.length <= 0) {
-      newsList = <Heading variant="h3" data-test="">Nie znaleziono żadnych aktualności</Heading>;
+      newsList = <Heading variant="h3">Nie znaleziono żadnych aktualności</Heading>;
     } else {
       const { p: urlPage } = queryString.parse(search);
       const urlPageNumber = +urlPage || 1;
 
       let loopNews = null;
       if (urlPageNumber === 1) {
-        loopNews = news.slice(1).map((newsItem) => (
-          <NewsItem key={newsItem.id} data={newsItem} />
-        ));
+        loopNews = news.slice(1).map((newsItem) => <NewsItem key={newsItem.id} data={newsItem} />);
       } else {
-        loopNews = news.map((newsItem) => (
-          <NewsItem key={newsItem.id} data={newsItem} />
-        ));
+        loopNews = news.map((newsItem) => <NewsItem key={newsItem.id} data={newsItem} />);
       }
 
       const allNews = (
@@ -40,7 +36,7 @@ const NewsList = (props) => {
         </>
       );
 
-      let loadingOverlay = isNewsLoading ? <LoadingOverlay /> : null;
+      const loadingOverlay = isNewsLoading ? <LoadingOverlay /> : null;
 
       newsList = (
         <>

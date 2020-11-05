@@ -41,7 +41,14 @@ export const fetchBasicData = () => {
     try {
       const fetchSlides = axios.get('/wp/v2/slides?order=asc');
       const fetchLastestNews = axios.get('/wp/v2/posts?per_page=1');
-      const [{ value: { data: slides } }, { value: { data: news } }] = await Promise.allSettled([fetchSlides, fetchLastestNews]);
+      const [
+        {
+          value: { data: slides },
+        },
+        {
+          value: { data: news },
+        },
+      ] = await Promise.allSettled([fetchSlides, fetchLastestNews]);
       const latestNews = {
         title: '',
         slug: '',
@@ -78,8 +85,10 @@ export const fetchNews = (pageNumber, oneExtra) => {
     dispatch(fetchStart());
     try {
       const perPage = oneExtra ? MAX_QUANTITY_PER_PAGE + 1 : MAX_QUANTITY_PER_PAGE;
-      const offset = pageNumber === 1 ? 0 : ((pageNumber - 1) * MAX_QUANTITY_PER_PAGE) + 1;
-      const { data, headers } = await axios.get(`/wp/v2/posts?per_page=${perPage}&offset=${offset}`);
+      const offset = pageNumber === 1 ? 0 : (pageNumber - 1) * MAX_QUANTITY_PER_PAGE + 1;
+      const { data, headers } = await axios.get(
+        `/wp/v2/posts?per_page=${perPage}&offset=${offset}`,
+      );
       dispatch(setNews(data, +headers['x-wp-total']));
       dispatch(fetchSuccess());
     } catch (error) {
@@ -95,7 +104,9 @@ export const fetchNewsDetails = (newsSlug) => {
     try {
       const { data: newsDetails } = await axios.get(`/wp/v2/posts?slug=${newsSlug}`);
       if (newsDetails.length > 0) {
-        const { data: { gallery }} = await axios.get(`/acf/v3/posts/${newsDetails[0].id}/gallery`);
+        const {
+          data: { gallery },
+        } = await axios.get(`/acf/v3/posts/${newsDetails[0].id}/gallery`);
         if (gallery) {
           const { data: images } = await axios.get(`/wp/v2/media?include=${gallery}&per_page=100`);
           newsDetails[0].images = images;

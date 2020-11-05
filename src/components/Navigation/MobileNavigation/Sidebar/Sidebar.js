@@ -19,12 +19,7 @@ const Sidebar = (props) => {
             exit="hidden"
             onClick={closed}
           />
-          <SC.Sidebar
-            variants={sidebarVariants}
-            initial="hidden"
-            animate="visible"
-            exit="hidden"
-          >
+          <SC.Sidebar variants={sidebarVariants} initial="hidden" animate="visible" exit="hidden">
             <NavList sidebarClosed={closed} />
           </SC.Sidebar>
         </>

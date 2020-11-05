@@ -30,7 +30,7 @@ describe('<Slides />', () => {
   describe('Check if renders correctly', () => {
     it('Should render three <Slide /> and three list buttons', () => {
       const store = mockStore({
-        data: { basic: { slides: [createSlide(1), createSlide(2), createSlide(3)] }},
+        data: { basic: { slides: [createSlide(1), createSlide(2), createSlide(3)] } },
       });
       const wrapper = setUp(store);
       expect(wrapper.find('[data-test="slide-number-button"]')).not.toBeNull();
@@ -38,7 +38,7 @@ describe('<Slides />', () => {
     });
     it('Should render one previous and next button', () => {
       const store = mockStore({
-        data: { basic: { slides: [createSlide(1)] }},
+        data: { basic: { slides: [createSlide(1)] } },
       });
       const wrapper = setUp(store);
       expect(wrapper.find('[data-test="prev-slide-button"]')).not.toBeNull();

@@ -4,7 +4,7 @@ import { Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import theme from '../../styled/theme';
 import Pagination from './Pagination';
-import DarkButton from '../UI/Buttons/DarkButton/DarkButton';
+import DarkButton from '../UI/Buttons/DarkButton';
 import * as SC from './Pagination.sc';
 import { checkProps } from '../../shared/utility';
 
@@ -55,24 +55,24 @@ describe('<Pagination />', () => {
     it('Should render all arrow buttons', () => {
       const wrapper = setUp(defaultProps, defaultHistory);
       expect(
-        wrapper.find(DarkButton).filterWhere((item) => (
-          item.prop('data-test') === 'first-page-button'
-        )),
+        wrapper
+          .find(DarkButton)
+          .filterWhere((item) => item.prop('data-test') === 'first-page-button'),
       ).toHaveLength(1);
       expect(
-        wrapper.find(DarkButton).filterWhere((item) => (
-          item.prop('data-test') === 'prev-page-button'
-        )),
+        wrapper
+          .find(DarkButton)
+          .filterWhere((item) => item.prop('data-test') === 'prev-page-button'),
       ).toHaveLength(1);
       expect(
-        wrapper.find(DarkButton).filterWhere((item) => (
-          item.prop('data-test') === 'next-page-button'
-        )),
+        wrapper
+          .find(DarkButton)
+          .filterWhere((item) => item.prop('data-test') === 'next-page-button'),
       ).toHaveLength(1);
       expect(
-        wrapper.find(DarkButton).filterWhere((item) => (
-          item.prop('data-test') === 'last-page-button'
-        )),
+        wrapper
+          .find(DarkButton)
+          .filterWhere((item) => item.prop('data-test') === 'last-page-button'),
       ).toHaveLength(1);
     });
 
@@ -92,24 +92,32 @@ describe('<Pagination />', () => {
       const props = createProps(10, 3);
       const wrapper = setUp(props, defaultHistory);
       expect(
-        wrapper.find(DarkButton).filterWhere((item) => (
-          item.prop('disabled') && item.prop('data-test') === 'first-page-button'
-        )),
+        wrapper
+          .find(DarkButton)
+          .filterWhere(
+            (item) => item.prop('disabled') && item.prop('data-test') === 'first-page-button',
+          ),
       ).toHaveLength(1);
       expect(
-        wrapper.find(DarkButton).filterWhere((item) => (
-          item.prop('disabled') && item.prop('data-test') === 'prev-page-button'
-        )),
+        wrapper
+          .find(DarkButton)
+          .filterWhere(
+            (item) => item.prop('disabled') && item.prop('data-test') === 'prev-page-button',
+          ),
       ).toHaveLength(1);
       expect(
-        wrapper.find(DarkButton).filterWhere((item) => (
-          !item.prop('disabled') && item.prop('data-test') === 'next-page-button'
-        )),
+        wrapper
+          .find(DarkButton)
+          .filterWhere(
+            (item) => !item.prop('disabled') && item.prop('data-test') === 'next-page-button',
+          ),
       ).toHaveLength(1);
       expect(
-        wrapper.find(DarkButton).filterWhere((item) => (
-          !item.prop('disabled') && item.prop('data-test') === 'last-page-button'
-        )),
+        wrapper
+          .find(DarkButton)
+          .filterWhere(
+            (item) => !item.prop('disabled') && item.prop('data-test') === 'last-page-button',
+          ),
       ).toHaveLength(1);
     });
 
@@ -118,33 +126,41 @@ describe('<Pagination />', () => {
       const props = createProps(10, 3);
       const wrapper = setUp(props, history);
       expect(
-        wrapper.find(DarkButton).filterWhere((item) => (
-          !item.prop('disabled') && item.prop('data-test') === 'first-page-button'
-        )),
+        wrapper
+          .find(DarkButton)
+          .filterWhere(
+            (item) => !item.prop('disabled') && item.prop('data-test') === 'first-page-button',
+          ),
       ).toHaveLength(1);
       expect(
-        wrapper.find(DarkButton).filterWhere((item) => (
-          !item.prop('disabled') && item.prop('data-test') === 'prev-page-button'
-        )),
+        wrapper
+          .find(DarkButton)
+          .filterWhere(
+            (item) => !item.prop('disabled') && item.prop('data-test') === 'prev-page-button',
+          ),
       ).toHaveLength(1);
       expect(
-        wrapper.find(DarkButton).filterWhere((item) => (
-          item.prop('disabled') && item.prop('data-test') === 'next-page-button'
-        )),
+        wrapper
+          .find(DarkButton)
+          .filterWhere(
+            (item) => item.prop('disabled') && item.prop('data-test') === 'next-page-button',
+          ),
       ).toHaveLength(1);
       expect(
-        wrapper.find(DarkButton).filterWhere((item) => (
-          item.prop('disabled') && item.prop('data-test') === 'last-page-button'
-        )),
+        wrapper
+          .find(DarkButton)
+          .filterWhere(
+            (item) => item.prop('disabled') && item.prop('data-test') === 'last-page-button',
+          ),
       ).toHaveLength(1);
     });
 
     it('Should render one number button', () => {
       const wrapper = setUp(defaultProps, defaultHistory);
       expect(
-        wrapper.find(DarkButton).filterWhere((item) => (
-          item.prop('data-test').includes('number-button')
-        )),
+        wrapper
+          .find(DarkButton)
+          .filterWhere((item) => item.prop('data-test').includes('number-button')),
       ).toHaveLength(1);
     });
 
@@ -152,9 +168,9 @@ describe('<Pagination />', () => {
       const props = createProps(10, 3);
       const wrapper = setUp(props, defaultHistory);
       expect(
-        wrapper.find(DarkButton).filterWhere((item) => (
-          item.prop('data-test').includes('number-button')
-        )),
+        wrapper
+          .find(DarkButton)
+          .filterWhere((item) => item.prop('data-test').includes('number-button')),
       ).toHaveLength(3);
     });
 
@@ -162,14 +178,18 @@ describe('<Pagination />', () => {
       const props = createProps(10, 3);
       const wrapper = setUp(props, defaultHistory);
       expect(
-        wrapper.find(DarkButton).filterWhere((item) => (
-          item.prop('active') && item.prop('data-test') === 'number-button1'
-        )),
+        wrapper
+          .find(DarkButton)
+          .filterWhere(
+            (item) => item.prop('active') && item.prop('data-test') === 'number-button1',
+          ),
       ).toHaveLength(1);
       expect(
-        wrapper.find(DarkButton).filterWhere((item) => (
-          item.prop('active') && item.prop('data-test').includes('number-button')
-        )),
+        wrapper
+          .find(DarkButton)
+          .filterWhere(
+            (item) => item.prop('active') && item.prop('data-test').includes('number-button'),
+          ),
       ).toHaveLength(1);
     });
 
@@ -178,14 +198,18 @@ describe('<Pagination />', () => {
       const props = createProps(20, 3);
       const wrapper = setUp(props, history);
       expect(
-        wrapper.find(DarkButton).filterWhere((item) => (
-          item.prop('active') && item.prop('data-test') === 'number-button3'
-        )),
+        wrapper
+          .find(DarkButton)
+          .filterWhere(
+            (item) => item.prop('active') && item.prop('data-test') === 'number-button3',
+          ),
       ).toHaveLength(1);
       expect(
-        wrapper.find(DarkButton).filterWhere((item) => (
-          item.prop('active') && item.prop('data-test').includes('number-button')
-        )),
+        wrapper
+          .find(DarkButton)
+          .filterWhere(
+            (item) => item.prop('active') && item.prop('data-test').includes('number-button'),
+          ),
       ).toHaveLength(1);
     });
   });

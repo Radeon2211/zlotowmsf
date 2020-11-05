@@ -44,7 +44,7 @@ const setUp = (props, store = defaultStore) => {
           <Slide {...props} />
         </ThemeProvider>
       </Provider>
-    </Router>
+    </Router>,
   );
 };
 
@@ -84,9 +84,12 @@ describe('<Slides />', () => {
       });
       it('Should third line heading have medium margin', () => {
         expect(
-          wrapper.find(Heading).filterWhere((item) => (
-            item.prop('margin') === 'medium' && item.prop('data-test') === 'third-line-heading'
-          )),
+          wrapper
+            .find(Heading)
+            .filterWhere(
+              (item) =>
+                item.prop('margin') === 'medium' && item.prop('data-test') === 'third-line-heading',
+            ),
         ).toHaveLength(1);
       });
       it('Should render button wrapper', () => {
@@ -108,9 +111,12 @@ describe('<Slides />', () => {
       const wrapper = setUp(props);
       it('Should third line heading have big margin', () => {
         expect(
-          wrapper.find(Heading).filterWhere((item) => (
-            item.prop('margin') === 'big' && item.prop('data-test') === 'third-line-heading'
-          )),
+          wrapper
+            .find(Heading)
+            .filterWhere(
+              (item) =>
+                item.prop('margin') === 'big' && item.prop('data-test') === 'third-line-heading',
+            ),
         ).toHaveLength(1);
       });
     });
@@ -186,16 +192,24 @@ describe('<Slides />', () => {
       const wrapper = setUp(props, store);
       it('Should button link to correct article', () => {
         expect(
-          wrapper.find(Link).filterWhere((item) => (
-            item.prop('to') === '/aktualnosci/test-slug' && item.prop('data-test') === 'router-link'
-          )),
+          wrapper
+            .find(Link)
+            .filterWhere(
+              (item) =>
+                item.prop('to') === '/aktualnosci/test-slug' &&
+                item.prop('data-test') === 'router-link',
+            ),
         ).toHaveLength(1);
       });
       it('Should third line heading have correct title', () => {
         expect(
-          wrapper.find(Heading).filterWhere((item) => (
-            item.prop('children') === 'test title' && item.prop('data-test') === 'third-line-heading'
-          )),
+          wrapper
+            .find(Heading)
+            .filterWhere(
+              (item) =>
+                item.prop('children') === 'test title' &&
+                item.prop('data-test') === 'third-line-heading',
+            ),
         ).toHaveLength(1);
       });
       it('Should image background have correct src', () => {

@@ -33,13 +33,20 @@ SC.Wrapper = styled.div`
   & .sk-cube8 {
     animation-delay: ${({ theme }) => theme.durations.level1}s;
   }
-  & .sk-cube3 { animation-delay: ${({ theme }) => theme.durations.level4}s; }
-  & .sk-cube7 { animation-delay: 0; }
+  & .sk-cube3 {
+    animation-delay: ${({ theme }) => theme.durations.level4}s;
+  }
+  & .sk-cube7 {
+    animation-delay: 0;
+  }
 
   @keyframes sk-cubeGridScaleDelay {
-    0%, 70%, 100% {
+    0%,
+    70%,
+    100% {
       transform: scale3D(1, 1, 1);
-    } 35% {
+    }
+    35% {
       transform: scale3D(0, 0, 1);
     }
   }

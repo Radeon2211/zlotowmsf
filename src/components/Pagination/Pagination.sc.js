@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+// eslint-disable-next-line import/prefer-default-export
 export const Wrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -13,7 +14,7 @@ export const Wrapper = styled.div`
     justify-content: center;
 
     & > *:not(:last-child) {
-      margin-right:  calc(0.5 * ${({ theme }) => theme.spacings.level2});
+      margin-right: calc(0.5 * ${({ theme }) => theme.spacings.level2});
     }
 
     & > * {

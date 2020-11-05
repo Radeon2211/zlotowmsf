@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import queryString from 'query-string';
 import { useHistory } from 'react-router-dom';
 import * as SC from './Pagination.sc';
-import DarkButton from '../UI/Buttons/DarkButton/DarkButton';
+import DarkButton from '../UI/Buttons/DarkButton';
 import { ReactComponent as ArrowIcon } from '../../images/SVG/arrow.svg';
 import { ReactComponent as DoubleArrowIcon } from '../../images/SVG/double-arrow.svg';
 
@@ -67,7 +67,7 @@ const Pagination = (props) => {
           data-test={`number-button${i}`}
         >
           {i}
-        </DarkButton>
+        </DarkButton>,
       );
     }
 

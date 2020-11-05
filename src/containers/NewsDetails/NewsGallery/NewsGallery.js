@@ -30,7 +30,14 @@ const NewsGallery = (props) => {
   };
 
   const galleryItems = images.map((imageItem, idx) => (
-    <div key={imageItem.id} className="gallery-item" onClick={() => clickImageHandle(idx)}>
+    <div
+      key={imageItem.id}
+      className="gallery-item"
+      tabIndex={0}
+      role="button"
+      onClick={() => clickImageHandle(idx)}
+      onKeyDown={() => clickImageHandle(idx)}
+    >
       <img src={imageItem.source_url} alt={imageItem.alt_text} />
     </div>
   ));
@@ -43,7 +50,7 @@ const NewsGallery = (props) => {
     >
       <img src={imageItem.source_url} alt={imageItem.alt_text} />
     </ImageSlide>
-  ))
+  ));
 
   return (
     <SC.Wrapper>

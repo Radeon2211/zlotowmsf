@@ -13,7 +13,7 @@ const setUp = (props) => {
       <ThemeProvider theme={theme}>
         <ParishSubmenu {...props} />
       </ThemeProvider>
-    </Router>
+    </Router>,
   );
 };
 

@@ -29,13 +29,24 @@ const NavList = (props) => {
     <SC.Wrapper>
       <ul className="list">
         <li>
-          <NavLink exact to="/" className="link" activeClassName="active-link" onClick={sidebarClosed}>
+          <NavLink
+            exact
+            to="/"
+            className="link"
+            activeClassName="active-link"
+            onClick={sidebarClosed}
+          >
             <StartIcon />
             Start
           </NavLink>
         </li>
         <li>
-          <NavLink to="/aktualnosci" className="link" activeClassName="active-link" onClick={sidebarClosed}>
+          <NavLink
+            to="/aktualnosci"
+            className="link"
+            activeClassName="active-link"
+            onClick={sidebarClosed}
+          >
             <NewsIcon />
             Aktualności
           </NavLink>
@@ -45,6 +56,7 @@ const NavList = (props) => {
             className="link submenu-trigger"
             id="parish-submenu-trigger"
             role="button"
+            aria-hidden="true"
             onClick={() => setIsParishMenuVisible((prevState) => !prevState)}
           >
             <ParishIcon />
@@ -58,13 +70,23 @@ const NavList = (props) => {
           </div>
         </li>
         <li>
-          <NavLink to="/ogloszenia" className="link" activeClassName="active-link" onClick={sidebarClosed}>
+          <NavLink
+            to="/ogloszenia"
+            className="link"
+            activeClassName="active-link"
+            onClick={sidebarClosed}
+          >
             <AnnoucementsIcon />
             Ogłoszenia
           </NavLink>
         </li>
         <li>
-          <NavLink to="/intencje" className="link" activeClassName="active-link" onClick={sidebarClosed}>
+          <NavLink
+            to="/intencje"
+            className="link"
+            activeClassName="active-link"
+            onClick={sidebarClosed}
+          >
             <IntentionsIcon />
             Intencje
           </NavLink>
@@ -74,6 +96,7 @@ const NavList = (props) => {
             className="link submenu-trigger"
             id="sacraments-submenu-trigger"
             role="button"
+            aria-hidden="true"
             onClick={() => setIsSacramentsMenuVisible((prevState) => !prevState)}
           >
             <SacramentsIcon />
@@ -87,13 +110,23 @@ const NavList = (props) => {
           </div>
         </li>
         <li>
-          <NavLink to="/kancelaria" className="link" activeClassName="active-link" onClick={sidebarClosed}>
+          <NavLink
+            to="/kancelaria"
+            className="link"
+            activeClassName="active-link"
+            onClick={sidebarClosed}
+          >
             <OfficeIcon />
             Kancelaria
           </NavLink>
         </li>
         <li>
-          <NavLink to="/poradnia-malzenska" className="link" activeClassName="active-link" onClick={sidebarClosed}>
+          <NavLink
+            to="/poradnia-malzenska"
+            className="link"
+            activeClassName="active-link"
+            onClick={sidebarClosed}
+          >
             <MarriageCounselingIcon />
             <div className="column">
               <span>Poradnia</span>
@@ -114,13 +147,23 @@ const NavList = (props) => {
           </a>
         </li>
         <li>
-          <NavLink to="/galeria" className="link" activeClassName="active-link" onClick={sidebarClosed}>
+          <NavLink
+            to="/galeria"
+            className="link"
+            activeClassName="active-link"
+            onClick={sidebarClosed}
+          >
             <GalleryIcon />
             Galeria
           </NavLink>
         </li>
         <li>
-          <NavLink to="/linki" className="link" activeClassName="active-link" onClick={sidebarClosed}>
+          <NavLink
+            to="/linki"
+            className="link"
+            activeClassName="active-link"
+            onClick={sidebarClosed}
+          >
             <LinksIcon />
             Linki
           </NavLink>
@@ -133,7 +176,11 @@ const NavList = (props) => {
             className="link"
             onClick={sidebarClosed}
           >
-            <img src={kostkaProjectLogo} alt="Logo - Projekt Kostka" className="kostka-project-logo" />
+            <img
+              src={kostkaProjectLogo}
+              alt="Logo - Projekt Kostka"
+              className="kostka-project-logo"
+            />
             <div className="column">
               <span>Projekt</span>
               <span>Kostka</span>
@@ -141,7 +188,12 @@ const NavList = (props) => {
           </a>
         </li>
         <li>
-          <NavLink to="/kontakt" className="link" activeClassName="active-link" onClick={sidebarClosed}>
+          <NavLink
+            to="/kontakt"
+            className="link"
+            activeClassName="active-link"
+            onClick={sidebarClosed}
+          >
             <ContactIcon />
             Kontakt
           </NavLink>

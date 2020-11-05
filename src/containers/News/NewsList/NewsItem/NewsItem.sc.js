@@ -1,10 +1,12 @@
 import styled from 'styled-components';
 
+// eslint-disable-next-line import/prefer-default-export
 export const Wrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.darkTransparent2};
   border-bottom: 3px solid ${({ theme }) => theme.colors.blue};
   height: min-content;
-  padding: ${({ theme }) => theme.spacings.level2} ${({ theme }) => theme.spacings.level2} ${({ theme }) => theme.spacings.level3};
+  padding: ${({ theme }) => theme.spacings.level2} ${({ theme }) => theme.spacings.level2}
+    ${({ theme }) => theme.spacings.level3};
 
   & .thumbnail-link {
     display: block;

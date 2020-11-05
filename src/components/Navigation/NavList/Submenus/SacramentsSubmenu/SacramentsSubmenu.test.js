@@ -13,7 +13,7 @@ const setUp = (props) => {
       <ThemeProvider theme={theme}>
         <SacramentsSubmenu {...props} />
       </ThemeProvider>
-    </Router>
+    </Router>,
   );
 };
 

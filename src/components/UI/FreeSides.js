@@ -4,10 +4,17 @@ import styled from 'styled-components';
 
 const SC = {};
 SC.Wrapper = styled.div`
-  margin: 0 auto;
+  background-color: ${({ theme }) => theme.colors.light1Transparent};
+  margin: ${({ theme }) => theme.spacings.level3} auto;
   max-width: 100%;
-  padding: 0 ${({ theme }) => theme.spacings.level2};
+  min-height: 100vh;
+  padding: ${({ theme }) => theme.spacings.level3} ${({ theme }) => theme.spacings.level3};
   width: 100rem;
+
+  @media only screen and (max-width: 56.25em) {
+    margin: 0 auto;
+    padding: ${({ theme }) => theme.spacings.level4} ${({ theme }) => theme.spacings.level2};
+  }
 `;
 
 const FreeSides = (props) => {

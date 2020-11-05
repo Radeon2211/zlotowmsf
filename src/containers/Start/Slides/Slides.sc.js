@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+// eslint-disable-next-line import/prefer-default-export
 export const Wrapper = styled.section`
   height: 100vh;
   position: relative;

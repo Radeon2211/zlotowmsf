@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import * as SC from './Slides.sc';
 import Slide from './Slide/Slide';
-import DarkButton from '../../../components/UI/Buttons/DarkButton/DarkButton';
+import DarkButton from '../../../components/UI/Buttons/DarkButton';
 import { ReactComponent as ArrowIcon } from '../../../images/SVG/arrow.svg';
 
 const SLIDE_CHANGE_TIME = 6000;
@@ -13,6 +13,8 @@ const Slides = () => {
 
   const { slides } = useSelector((state) => state.data.basic);
 
+  let resetInterval = () => {};
+
   const nextButtonClickHandle = () => {
     setSlideNumber((prevState) => {
       resetInterval();
@@ -21,7 +23,7 @@ const Slides = () => {
     });
   };
 
-  const resetInterval = () => {
+  resetInterval = () => {
     clearInterval(slideInterval.current);
     slideInterval.current = setInterval(nextButtonClickHandle, SLIDE_CHANGE_TIME);
   };
@@ -55,7 +57,7 @@ const Slides = () => {
   };
 
   const changeSlideListItems = [];
-  for (let i = 0; i < slides.length; i++) {
+  for (let i = 0; i < slides.length; i += 1) {
     changeSlideListItems.push(
       <DarkButton
         key={i}
@@ -66,7 +68,7 @@ const Slides = () => {
         data-test="slide-number-button"
       >
         {i + 1}
-      </DarkButton>
+      </DarkButton>,
     );
   }
 
@@ -88,7 +90,12 @@ const Slides = () => {
         >
           <ArrowIcon />
         </DarkButton>
-        <DarkButton size="big" shape="square" clicked={nextButtonClickHandle} data-test="next-slide-button">
+        <DarkButton
+          size="big"
+          shape="square"
+          clicked={nextButtonClickHandle}
+          data-test="next-slide-button"
+        >
           <ArrowIcon />
         </DarkButton>
       </div>

@@ -16,7 +16,12 @@ const SacramentsSubmenu = (props) => {
 
   const menuItems = sacramentsMenuItems.map(({ slug, name }) => (
     <li key={slug}>
-      <NavLink to={`/sakramenty/${slug}`} className="link" activeClassName="active-link" onClick={sidebarClosed}>
+      <NavLink
+        to={`/sakramenty/${slug}`}
+        className="link"
+        activeClassName="active-link"
+        onClick={sidebarClosed}
+      >
         {name}
       </NavLink>
     </li>

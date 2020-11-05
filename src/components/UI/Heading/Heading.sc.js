@@ -18,21 +18,23 @@ const StyledHeading = styled.h1`
       return `
         margin-bottom: ${theme.spacings.level2};
       `;
-    } else if (margin === 'medium') {
+    }
+    if (margin === 'medium') {
       return `
         margin-bottom: ${theme.spacings.level3};
       `;
-    } else if (margin === 'big') {
+    }
+    if (margin === 'big') {
       return `
         margin-bottom: ${theme.spacings.level4};
       `;
-    } else if (margin === 'large') {
+    }
+    if (margin === 'large') {
       return `
         margin-bottom: ${theme.spacings.level5};
       `;
-    } else {
-      return ``;
     }
+    return ``;
   }}
 
   ${({ variant, theme }) => {

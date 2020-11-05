@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
+// eslint-disable-next-line import/prefer-default-export
 export const Wrapper = styled(motion.div)`
   left: 0;
   position: absolute;
@@ -15,7 +16,12 @@ export const Wrapper = styled(motion.div)`
   }
 
   .overlay {
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.15) 60%, rgba(0, 0, 0, 0));
+    background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.55),
+      rgba(0, 0, 0, 0.15) 60%,
+      rgba(0, 0, 0, 0)
+    );
     height: 100%;
     left: 0;
     position: absolute;
@@ -39,7 +45,12 @@ export const Wrapper = styled(motion.div)`
 
   @media only screen and (max-width: 56.25em) {
     .overlay {
-      background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.1) 90%, rgba(0, 0, 0, 0));
+      background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.1) 90%,
+        rgba(0, 0, 0, 0)
+      );
     }
 
     .foreground {
