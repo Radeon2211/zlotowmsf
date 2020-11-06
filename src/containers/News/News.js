@@ -11,7 +11,8 @@ import Pagination from '../../components/Pagination/Pagination';
 import { MAX_QUANTITY_PER_PAGE } from '../../shared/constants';
 
 const News = () => {
-  const { news, newsCount, isLoading } = useSelector((state) => state.data);
+  const { news, newsCount } = useSelector((state) => state.news);
+  const { isLoading } = useSelector((state) => state.ui);
 
   const history = useHistory();
   const { search } = history.location;

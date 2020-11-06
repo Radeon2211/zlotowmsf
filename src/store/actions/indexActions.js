@@ -1,7 +1,8 @@
+export { fetchBasicData, fetchSite } from './dataActions';
+export { fetchNews, fetchNewsDetails, setNewsDetails } from './newsActions';
 export {
-  fetchBasicData,
-  fetchSite,
-  fetchNews,
-  fetchNewsDetails,
-  setNewsDetails,
-} from './dataActions';
+  fetchGalleries,
+  fetchGalleryDetails,
+  fetchGalleriesDates,
+  setGalleryDetails,
+} from './galleryActions';

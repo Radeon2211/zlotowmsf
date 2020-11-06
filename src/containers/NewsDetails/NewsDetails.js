@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 import 'moment/locale/pl';
-import * as actions from '../../store/actions/dataActions';
+import * as actions from '../../store/actions/indexActions';
 import FreeSides from '../../components/UI/FreeSides';
 import * as SC from './NewsDetails.sc';
 import Heading from '../../components/UI/Heading/Heading';
@@ -20,7 +20,7 @@ const NewsDetails = (props) => {
     },
   } = props;
 
-  const { newsDetails } = useSelector((state) => state.data);
+  const { newsDetails } = useSelector((state) => state.news);
 
   const dispatch = useDispatch();
   const onFetchNewsDetails = useCallback(

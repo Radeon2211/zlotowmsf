@@ -93,3 +93,8 @@ export const parishMenuItems = [
     name: 'Szpital Miejski',
   },
 ];
+
+export const headingImages = {
+  GALLERY: 'GALLERY',
+  PRIESTS: 'PRIESTS',
+};

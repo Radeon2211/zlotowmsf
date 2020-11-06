@@ -7,14 +7,14 @@ import { headingImages } from '../../shared/constants';
 const SC = {};
 SC.Wrapper = styled.div``;
 
-const Priests = () => {
+const GalleryYear = () => {
   return (
     <FreeSides>
       <SC.Wrapper>
-        <HeadingImage slug={headingImages.PRIESTS} />
+        <HeadingImage slug={headingImages.GALLERY} />
       </SC.Wrapper>
     </FreeSides>
   );
 };
 
-export default Priests;
+export default GalleryYear;
