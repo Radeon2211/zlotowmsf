@@ -1,10 +1,10 @@
 import * as actionTypes from './actionTypes';
 import axios from '../../axios';
 import * as uiActions from './uiActions';
-import { MAX_QUANTITY_PER_PAGE } from '../../shared/constants';
+import { maxQuantityPerPage } from '../../shared/constants';
 
 export const setGalleries = (galleries, galleryCount) => ({
-  type: actionTypes.SET_NEWS,
+  type: actionTypes.SET_GALLERIES,
   galleries,
   galleryCount,
 });
@@ -20,19 +20,19 @@ export const setGalleriesDates = (oldestGalleryYear, newestGalleryYear) => ({
   newestGalleryYear,
 });
 
-export const fetchGalleries = (pageNumber, oneExtra) => {
+export const fetchGalleries = (pageNumber, year) => {
   return async (dispatch) => {
     dispatch(uiActions.fetchStart());
     try {
-      const perPage = oneExtra ? MAX_QUANTITY_PER_PAGE + 1 : MAX_QUANTITY_PER_PAGE;
-      const offset = pageNumber === 1 ? 0 : (pageNumber - 1) * MAX_QUANTITY_PER_PAGE + 1;
+      const offset = pageNumber === 1 ? 0 : (pageNumber - 1) * maxQuantityPerPage.GALLERY;
       const { data, headers } = await axios.get(
-        `/wp/v2/posts?per_page=${perPage}&offset=${offset}`,
+        `/wp/v2/galleries?per_page=${maxQuantityPerPage.GALLERY}&offset=${offset}&before=${
+          year + 1
+        }-01-01T00:00:00&after=${year - 1}-12-31T23:59:59`,
       );
       dispatch(setGalleries(data, +headers['x-wp-total']));
       dispatch(uiActions.fetchSuccess());
     } catch (error) {
-      dispatch(setGalleries([], 0));
       dispatch(uiActions.fetchFail());
     }
   };

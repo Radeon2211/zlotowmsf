@@ -20,15 +20,16 @@ const defaultNewsDetails = {
   images: [{ id: 1, source_url: 'data:image' }],
 };
 
-const createStore = (newsDetails) =>
+const createStore = (newsDetails, isLoading, isError) =>
   mockStore({
-    data: { newsDetails },
+    news: { newsDetails },
+    ui: { isLoading, isError },
   });
 
 const defaultProps = { match: { params: { slug: 'test slug' } } };
 
-const setUp = (newsDetails) => {
-  const store = createStore(newsDetails);
+const setUp = (newsDetails, isLoading = false, isError = false) => {
+  const store = createStore(newsDetails, isLoading, isError);
   return mount(
     <Provider store={store}>
       <ThemeProvider theme={theme}>
@@ -54,15 +55,21 @@ describe('<NewsDetails />', () => {
       expect(wrapper.find(Heading)).toHaveLength(1);
     });
 
-    it('Should render gallery section and <SC.Wrapper />', () => {
+    it('Should render gallery section and <SC.Wrapper /> and NOT render error', () => {
       const wrapper = setUp(defaultNewsDetails);
       expect(wrapper.find('.gallery-section')).toHaveLength(1);
+      expect(wrapper.find('[data-test="error"]')).toHaveLength(0);
       expect(wrapper.find(SC.Wrapper)).toHaveLength(1);
     });
 
     it('Should NOT render gallery section', () => {
       const wrapper = setUp({ ...defaultNewsDetails, images: undefined });
       expect(wrapper.find('.gallery-section')).toHaveLength(0);
+    });
+
+    it('Should render error', () => {
+      const wrapper = setUp(null, false, true);
+      expect(wrapper.find('[data-test="error"]')).not.toBe(null);
     });
   });
 });

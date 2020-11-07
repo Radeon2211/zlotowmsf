@@ -11,37 +11,6 @@ describe('Data reducer', () => {
     expect(dataReducer(undefined, {})).toEqual(initialState);
   });
 
-  it('Should return new state after SET_NEWS_DETAILS', () => {
-    const newsDetails = {
-      title: 'test title',
-    };
-    expect(
-      dataReducer(undefined, {
-        type: actionTypes.SET_NEWS_DETAILS,
-        newsDetails,
-      }),
-    ).toEqual({
-      ...initialState,
-      newsDetails,
-    });
-  });
-
-  it('Should return new state after SET_NEWS', () => {
-    const news = [{ id: 1 }, { id: 2 }];
-    const newsCount = 2;
-    expect(
-      dataReducer(undefined, {
-        type: actionTypes.SET_NEWS,
-        news,
-        newsCount,
-      }),
-    ).toEqual({
-      ...initialState,
-      news,
-      newsCount,
-    });
-  });
-
   it('Should return new state after SET_BASIC_DATA', () => {
     const basic = {
       slides: [{ id: 1 }, { id: 2 }],
@@ -87,38 +56,6 @@ describe('Data reducer', () => {
     ).toEqual({
       ...initialState,
       sites: correctSites,
-    });
-  });
-
-  it('Should return new state after FETCH_START', () => {
-    expect(
-      dataReducer(undefined, {
-        type: actionTypes.FETCH_START,
-      }),
-    ).toEqual({
-      ...initialState,
-      isLoading: true,
-    });
-  });
-
-  it('Should return new state after FETCH_SUCCESS', () => {
-    expect(
-      dataReducer(undefined, {
-        type: actionTypes.FETCH_SUCCESS,
-      }),
-    ).toEqual(initialState);
-  });
-
-  it('Should return new state after FETCH_FAIL', () => {
-    const error = 'test error';
-    expect(
-      dataReducer(undefined, {
-        type: actionTypes.FETCH_FAIL,
-        error,
-      }),
-    ).toEqual({
-      ...initialState,
-      error,
     });
   });
 });

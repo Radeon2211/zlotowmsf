@@ -11,6 +11,26 @@ const StyledHeading = styled.h1`
         text-transform: uppercase;
       `;
     }
+    return ``;
+  }}
+
+  ${({ align }) => {
+    if (align === 'left') {
+      return `
+        text-align: left;
+      `;
+    }
+    if (align === 'center') {
+      return `
+        text-align: center;
+      `;
+    }
+    if (align === 'right') {
+      return `
+        text-align: right;
+      `;
+    }
+    return ``;
   }}
 
   ${({ margin, theme }) => {
@@ -72,8 +92,20 @@ const StyledHeading = styled.h1`
       case 'h4':
         return `
           font-family: ${theme.fonts.heading};
-          font-size: 2.1rem;
+          font-size: ${theme.fontSizes.level5};
           letter-spacing: 1px;
+          line-height: 1;
+        `;
+      case 'h5':
+        return `
+          font-family: ${theme.fonts.heading};
+          font-size: ${theme.fontSizes.level4};
+          line-height: 1;
+        `;
+      case 'h6':
+        return `
+          font-family: ${theme.fonts.heading};
+          font-size: ${theme.fontSizes.level3};
           line-height: 1;
         `;
       default:

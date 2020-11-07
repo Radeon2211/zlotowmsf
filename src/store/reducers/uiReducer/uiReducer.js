@@ -3,7 +3,7 @@ import { updateObject } from '../../../shared/utility';
 
 export const initialState = {
   isLoading: false,
-  error: '',
+  isError: false,
 };
 
 const fetchStart = (state) => {
@@ -11,11 +11,11 @@ const fetchStart = (state) => {
 };
 
 const fetchSuccess = (state) => {
-  return updateObject(state, { isLoading: false, error: '' });
+  return updateObject(state, { isLoading: false, isError: false });
 };
 
-const fetchFail = (state, action) => {
-  return updateObject(state, { isLoading: false, error: action.error });
+const fetchFail = (state) => {
+  return updateObject(state, { isLoading: false, isError: true });
 };
 
 const uiReducer = (state = initialState, action) => {
@@ -25,7 +25,7 @@ const uiReducer = (state = initialState, action) => {
     case actionTypes.FETCH_SUCCESS:
       return fetchSuccess(state);
     case actionTypes.FETCH_FAIL:
-      return fetchFail(state, action);
+      return fetchFail(state);
     default:
       return state;
   }

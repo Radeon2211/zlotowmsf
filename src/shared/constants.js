@@ -9,7 +9,10 @@ export const slidesExtraInfo = {
   LATEST_NEWS: 'LATEST_NEWS',
 };
 
-export const MAX_QUANTITY_PER_PAGE = 10;
+export const maxQuantityPerPage = {
+  NEWS: 10,
+  GALLERY: 12,
+};
 
 export const siteNames = {
   HISTORY: 'parafia-historia',

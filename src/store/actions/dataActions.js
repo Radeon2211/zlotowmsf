@@ -27,10 +27,6 @@ export const fetchBasicData = () => {
   return async (dispatch) => {
     dispatch(fetchStart());
     try {
-      // const res = await axios.get(
-      //   '/wp/v2/galleries?after=2018-12-31T23:59:59&before=2020-01-01T00:00:00',
-      // );
-      // console.log(res.data);
       const fetchSlides = axios.get('/wp/v2/slides?order=asc');
       const fetchLastestNews = axios.get('/wp/v2/posts?per_page=1');
       const [

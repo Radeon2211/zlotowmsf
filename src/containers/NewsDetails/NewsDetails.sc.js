@@ -20,11 +20,4 @@ export const Wrapper = styled.div`
     margin-top: ${({ theme }) => theme.spacings.level3};
     padding-top: ${({ theme }) => theme.spacings.level3};
   }
-
-  & .gallery-info {
-    display: block;
-    font-size: ${({ theme }) => theme.fontSizes.level4};
-    margin-bottom: ${({ theme }) => theme.spacings.level2};
-    text-align: center;
-  }
 `;

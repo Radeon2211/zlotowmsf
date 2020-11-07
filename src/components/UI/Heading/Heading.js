@@ -8,11 +8,13 @@ const Heading = (props) => {
 };
 
 Heading.defaultProps = {
+  align: '',
   uppercase: false,
   margin: '',
 };
 
 Heading.propTypes = {
+  align: PropTypes.string,
   uppercase: PropTypes.bool,
   margin: PropTypes.string,
   variant: PropTypes.string.isRequired,

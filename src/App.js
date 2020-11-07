@@ -29,6 +29,7 @@ const Marriage = lazy(() => import('./containers/PlainSites/Sacraments/Marriage'
 const MarriageCounceling = lazy(() => import('./containers/PlainSites/MarriageCounceling'));
 const Gallery = lazy(() => import('./containers/Gallery/Gallery'));
 const GalleryYear = lazy(() => import('./containers/GalleryYear/GalleryYear'));
+const GalleryDetails = lazy(() => import('./containers/GalleryDetails/GalleryDetails'));
 const Links = lazy(() => import('./containers/PlainSites/Links'));
 const Contact = lazy(() => import('./containers/PlainSites/Contact'));
 
@@ -96,6 +97,7 @@ const App = () => {
             />
             <Route exact path="/galeria" component={WaitingComponent(Gallery)} />
             <Route exact path="/galeria/:year" component={WaitingComponent(GalleryYear)} />
+            <Route exact path="/galeria/id/:slug" component={WaitingComponent(GalleryDetails)} />
             <Route exact path="/linki" component={WaitingComponent(Links)} />
             <Route exact path="/kontakt" component={WaitingComponent(Contact)} />
             <Route exact path="/" component={Start} />

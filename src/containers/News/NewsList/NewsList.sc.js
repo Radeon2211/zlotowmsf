@@ -3,8 +3,8 @@ import styled from 'styled-components';
 // eslint-disable-next-line import/prefer-default-export
 export const Wrapper = styled.div`
   display: grid;
-  gap: ${({ theme }) => theme.spacings.level5} ${({ theme }) => theme.spacings.level3};
-  grid-gap: ${({ theme }) => theme.spacings.level5} ${({ theme }) => theme.spacings.level3};
+  gap: ${({ theme }) => theme.spacings.level3};
+  grid-gap: ${({ theme }) => theme.spacings.level3};
   grid-template-columns: repeat(2, 1fr);
   position: relative;
 

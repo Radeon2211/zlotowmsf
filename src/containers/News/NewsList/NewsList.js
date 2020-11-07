@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import queryString from 'query-string';
 import * as SC from './NewsList.sc';
@@ -9,12 +10,14 @@ import Heading from '../../../components/UI/Heading/Heading';
 import LoadingOverlay from '../../../components/UI/LoadingOverlay';
 
 const NewsList = (props) => {
-  const { news, isNewsLoading } = props;
+  const { isLoading, error } = useSelector((state) => state.ui);
+
+  const { news } = props;
 
   const history = useHistory();
   const { search } = history.location;
 
-  let newsList = <Loader />;
+  let newsList = isLoading ? <Loader /> : null;
   if (news) {
     if (news.length <= 0) {
       newsList = <Heading variant="h3">Nie znaleziono żadnych aktualności</Heading>;
@@ -36,17 +39,23 @@ const NewsList = (props) => {
         </>
       );
 
-      const loadingOverlay = isNewsLoading ? <LoadingOverlay /> : null;
+      const loadingOverlay = isLoading ? <LoadingOverlay /> : null;
 
       newsList = (
-        <>
-          <SC.Wrapper>
-            {loadingOverlay}
-            {allNews}
-          </SC.Wrapper>
-        </>
+        <SC.Wrapper>
+          {loadingOverlay}
+          {allNews}
+        </SC.Wrapper>
       );
     }
+  }
+
+  if (error) {
+    newsList = (
+      <Heading variant="h3" align="center" data-test="error">
+        Wystąpił problem z pobieraniem artykułów
+      </Heading>
+    );
   }
 
   return newsList;
@@ -58,7 +67,6 @@ NewsList.defaultProps = {
 
 NewsList.propTypes = {
   news: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.object])),
-  isNewsLoading: PropTypes.bool.isRequired,
 };
 
 export default NewsList;

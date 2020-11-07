@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
+import decodeEntities from 'parse-entities';
 import moment from 'moment';
 import 'moment/locale/pl';
 import * as actions from '../../store/actions/indexActions';
@@ -21,6 +22,7 @@ const NewsDetails = (props) => {
   } = props;
 
   const { newsDetails } = useSelector((state) => state.news);
+  const { error } = useSelector((state) => state.ui);
 
   const dispatch = useDispatch();
   const onFetchNewsDetails = useCallback(
@@ -37,7 +39,11 @@ const NewsDetails = (props) => {
 
   let newsDetailsNode = <Loader />;
   if (newsDetails === undefined) {
-    newsDetailsNode = <Heading variant="h3">Nie ma takich aktualności</Heading>;
+    newsDetailsNode = (
+      <Heading variant="h3" align="center">
+        Nie znaleziono takiego artykułu
+      </Heading>
+    );
   } else if (newsDetails) {
     const {
       title,
@@ -52,7 +58,9 @@ const NewsDetails = (props) => {
         <Heading variant="h3" margin="medium">
           Galeria
         </Heading>
-        <span className="gallery-info">Kliknij na zdjęcie, żeby powiększyć</span>
+        <Heading variant="h5" margin="small" align="center">
+          Kliknij na zdjęcie, żeby powiększyć
+        </Heading>
         <NewsGallery images={images} />
       </section>
     ) : null;
@@ -61,7 +69,7 @@ const NewsDetails = (props) => {
       <SC.Wrapper>
         <img src={thumbnail} alt="miniaturka" className="thumbnail" />
         <Heading variant="h3" margin="medium">
-          {title.rendered}
+          {decodeEntities(title.rendered)}
         </Heading>
         <span className="date">{moment(date).format('LL')}</span>
         <article
@@ -71,6 +79,14 @@ const NewsDetails = (props) => {
         />
         {gallerySection}
       </SC.Wrapper>
+    );
+  }
+
+  if (error) {
+    newsDetailsNode = (
+      <Heading variant="h3" align="center" data-test="error">
+        Wystąpił problem z pobieraniem danych o artykule
+      </Heading>
     );
   }
 

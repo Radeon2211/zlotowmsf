@@ -8,11 +8,10 @@ import FreeSides from '../../components/UI/FreeSides';
 import Heading from '../../components/UI/Heading/Heading';
 import Line from '../../components/UI/Line';
 import Pagination from '../../components/Pagination/Pagination';
-import { MAX_QUANTITY_PER_PAGE } from '../../shared/constants';
+import { maxQuantityPerPage } from '../../shared/constants';
 
 const News = () => {
   const { news, newsCount } = useSelector((state) => state.news);
-  const { isLoading } = useSelector((state) => state.ui);
 
   const history = useHistory();
   const { search } = history.location;
@@ -31,10 +30,10 @@ const News = () => {
     onFetchNews(urlPageNumber, oneExtra);
   }, [onFetchNews, search]);
 
-  const numberOfPages = Math.ceil((newsCount - 1) / MAX_QUANTITY_PER_PAGE);
+  const numberOfPages = Math.ceil((newsCount - 1) / maxQuantityPerPage.NEWS);
   const pagination =
     numberOfPages > 1 ? (
-      <Pagination itemQuantity={newsCount} oneExtra maxQuantityPerPage={MAX_QUANTITY_PER_PAGE} />
+      <Pagination itemQuantity={newsCount} oneExtra maxQuantityPerPage={maxQuantityPerPage.NEWS} />
     ) : null;
 
   return (
@@ -42,8 +41,8 @@ const News = () => {
       <Heading variant="h2" margin="small">
         Aktualności
       </Heading>
-      <Line mgBottom="large" />
-      <NewsList news={news} isNewsLoading={isLoading} />
+      <Line mgBottom="medium" />
+      <NewsList news={news} />
       {pagination}
     </FreeSides>
   );

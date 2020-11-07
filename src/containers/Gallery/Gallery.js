@@ -1,45 +1,16 @@
 import React, { useEffect, useCallback } from 'react';
-import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import * as SC from './Gallery.sc';
 import * as actions from '../../store/actions/indexActions';
 import FreeSides from '../../components/UI/FreeSides';
 import HeadingImage from '../../components/UI/HeadingImage';
+import Heading from '../../components/UI/Heading/Heading';
 import Loader from '../../components/UI/Loader';
 import { headingImages } from '../../shared/constants';
 
-const SC = {};
-SC.Wrapper = styled.div`
-  & .year-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  & .year-panel-link {
-    height: 20rem;
-    display: block;
-    margin: ${({ theme }) => theme.spacings.level2};
-    max-width: 25rem;
-    width: 100%;
-  }
-
-  & .year-panel {
-    align-items: center;
-    background-color: #666;
-    display: flex;
-    height: 100%;
-    justify-content: center;
-    width: 100%;
-  }
-
-  & .year-text {
-    font-size: ${({ theme }) => theme.fontSizes.level5};
-  }
-`;
-
 const Gallery = () => {
   const { oldestGalleryYear, newestGalleryYear } = useSelector((state) => state.gallery);
+  const { isLoading, error } = useSelector((state) => state.ui);
 
   const dispatch = useDispatch();
   const onFetchGalleriesDates = useCallback(() => dispatch(actions.fetchGalleriesDates(null)), [
@@ -51,27 +22,36 @@ const Gallery = () => {
     onFetchGalleriesDates();
   }, [oldestGalleryYear, onFetchGalleriesDates]);
 
-  let yearList = <Loader />;
+  let yearList = isLoading ? <Loader /> : null;
   if (oldestGalleryYear) {
     const yearListPanels = [];
     for (let i = newestGalleryYear; i >= oldestGalleryYear; i -= 1) {
       yearListPanels.push(
-        <Link key={i} to={`/galeria/${i}`} className="year-panel-link">
-          <div className="year-panel">
-            <span className="year-text">{i}</span>
-          </div>
-        </Link>,
+        <SC.YearPanel key={i} to={`/galeria/${i}`}>
+          <Heading variant="h3">{i}</Heading>
+        </SC.YearPanel>,
       );
     }
-    yearList = <div className="year-list">{yearListPanels}</div>;
+    yearList = <SC.YearList>{yearListPanels}</SC.YearList>;
+  }
+
+  if (error) {
+    yearList = (
+      <Heading variant="h3" align="center">
+        Wystąpił problem z pobieraniem informacji o galerii
+      </Heading>
+    );
   }
 
   return (
     <FreeSides>
-      <SC.Wrapper>
-        <HeadingImage slug={headingImages.GALLERY} />
-        {yearList}
-      </SC.Wrapper>
+      <HeadingImage slug={headingImages.GALLERY} />
+      {!error && (
+        <Heading variant="h4" margin="medium" align="center">
+          Wybierz, z którego roku chcesz zobaczyć zdjęcia
+        </Heading>
+      )}
+      {yearList}
     </FreeSides>
   );
 };

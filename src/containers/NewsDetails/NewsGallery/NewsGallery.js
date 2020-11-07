@@ -30,7 +30,7 @@ const NewsGallery = (props) => {
   };
 
   const galleryItems = images.map((imageItem, idx) => (
-    <div
+    <SC.GalleryItem
       key={imageItem.id}
       className="gallery-item"
       tabIndex={0}
@@ -39,7 +39,7 @@ const NewsGallery = (props) => {
       onKeyDown={() => clickImageHandle(idx)}
     >
       <img src={imageItem.source_url} alt={imageItem.alt_text} />
-    </div>
+    </SC.GalleryItem>
   ));
 
   const imageSlides = images.map((imageItem, idx) => (

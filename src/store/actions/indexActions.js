@@ -4,5 +4,6 @@ export {
   fetchGalleries,
   fetchGalleryDetails,
   fetchGalleriesDates,
+  setGalleries,
   setGalleryDetails,
 } from './galleryActions';
