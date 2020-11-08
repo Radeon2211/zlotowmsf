@@ -128,7 +128,7 @@ describe('<NewsList />', () => {
     it('Should render error', () => {
       const store = createStore(false, true);
       const wrapper = setUp(null, store);
-      expect(wrapper.find('[data-test="error"]')).not.toBe(null);
+      expect(wrapper.find('[data-test="error"]').length).toBeGreaterThan(0);
     });
   });
 });

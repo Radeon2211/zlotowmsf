@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { AnimatePresence, motion } from 'framer-motion';
-import { slideVariants } from '../../../../shared/framer';
+import { slideVariants } from '../../../shared/framer';
 
 export const SC = {};
 SC.Wrapper = styled(motion.div)`

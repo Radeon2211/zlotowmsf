@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-// eslint-disable-next-line import/prefer-default-export
-export const Wrapper = styled.div`
+export const GalleryList = styled.div`
   display: grid;
   gap: ${({ theme }) => theme.spacings.level3};
   grid-gap: ${({ theme }) => theme.spacings.level3};
@@ -11,6 +10,10 @@ export const Wrapper = styled.div`
 `;
 
 export const SingleGallery = styled(Link)`
+  padding: ${({ theme }) => theme.spacings.level2};
+  background-color: ${({ theme }) => theme.colors.darkTransparent2};
+  height: min-content;
+
   & .image-wrapper {
     position: relative;
   }
@@ -46,8 +49,19 @@ export const SingleGallery = styled(Link)`
 
   & .gallery-title {
     display: block;
-    font-size: ${({ theme }) => theme.fontSizes.level4};
-    margin-top: ${({ theme }) => theme.spacings.level1};
+    font-size: ${({ theme }) => theme.fontSizes.level3};
+    font-weight: 700;
+    margin-top: ${({ theme }) => theme.spacings.level2};
     text-align: center;
+  }
+
+  @media only screen and (max-width: 37.5em) {
+    & .image {
+      height: 24rem;
+    }
+
+    & .gallery-title {
+      font-size: ${({ theme }) => theme.fontSizes.level4};
+    }
   }
 `;

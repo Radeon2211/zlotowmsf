@@ -6,7 +6,6 @@ import queryString from 'query-string';
 import * as actions from '../../store/actions/indexActions';
 import FreeSides from '../../components/UI/FreeSides';
 import Pagination from '../../components/Pagination/Pagination';
-import Heading from '../../components/UI/Heading/Heading';
 import HeadingImage from '../../components/UI/HeadingImage';
 import GalleryList from './GalleryList/GalleryList';
 import { headingImages, maxQuantityPerPage } from '../../shared/constants';
@@ -32,11 +31,16 @@ const GalleryYear = (props) => {
 
   useEffect(() => {
     const urlYear = +year;
-    const { p: urlPage } = queryString.parse(search);
-    const urlPageNumber = +urlPage || 1;
-    onFetchGalleries(urlPageNumber, urlYear);
+    if (!Number.isInteger(urlYear)) {
+      const actualYear = new Date().getFullYear();
+      history.replace(`/galeria/${actualYear}`);
+    } else {
+      const { p: urlPage } = queryString.parse(search);
+      const urlPageNumber = +urlPage || 1;
+      onFetchGalleries(urlPageNumber, urlYear);
+    }
     return () => onClearGalleries();
-  }, [onFetchGalleries, search, year]);
+  }, [onFetchGalleries, search, year, history]);
 
   const numberOfPages = Math.ceil((galleryCount - 1) / maxQuantityPerPage.GALLERY);
   const pagination =
@@ -47,10 +51,7 @@ const GalleryYear = (props) => {
   return (
     <FreeSides>
       <HeadingImage slug={headingImages.GALLERY} />
-      <Heading variant="h4" align="center" margin="medium">
-        {`Galerie zdjęć - rok ${year}`}
-      </Heading>
-      <GalleryList galleries={galleries} />
+      <GalleryList galleries={galleries} galleriesYear={year} />
       {pagination}
     </FreeSides>
   );

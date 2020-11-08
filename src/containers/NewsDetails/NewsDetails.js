@@ -9,7 +9,7 @@ import FreeSides from '../../components/UI/FreeSides';
 import * as SC from './NewsDetails.sc';
 import Heading from '../../components/UI/Heading/Heading';
 import Loader from '../../components/UI/Loader';
-import NewsGallery from './NewsGallery/NewsGallery';
+import ImagesGallery from '../../components/ImagesGallery/ImagesGallery';
 import { sanitizeHtml } from '../../shared/utility';
 
 moment.locale('pl');
@@ -22,7 +22,7 @@ const NewsDetails = (props) => {
   } = props;
 
   const { newsDetails } = useSelector((state) => state.news);
-  const { error } = useSelector((state) => state.ui);
+  const { isError } = useSelector((state) => state.ui);
 
   const dispatch = useDispatch();
   const onFetchNewsDetails = useCallback(
@@ -61,7 +61,7 @@ const NewsDetails = (props) => {
         <Heading variant="h5" margin="small" align="center">
           Kliknij na zdjęcie, żeby powiększyć
         </Heading>
-        <NewsGallery images={images} />
+        <ImagesGallery images={images} />
       </section>
     ) : null;
 
@@ -82,7 +82,7 @@ const NewsDetails = (props) => {
     );
   }
 
-  if (error) {
+  if (isError) {
     newsDetailsNode = (
       <Heading variant="h3" align="center" data-test="error">
         Wystąpił problem z pobieraniem danych o artykule

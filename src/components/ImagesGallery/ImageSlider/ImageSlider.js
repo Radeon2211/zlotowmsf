@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { AnimatePresence } from 'framer-motion';
 import * as SC from './ImageSlider.sc';
-import DarkButton from '../../../../components/UI/Buttons/DarkButton';
-import { imageSliderVariants, SCSliderVariants } from '../../../../shared/framer';
-import { ReactComponent as ArrowIcon } from '../../../../images/SVG/arrow.svg';
-import { ReactComponent as CrossIcon } from '../../../../images/SVG/cross.svg';
+import DarkButton from '../../UI/Buttons/DarkButton';
+import { imageSliderVariants, SCSliderVariants } from '../../../shared/framer';
+import { ReactComponent as ArrowIcon } from '../../../images/SVG/arrow.svg';
+import { ReactComponent as CrossIcon } from '../../../images/SVG/cross.svg';
 
 const ImageSlider = (props) => {
   const { isVisible, children, closed, goToPrev, goToNext } = props;

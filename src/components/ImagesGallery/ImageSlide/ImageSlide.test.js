@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import { ThemeProvider } from 'styled-components';
-import theme from '../../../../styled/theme';
+import theme from '../../../styled/theme';
 import ImageSlide, { SC } from './ImageSlide';
 
 const defaultProps = {

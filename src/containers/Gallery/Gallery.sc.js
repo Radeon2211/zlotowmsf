@@ -13,7 +13,7 @@ export const YearList = styled.div`
   }
 
   @media only screen and (max-width: 37.5em) {
-    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
   }
 `;
 
@@ -24,6 +24,13 @@ export const YearPanel = styled(Link)`
   display: flex;
   height: 16rem;
   justify-content: center;
+  transition: transform ${({ theme }) => theme.durations.level2}s;
+
+  @media (hover: hover) {
+    &:hover {
+      transform: scale(0.96);
+    }
+  }
 
   & > * {
     color: ${({ theme }) => theme.colors.light1};

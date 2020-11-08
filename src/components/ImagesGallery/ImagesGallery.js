@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import * as SC from './NewsGallery.sc';
+import * as SC from './ImagesGallery.sc';
 import ImageSlider from './ImageSlider/ImageSlider';
 import ImageSlide from './ImageSlide/ImageSlide';
 
-const NewsGallery = (props) => {
+const ImagesGallery = (props) => {
   const { images } = props;
 
   const [currentImage, setCurrentImage] = useState(0);
@@ -67,8 +67,8 @@ const NewsGallery = (props) => {
   );
 };
 
-NewsGallery.propTypes = {
+ImagesGallery.propTypes = {
   images: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.object])).isRequired,
 };
 
-export default NewsGallery;
+export default ImagesGallery;

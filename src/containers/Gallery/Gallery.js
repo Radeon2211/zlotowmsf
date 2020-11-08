@@ -10,7 +10,7 @@ import { headingImages } from '../../shared/constants';
 
 const Gallery = () => {
   const { oldestGalleryYear, newestGalleryYear } = useSelector((state) => state.gallery);
-  const { isLoading, error } = useSelector((state) => state.ui);
+  const { isLoading, isError } = useSelector((state) => state.ui);
 
   const dispatch = useDispatch();
   const onFetchGalleriesDates = useCallback(() => dispatch(actions.fetchGalleriesDates(null)), [
@@ -35,9 +35,9 @@ const Gallery = () => {
     yearList = <SC.YearList>{yearListPanels}</SC.YearList>;
   }
 
-  if (error) {
+  if (isError) {
     yearList = (
-      <Heading variant="h3" align="center">
+      <Heading variant="h3" align="center" data-test="error">
         Wystąpił problem z pobieraniem informacji o galerii
       </Heading>
     );
@@ -46,8 +46,8 @@ const Gallery = () => {
   return (
     <FreeSides>
       <HeadingImage slug={headingImages.GALLERY} />
-      {!error && (
-        <Heading variant="h4" margin="medium" align="center">
+      {!isError && (
+        <Heading variant="h4" margin="medium" align="center" data-test="choose-text">
           Wybierz, z którego roku chcesz zobaczyć zdjęcia
         </Heading>
       )}

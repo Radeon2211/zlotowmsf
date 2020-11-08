@@ -38,18 +38,22 @@ export const fetchGalleries = (pageNumber, year) => {
   };
 };
 
-export const fetchGalleryDetails = (newsSlug) => {
+export const fetchGalleryDetails = (gallerySlug) => {
   return async (dispatch) => {
     dispatch(uiActions.fetchStart());
     try {
-      const { data: galleryDetails } = await axios.get(`/wp/v2/posts?slug=${newsSlug}`);
+      const { data: galleryDetails } = await axios.get(`/wp/v2/galleries?slug=${gallerySlug}`);
       if (galleryDetails.length > 0) {
         const {
-          data: { gallery },
-        } = await axios.get(`/acf/v3/posts/${galleryDetails[0].id}/gallery`);
-        if (gallery) {
-          const { data: images } = await axios.get(`/wp/v2/media?include=${gallery}&per_page=100`);
-          galleryDetails[0].images = images;
+          data: { images },
+        } = await axios.get(`/acf/v3/galleries/${galleryDetails[0].id}/images`);
+        if (images) {
+          const { data: galleryImages } = await axios.get(
+            `/wp/v2/media?include=${images}&per_page=100`,
+          );
+          galleryDetails[0].images = galleryImages;
+        } else {
+          throw new Error();
         }
         dispatch(setGalleryDetails(galleryDetails[0]));
       } else {

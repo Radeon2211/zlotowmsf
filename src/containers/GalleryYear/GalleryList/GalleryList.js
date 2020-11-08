@@ -7,15 +7,15 @@ import Loader from '../../../components/UI/Loader';
 import Heading from '../../../components/UI/Heading/Heading';
 
 const GalleryList = (props) => {
-  const { isLoading, error } = useSelector((state) => state.ui);
+  const { isError } = useSelector((state) => state.ui);
 
-  const { galleries } = props;
+  const { galleries, galleriesYear } = props;
 
-  let galleryList = isLoading ? <Loader /> : null;
+  let galleryList = <Loader />;
   if (galleries) {
     if (galleries.length <= 0) {
       galleryList = (
-        <Heading variant="h3" align="center">
+        <Heading variant="h3" align="center" data-test="not-found">
           Nie znaleziono żadnych galerii
         </Heading>
       );
@@ -32,13 +32,20 @@ const GalleryList = (props) => {
         </SC.SingleGallery>
       ));
 
-      galleryList = <SC.Wrapper>{allGalleries}</SC.Wrapper>;
+      galleryList = (
+        <>
+          <Heading variant="h4" align="center" margin="medium" data-test="year">
+            {`Galerie zdjęć - rok ${galleriesYear}`}
+          </Heading>
+          <SC.GalleryList>{allGalleries}</SC.GalleryList>
+        </>
+      );
     }
   }
 
-  if (error) {
+  if (isError) {
     galleryList = (
-      <Heading variant="h3" align="center">
+      <Heading variant="h3" align="center" data-test="error">
         Wystąpił problem z pobieraniem listy galerii
       </Heading>
     );
@@ -53,6 +60,7 @@ GalleryList.defaultProps = {
 
 GalleryList.propTypes = {
   galleries: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.object])),
+  galleriesYear: PropTypes.string.isRequired,
 };
 
 export default GalleryList;

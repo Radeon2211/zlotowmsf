@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import { ThemeProvider } from 'styled-components';
-import theme from '../../../../styled/theme';
+import theme from '../../../styled/theme';
 import ImageSlider from './ImageSlider';
 import ImageSlide from '../ImageSlide/ImageSlide';
 import * as SC from './ImageSlider.sc';

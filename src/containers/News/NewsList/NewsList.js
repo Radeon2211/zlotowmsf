@@ -10,7 +10,7 @@ import Heading from '../../../components/UI/Heading/Heading';
 import LoadingOverlay from '../../../components/UI/LoadingOverlay';
 
 const NewsList = (props) => {
-  const { isLoading, error } = useSelector((state) => state.ui);
+  const { isLoading, isError } = useSelector((state) => state.ui);
 
   const { news } = props;
 
@@ -50,7 +50,7 @@ const NewsList = (props) => {
     }
   }
 
-  if (error) {
+  if (isError) {
     newsList = (
       <Heading variant="h3" align="center" data-test="error">
         Wystąpił problem z pobieraniem artykułów
