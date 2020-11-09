@@ -7,14 +7,16 @@ import Main from './components/UI/Main';
 import DesktopNavigation from './components/Navigation/DesktopNavigation';
 import MobileNavigation from './components/Navigation/MobileNavigation/MobileNavigation';
 import Loader from './components/UI/Loader';
-import Footer from './components/Footer/Footer';
+import Footer from './components/Footer';
 
 const News = lazy(() => import('./containers/News/News'));
 const NewsDetails = lazy(() => import('./containers/NewsDetails/NewsDetails'));
-const Annoucements = lazy(() => import('./containers/PlainSites/Annoucements'));
 const History = lazy(() => import('./containers/PlainSites/History'));
 const Priests = lazy(() => import('./containers/Priests/Priests'));
 const HolyMassesOrder = lazy(() => import('./containers/PlainSites/HolyMassesOrder'));
+const ParishCommunities = lazy(() => import('./containers/ParishCommunities'));
+const ParishCommunityDetails = lazy(() => import('./containers/ParishCommunityDetails'));
+const Annoucements = lazy(() => import('./containers/PlainSites/Annoucements'));
 const MassIntentions = lazy(() => import('./containers/PlainSites/MassIntentions'));
 const ParishOffice = lazy(() => import('./containers/PlainSites/ParishOffice'));
 const HolyBaptism = lazy(() => import('./containers/PlainSites/Sacraments/HolyBaptism'));
@@ -29,7 +31,7 @@ const Marriage = lazy(() => import('./containers/PlainSites/Sacraments/Marriage'
 const MarriageCounceling = lazy(() => import('./containers/PlainSites/MarriageCounceling'));
 const Gallery = lazy(() => import('./containers/Gallery/Gallery'));
 const GalleryYear = lazy(() => import('./containers/GalleryYear/GalleryYear'));
-const GalleryDetails = lazy(() => import('./containers/GalleryDetails/GalleryDetails'));
+const GalleryDetails = lazy(() => import('./containers/GalleryDetails'));
 const Links = lazy(() => import('./containers/PlainSites/Links'));
 const Contact = lazy(() => import('./containers/PlainSites/Contact'));
 
@@ -46,10 +48,12 @@ const App = () => {
 
   const dispatch = useDispatch();
   const onFetchBasicData = useCallback(() => dispatch(actions.fetchBasicData()), [dispatch]);
+  const onClearError = useCallback(() => dispatch(actions.fetchSuccess()), [dispatch]);
 
   useEffect(() => {
     onFetchBasicData();
-  }, [onFetchBasicData]);
+    return () => onClearError();
+  }, [onFetchBasicData, onClearError]);
 
   let appContent = <Loader />;
   if (basicData) {
@@ -67,6 +71,16 @@ const App = () => {
               exact
               path="/parafia/porzadek-mszy-swietych"
               component={WaitingComponent(HolyMassesOrder)}
+            />
+            <Route
+              exact
+              path="/parafia/wspolnoty-parafialne"
+              component={WaitingComponent(ParishCommunities)}
+            />
+            <Route
+              exact
+              path="/parafia/wspolnoty-parafialne/:slug"
+              component={WaitingComponent(ParishCommunityDetails)}
             />
             <Route exact path="/ogloszenia" component={WaitingComponent(Annoucements)} />
             <Route exact path="/intencje" component={WaitingComponent(MassIntentions)} />

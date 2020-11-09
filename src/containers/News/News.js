@@ -21,6 +21,7 @@ const News = () => {
     (pageNumber, oneExtra) => dispatch(actions.fetchNews(pageNumber, oneExtra)),
     [dispatch],
   );
+  const onClearError = useCallback(() => dispatch(actions.fetchSuccess()), [dispatch]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -28,7 +29,8 @@ const News = () => {
     const urlPageNumber = +urlPage || 1;
     const oneExtra = urlPageNumber === 1;
     onFetchNews(urlPageNumber, oneExtra);
-  }, [onFetchNews, search]);
+    return () => onClearError();
+  }, [onFetchNews, onClearError, search]);
 
   const numberOfPages = Math.ceil((newsCount - 1) / maxQuantityPerPage.NEWS);
   const pagination =

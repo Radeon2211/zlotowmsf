@@ -77,10 +77,10 @@ describe('<Slides />', () => {
     describe('Full slide data', () => {
       const wrapper = setUp(defaultProps);
       it('Should render second line node', () => {
-        expect(wrapper.find('[data-test="second-line"]')).not.toBeNull();
+        expect(wrapper.find('[data-test="second-line"]').length).toBeGreaterThan(0);
       });
       it('Should render third line node', () => {
-        expect(wrapper.find('[data-test="third-line"]')).not.toBeNull();
+        expect(wrapper.find('[data-test="third-line"]').length).toBeGreaterThan(0);
       });
       it('Should third line heading have medium margin', () => {
         expect(
@@ -93,7 +93,7 @@ describe('<Slides />', () => {
         ).toHaveLength(1);
       });
       it('Should render button wrapper', () => {
-        expect(wrapper.find('[data-test="button-wrapper"]')).not.toBeNull();
+        expect(wrapper.find('[data-test="button-wrapper"]').length).toBeGreaterThan(0);
       });
     });
 
@@ -147,7 +147,7 @@ describe('<Slides />', () => {
     describe('Check link type', () => {
       it('Should render <Link />', () => {
         const wrapper = setUp(defaultProps);
-        expect(wrapper.find('[data-test="router-link"]')).not.toBeNull();
+        expect(wrapper.find('[data-test="router-link"]').length).toBeGreaterThan(0);
       });
       it('Should render <a /> and NOT render <Link />', () => {
         const props = {
@@ -162,7 +162,7 @@ describe('<Slides />', () => {
           },
         };
         const wrapper = setUp(props);
-        expect(wrapper.find('[data-test="html-link"]')).not.toBeNull();
+        expect(wrapper.find('[data-test="html-link"]').length).toBeGreaterThan(0);
         expect(wrapper.find('[data-test="router-link"]')).toHaveLength(0);
       });
     });

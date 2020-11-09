@@ -14,10 +14,4 @@ export const Wrapper = styled.div`
   & .content {
     font-size: ${({ theme }) => theme.fontSizes.level4};
   }
-
-  & .gallery-section {
-    border-top: 2px solid ${({ theme }) => theme.colors.blue};
-    margin-top: ${({ theme }) => theme.spacings.level3};
-    padding-top: ${({ theme }) => theme.spacings.level3};
-  }
 `;

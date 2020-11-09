@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { headingImages } from '../../shared/constants';
 import galleryImage from '../../images/gallery-heading.jpg';
 import priestsImage from '../../images/priests-heading.jpg';
+import communitiesImage from '../../images/communities-heading.jpg';
 
 const SC = {};
 SC.Wrapper = styled.div`
@@ -25,6 +26,10 @@ const HeadingImage = (props) => {
     case headingImages.PRIESTS:
       imageSrc = priestsImage;
       imageAlt = 'Duszpasterze';
+      break;
+    case headingImages.COMMUNITIES:
+      imageSrc = communitiesImage;
+      imageAlt = 'Wspólnoty parafialne';
       break;
     default:
       break;

@@ -7,3 +7,5 @@ export {
   setGalleries,
   setGalleryDetails,
 } from './galleryActions';
+export { fetchCommunities, fetchCommunityDetails, setCommunityDetails } from './communityActions';
+export { fetchSuccess } from './uiActions';

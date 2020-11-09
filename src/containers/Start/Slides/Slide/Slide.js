@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
+import decodeEntities from 'parse-entities';
 import {
   slideVariants,
   slideForegroundVariants,
@@ -41,7 +42,7 @@ const Slide = (props) => {
   const secondLineNode = secondLine ? (
     <motion.div variants={slideForegroundElementVariants} data-test="second-line">
       <Heading variant="h3" uppercase margin="medium">
-        {secondLine}
+        {decodeEntities(secondLine)}
       </Heading>
     </motion.div>
   ) : null;
@@ -52,7 +53,7 @@ const Slide = (props) => {
         margin={secondLineNode ? 'medium' : 'big'}
         data-test="third-line-heading"
       >
-        {thirdLineText}
+        {decodeEntities(thirdLineText)}
       </Heading>
     </motion.span>
   ) : null;
@@ -102,7 +103,7 @@ const Slide = (props) => {
           >
             <motion.div variants={slideForegroundElementVariants}>
               <Heading variant="h2" uppercase margin="medium">
-                {firstLine}
+                {decodeEntities(firstLine)}
               </Heading>
             </motion.div>
             {secondLineNode}

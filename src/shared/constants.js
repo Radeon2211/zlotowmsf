@@ -15,10 +15,15 @@ export const maxQuantityPerPage = {
 };
 
 export const siteNames = {
+  START: 'start',
+  NEWS: 'aktualnosci',
+  NEWS_DETAILS: 'aktualnosci-szczegoly',
   HISTORY: 'parafia-historia',
   PRIESTS: 'parafia-duszpasterze',
   HOLY_MASSES_ORDER: 'parafia-porzadek-mszy-swietych',
   ACCESS_CHAPELS: 'parafia-kaplice-dojazdowe',
+  PARISH_COMMUNITIES: 'parafia-wspolnoty-parafialne',
+  PARISH_COMMUNITY_DETAILS: 'parafia-wspolnoty-parafialne',
   HOSPICE: 'parafia-hospicjum',
   ANNOUCEMENTS: 'ogloszenia',
   MASS_INTENTIONS: 'intencje',
@@ -32,6 +37,9 @@ export const siteNames = {
   PARISH_OFFICE: 'kancelaria',
   MARRIAGE_COUNCELING: 'poradnia-malzenska',
   LINKS: 'linki',
+  GALLERY: 'galeria',
+  GALLERY_YEAR: 'galeria-rok',
+  GALLERY_DETAILS: 'galeria-szczegoly',
   CONTACT: 'kontakt',
 };
 
@@ -100,4 +108,5 @@ export const parishMenuItems = [
 export const headingImages = {
   GALLERY: 'GALLERY',
   PRIESTS: 'PRIESTS',
+  COMMUNITIES: 'COMMUNITIES',
 };

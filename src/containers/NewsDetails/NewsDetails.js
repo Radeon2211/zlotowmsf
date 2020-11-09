@@ -9,7 +9,7 @@ import FreeSides from '../../components/UI/FreeSides';
 import * as SC from './NewsDetails.sc';
 import Heading from '../../components/UI/Heading/Heading';
 import Loader from '../../components/UI/Loader';
-import ImagesGallery from '../../components/ImagesGallery/ImagesGallery';
+import ImagesGallery from '../../components/ImageGallery/ImageGallery';
 import { sanitizeHtml } from '../../shared/utility';
 
 moment.locale('pl');
@@ -30,12 +30,16 @@ const NewsDetails = (props) => {
     [dispatch],
   );
   const onClearNewsDetails = useCallback(() => dispatch(actions.setNewsDetails(null)), [dispatch]);
+  const onClearError = useCallback(() => dispatch(actions.fetchSuccess()), [dispatch]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
     onFetchNewsDetails(slug);
-    return () => onClearNewsDetails();
-  }, [onFetchNewsDetails, onClearNewsDetails, slug]);
+    return () => {
+      onClearNewsDetails();
+      onClearError();
+    };
+  }, [onFetchNewsDetails, onClearNewsDetails, onClearError, slug]);
 
   let newsDetailsNode = <Loader />;
   if (newsDetails === undefined) {
@@ -53,17 +57,7 @@ const NewsDetails = (props) => {
       images,
     } = newsDetails;
 
-    const gallerySection = images ? (
-      <section className="gallery-section">
-        <Heading variant="h3" margin="medium">
-          Galeria
-        </Heading>
-        <Heading variant="h5" margin="small" align="center">
-          Kliknij na zdjęcie, żeby powiększyć
-        </Heading>
-        <ImagesGallery images={images} />
-      </section>
-    ) : null;
+    const gallerySection = images ? <ImagesGallery images={images} galleryHeading /> : null;
 
     newsDetailsNode = (
       <SC.Wrapper>

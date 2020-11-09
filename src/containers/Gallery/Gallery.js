@@ -16,13 +16,16 @@ const Gallery = () => {
   const onFetchGalleriesDates = useCallback(() => dispatch(actions.fetchGalleriesDates(null)), [
     dispatch,
   ]);
+  const onClearError = useCallback(() => dispatch(actions.fetchSuccess()), [dispatch]);
 
   useEffect(() => {
-    if (oldestGalleryYear) return;
-    onFetchGalleriesDates();
-  }, [oldestGalleryYear, onFetchGalleriesDates]);
+    if (!oldestGalleryYear) {
+      onFetchGalleriesDates();
+    }
+    return () => onClearError();
+  }, [oldestGalleryYear, onFetchGalleriesDates, onClearError]);
 
-  let yearList = isLoading ? <Loader /> : null;
+  let mainContent = isLoading ? <Loader /> : null;
   if (oldestGalleryYear) {
     const yearListPanels = [];
     for (let i = newestGalleryYear; i >= oldestGalleryYear; i -= 1) {
@@ -32,11 +35,18 @@ const Gallery = () => {
         </SC.YearPanel>,
       );
     }
-    yearList = <SC.YearList>{yearListPanels}</SC.YearList>;
+    mainContent = (
+      <>
+        <Heading variant="h4" margin="medium" align="center" data-test="choose-text">
+          Wybierz, z którego roku chcesz zobaczyć zdjęcia
+        </Heading>
+        <SC.YearList>{yearListPanels}</SC.YearList>
+      </>
+    );
   }
 
   if (isError) {
-    yearList = (
+    mainContent = (
       <Heading variant="h3" align="center" data-test="error">
         Wystąpił problem z pobieraniem informacji o galerii
       </Heading>
@@ -46,12 +56,7 @@ const Gallery = () => {
   return (
     <FreeSides>
       <HeadingImage slug={headingImages.GALLERY} />
-      {!isError && (
-        <Heading variant="h4" margin="medium" align="center" data-test="choose-text">
-          Wybierz, z którego roku chcesz zobaczyć zdjęcia
-        </Heading>
-      )}
-      {yearList}
+      {mainContent}
     </FreeSides>
   );
 };

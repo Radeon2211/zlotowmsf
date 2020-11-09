@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import * as SC from './ImagesGallery.sc';
+import * as SC from './ImageGallery.sc';
 import ImageSlider from './ImageSlider/ImageSlider';
 import ImageSlide from './ImageSlide/ImageSlide';
+import Heading from '../UI/Heading/Heading';
 
-const ImagesGallery = (props) => {
-  const { images } = props;
+const ImageGallery = (props) => {
+  const { images, galleryHeading } = props;
 
   const [currentImage, setCurrentImage] = useState(0);
   const [isSliderVisible, setIsSliderVisible] = useState(false);
@@ -52,9 +53,19 @@ const ImagesGallery = (props) => {
     </ImageSlide>
   ));
 
+  const galleryHeadingNode = galleryHeading ? (
+    <Heading variant="h3" margin="medium">
+      Galeria
+    </Heading>
+  ) : null;
+
   return (
     <SC.Wrapper>
-      {galleryItems}
+      {galleryHeadingNode}
+      <Heading variant="h5" margin="small" align="center">
+        Kliknij na zdjęcie, żeby powiększyć
+      </Heading>
+      <SC.Gallery>{galleryItems}</SC.Gallery>
       <ImageSlider
         isVisible={isSliderVisible}
         closed={() => setIsSliderVisible(false)}
@@ -67,8 +78,13 @@ const ImagesGallery = (props) => {
   );
 };
 
-ImagesGallery.propTypes = {
-  images: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.object])).isRequired,
+ImageGallery.defaultProps = {
+  galleryHeading: false,
 };
 
-export default ImagesGallery;
+ImageGallery.propTypes = {
+  images: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.object])).isRequired,
+  galleryHeading: PropTypes.bool,
+};
+
+export default ImageGallery;

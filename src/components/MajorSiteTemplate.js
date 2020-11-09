@@ -1,10 +1,10 @@
 import React, { useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import * as actions from '../../store/actions/indexActions';
-import FreeSides from '../UI/FreeSides';
-import Loader from '../UI/Loader';
-import { sanitizeHtml } from '../../shared/utility';
+import * as actions from '../store/actions/indexActions';
+import FreeSides from './UI/FreeSides';
+import Loader from './UI/Loader';
+import { sanitizeHtml } from '../shared/utility';
 
 const SC = {};
 SC.Wrapper = styled.div`
@@ -19,11 +19,14 @@ const MajorSiteTemplate = (props) => {
 
   const dispatch = useDispatch();
   const onFetchSite = useCallback((slug) => dispatch(actions.fetchSite(slug)), [dispatch]);
+  const onClearError = useCallback(() => dispatch(actions.fetchSuccess()), [dispatch]);
 
   useEffect(() => {
-    if (siteData) return;
-    onFetchSite(siteSlug);
-  }, [onFetchSite, siteSlug, siteData]);
+    if (!siteData) {
+      onFetchSite(siteSlug);
+    }
+    return () => onClearError();
+  }, [onFetchSite, onClearError, siteSlug, siteData]);
 
   let siteContent = <Loader />;
   if (siteData) {

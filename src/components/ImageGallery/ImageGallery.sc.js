@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.section`
+  border-top: 2px solid ${({ theme }) => theme.colors.blue};
+  margin-top: ${({ theme }) => theme.spacings.level3};
+  padding-top: ${({ theme }) => theme.spacings.level3};
+`;
+
+export const Gallery = styled.div`
   display: grid;
   gap: ${({ theme }) => theme.spacings.level2};
   grid-gap: ${({ theme }) => theme.spacings.level2};

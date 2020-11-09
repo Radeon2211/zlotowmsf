@@ -65,16 +65,10 @@ describe('<NewsDetails />', () => {
       expect(wrapper.find(Heading)).toHaveLength(1);
     });
 
-    it('Should render gallery section and <SC.Wrapper /> and NOT render error', () => {
+    it('Should render and <SC.Wrapper /> and NOT render error', () => {
       const wrapper = setUp(defaultNewsDetails);
-      expect(wrapper.find('.gallery-section')).toHaveLength(1);
       expect(wrapper.find('[data-test="error"]')).toHaveLength(0);
       expect(wrapper.find(SC.Wrapper)).toHaveLength(1);
-    });
-
-    it('Should NOT render gallery section', () => {
-      const wrapper = setUp({ ...defaultNewsDetails, images: undefined });
-      expect(wrapper.find('.gallery-section')).toHaveLength(0);
     });
 
     it('Should render error', () => {
