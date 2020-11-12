@@ -30,10 +30,11 @@ const ImageGallery = (props) => {
     setIsSliderVisible(true);
   };
 
+  if (!images?.length) return null;
+
   const galleryItems = images.map((imageItem, idx) => (
     <SC.GalleryItem
       key={imageItem.id}
-      className="gallery-item"
       tabIndex={0}
       role="button"
       onClick={() => clickImageHandle(idx)}
@@ -54,7 +55,7 @@ const ImageGallery = (props) => {
   ));
 
   const galleryHeadingNode = galleryHeading ? (
-    <Heading variant="h3" margin="medium">
+    <Heading variant="h3" margin="medium" data-test="heading">
       Galeria
     </Heading>
   ) : null;
@@ -62,7 +63,7 @@ const ImageGallery = (props) => {
   return (
     <SC.Wrapper>
       {galleryHeadingNode}
-      <Heading variant="h5" margin="small" align="center">
+      <Heading variant="h5" margin="small" align="center" data-test="click-photo">
         Kliknij na zdjęcie, żeby powiększyć
       </Heading>
       <SC.Gallery>{galleryItems}</SC.Gallery>
@@ -80,10 +81,11 @@ const ImageGallery = (props) => {
 
 ImageGallery.defaultProps = {
   galleryHeading: false,
+  images: null,
 };
 
 ImageGallery.propTypes = {
-  images: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.object])).isRequired,
+  images: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.object)]),
   galleryHeading: PropTypes.bool,
 };
 

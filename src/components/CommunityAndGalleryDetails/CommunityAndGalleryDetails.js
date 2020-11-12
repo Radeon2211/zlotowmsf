@@ -6,6 +6,7 @@ import FreeSides from '../UI/FreeSides';
 import Heading from '../UI/Heading/Heading';
 import Loader from '../UI/Loader';
 import ImagesGallery from '../ImageGallery/ImageGallery';
+import EditorContent from '../UI/EditorContent';
 import { siteNames } from '../../shared/constants';
 
 export const SC = {};
@@ -19,9 +20,9 @@ SC.Wrapper = styled.div`
 const CommunityAndGalleryDetails = (props) => {
   const { data, isError, siteName } = props;
 
-  let content = <Loader />;
+  let siteContent = <Loader />;
   if (data === undefined) {
-    content = (
+    siteContent = (
       <Heading variant="h3" align="center" data-test="not-found">
         {`Nie znaleziono takiej ${
           siteName === siteNames.PARISH_COMMUNITY_DETAILS ? 'wspólnoty' : 'galerii'
@@ -29,38 +30,30 @@ const CommunityAndGalleryDetails = (props) => {
       </Heading>
     );
   } else if (data) {
-    const {
-      acf: { description },
-      title,
-      images,
-    } = data;
+    const { title, images, content } = data;
 
-    const imagesGallery = images?.length > 0 ? <ImagesGallery images={images} /> : null;
-
-    const descriptionNode = description ? <div className="description">{description}</div> : null;
-
-    content = (
+    siteContent = (
       <SC.Wrapper>
         <Heading variant="h3" margin="medium" align="center">
           {decodeEntities(title.rendered)}
         </Heading>
-        {descriptionNode}
-        {imagesGallery}
+        <EditorContent content={content.rendered} />
+        <ImagesGallery images={images} />
       </SC.Wrapper>
     );
   }
 
   if (isError) {
-    content = (
+    siteContent = (
       <Heading variant="h3" align="center" data-test="error">
-        {`Wystąpił problem z pobieraniem danych o ${
-          siteName === siteNames.PARISH_COMMUNITY_DETAILS ? 'wspólnocie' : 'galerii'
+        {`Wystąpił problem z pobieraniem ${
+          siteName === siteNames.PARISH_COMMUNITY_DETAILS ? 'wspólnoty' : 'galerii'
         }`}
       </Heading>
     );
   }
 
-  return <FreeSides>{content}</FreeSides>;
+  return <FreeSides>{siteContent}</FreeSides>;
 };
 
 CommunityAndGalleryDetails.propTypes = {

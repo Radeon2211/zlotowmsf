@@ -14,8 +14,11 @@ const NewsDetails = lazy(() => import('./containers/NewsDetails/NewsDetails'));
 const History = lazy(() => import('./containers/PlainSites/History'));
 const Priests = lazy(() => import('./containers/Priests/Priests'));
 const HolyMassesOrder = lazy(() => import('./containers/PlainSites/HolyMassesOrder'));
-const ParishCommunities = lazy(() => import('./containers/ParishCommunities'));
+const AccessChapels = lazy(() => import('./containers/PlainSites/AccessChapels'));
+const ParishCommunities = lazy(() => import('./containers/ParishCommunities/ParishCommunities'));
 const ParishCommunityDetails = lazy(() => import('./containers/ParishCommunityDetails'));
+const Hospice = lazy(() => import('./containers/PlainSites/Hospice'));
+const CityHospital = lazy(() => import('./containers/PlainSites/CityHospital'));
 const Annoucements = lazy(() => import('./containers/PlainSites/Annoucements'));
 const MassIntentions = lazy(() => import('./containers/PlainSites/MassIntentions'));
 const ParishOffice = lazy(() => import('./containers/PlainSites/ParishOffice'));
@@ -74,6 +77,11 @@ const App = () => {
             />
             <Route
               exact
+              path="/parafia/kaplice-dojazdowe"
+              component={WaitingComponent(AccessChapels)}
+            />
+            <Route
+              exact
               path="/parafia/wspolnoty-parafialne"
               component={WaitingComponent(ParishCommunities)}
             />
@@ -81,6 +89,12 @@ const App = () => {
               exact
               path="/parafia/wspolnoty-parafialne/:slug"
               component={WaitingComponent(ParishCommunityDetails)}
+            />
+            <Route exact path="/parafia/hospicjum" component={WaitingComponent(Hospice)} />
+            <Route
+              exact
+              path="/parafia/szpital-miejski"
+              component={WaitingComponent(CityHospital)}
             />
             <Route exact path="/ogloszenia" component={WaitingComponent(Annoucements)} />
             <Route exact path="/intencje" component={WaitingComponent(MassIntentions)} />

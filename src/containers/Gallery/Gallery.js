@@ -13,7 +13,7 @@ const Gallery = () => {
   const { isLoading, isError } = useSelector((state) => state.ui);
 
   const dispatch = useDispatch();
-  const onFetchGalleriesDates = useCallback(() => dispatch(actions.fetchGalleriesDates(null)), [
+  const onFetchGalleriesDates = useCallback(() => dispatch(actions.fetchGalleriesDates()), [
     dispatch,
   ]);
   const onClearError = useCallback(() => dispatch(actions.fetchSuccess()), [dispatch]);
@@ -48,7 +48,7 @@ const Gallery = () => {
   if (isError) {
     mainContent = (
       <Heading variant="h3" align="center" data-test="error">
-        Wystąpił problem z pobieraniem informacji o galerii
+        Wystąpił problem z pobieraniem galerii
       </Heading>
     );
   }

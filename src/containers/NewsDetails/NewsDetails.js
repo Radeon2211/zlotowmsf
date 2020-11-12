@@ -10,7 +10,7 @@ import * as SC from './NewsDetails.sc';
 import Heading from '../../components/UI/Heading/Heading';
 import Loader from '../../components/UI/Loader';
 import ImagesGallery from '../../components/ImageGallery/ImageGallery';
-import { sanitizeHtml } from '../../shared/utility';
+import EditorContent from '../../components/UI/EditorContent';
 
 moment.locale('pl');
 
@@ -57,8 +57,6 @@ const NewsDetails = (props) => {
       images,
     } = newsDetails;
 
-    const gallerySection = images ? <ImagesGallery images={images} galleryHeading /> : null;
-
     newsDetailsNode = (
       <SC.Wrapper>
         <img src={thumbnail} alt="miniaturka" className="thumbnail" />
@@ -66,12 +64,8 @@ const NewsDetails = (props) => {
           {decodeEntities(title.rendered)}
         </Heading>
         <span className="date">{moment(date).format('LL')}</span>
-        <article
-          // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{ __html: sanitizeHtml(content.rendered) }}
-          className="content"
-        />
-        {gallerySection}
+        <EditorContent content={content.rendered} />
+        <ImagesGallery images={images} galleryHeading />
       </SC.Wrapper>
     );
   }
@@ -79,7 +73,7 @@ const NewsDetails = (props) => {
   if (isError) {
     newsDetailsNode = (
       <Heading variant="h3" align="center" data-test="error">
-        Wystąpił problem z pobieraniem danych o artykule
+        Wystąpił problem z pobieraniem artykułu
       </Heading>
     );
   }

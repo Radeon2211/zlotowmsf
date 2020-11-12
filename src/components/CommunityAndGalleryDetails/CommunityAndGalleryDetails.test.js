@@ -4,13 +4,14 @@ import { ThemeProvider } from 'styled-components';
 import theme from '../../styled/theme';
 import CommunityAndGalleryDetails, { SC } from './CommunityAndGalleryDetails';
 import ImageGallery from '../ImageGallery/ImageGallery';
+import EditorContent from '../UI/EditorContent';
 import Loader from '../UI/Loader';
 import { checkProps } from '../../shared/utility';
 import { siteNames } from '../../shared/constants';
 
 const defaultData = {
-  acf: { description: 'test description' },
   title: { rendered: 'test title' },
+  content: { rendered: 'test content' },
   images: [{ id: 1, source_url: 'data:image' }],
 };
 
@@ -54,10 +55,10 @@ describe('<CommunityAndGalleryDetails />', () => {
       expect(wrapper.find('[data-test="not-found"]')).not.toBe(null);
     });
 
-    it('Should render <SC.Wrapper /> and descripiton and <ImageGallery /> and NOT render error', () => {
+    it('Should render <SC.Wrapper /> and <EditorContent /> and <ImageGallery /> and NOT render error', () => {
       const wrapper = setUp(defaultData);
       expect(wrapper.find(SC.Wrapper)).toHaveLength(1);
-      expect(wrapper.find('.description')).toHaveLength(1);
+      expect(wrapper.find(EditorContent)).toHaveLength(1);
       expect(wrapper.find(ImageGallery)).toHaveLength(1);
       expect(wrapper.find('[data-test="error"]')).toHaveLength(0);
     });
@@ -91,26 +92,9 @@ describe('<CommunityAndGalleryDetails />', () => {
     it('Should render error <Heading /> with community problem', () => {
       const wrapper = setUp(null, true, siteNames.PARISH_COMMUNITY_DETAILS);
       expect(
-        wrapper
-          .find('[data-test="error"]')
-          .filterWhere((item) => item.html().includes('wspólnocie')).length,
+        wrapper.find('[data-test="error"]').filterWhere((item) => item.html().includes('wspólnoty'))
+          .length,
       ).toBeGreaterThan(0);
-    });
-
-    it('Should NOT render description', () => {
-      const wrapper = setUp({
-        ...defaultData,
-        acf: { ...defaultData.acf, description: '' },
-      });
-      expect(wrapper.find('.description')).toHaveLength(0);
-    });
-
-    it('Should NOT render <ImageGallery />', () => {
-      const wrapper = setUp({
-        ...defaultData,
-        images: undefined,
-      });
-      expect(wrapper.find(ImageGallery)).toHaveLength(0);
     });
 
     it('Should render error', () => {

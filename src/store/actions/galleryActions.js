@@ -91,7 +91,6 @@ export const fetchGalleriesDates = () => {
       } else {
         dispatch(setGalleriesDates(undefined, undefined));
       }
-      dispatch(setGalleryDetails(undefined));
       dispatch(uiActions.fetchSuccess());
     } catch (error) {
       dispatch(uiActions.fetchFail());

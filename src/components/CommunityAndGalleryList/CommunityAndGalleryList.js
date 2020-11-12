@@ -11,7 +11,7 @@ const ComumunityAndGalleryList = (props) => {
       <div className="image-wrapper">
         <div className="image-overlay" />
         <div className="image-overlay-content">{overlayText}</div>
-        <img src={item.acf.thumbnail} alt={item.title.rendered} className="image" />
+        <img src={item.acf.thumbnail} alt={decodeEntities(item.title.rendered)} className="image" />
       </div>
       <span className="panel-title">{decodeEntities(item.title.rendered)}</span>
     </SC.Panel>

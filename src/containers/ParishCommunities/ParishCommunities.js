@@ -1,12 +1,12 @@
 import React, { useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import * as actions from '../store/actions/indexActions';
-import FreeSides from '../components/UI/FreeSides';
-import HeadingImage from '../components/UI/HeadingImage';
-import Loader from '../components/UI/Loader';
-import Heading from '../components/UI/Heading/Heading';
-import CommunityAndGalleryList from '../components/CommunityAndGalleryList/ComumunityAndGalleryList';
-import { headingImages } from '../shared/constants';
+import * as actions from '../../store/actions/indexActions';
+import FreeSides from '../../components/UI/FreeSides';
+import HeadingImage from '../../components/UI/HeadingImage';
+import Loader from '../../components/UI/Loader';
+import Heading from '../../components/UI/Heading/Heading';
+import CommunityAndGalleryList from '../../components/CommunityAndGalleryList/CommunityAndGalleryList';
+import { headingImages } from '../../shared/constants';
 
 const ParishCommunities = () => {
   const { communities } = useSelector((state) => state.community);
@@ -45,7 +45,7 @@ const ParishCommunities = () => {
   if (isError) {
     mainContent = (
       <Heading variant="h3" align="center" data-test="error">
-        Wystąpił problem z pobieraniem listy galerii
+        Wystąpił problem z pobieraniem wspólnot parafialnych
       </Heading>
     );
   }

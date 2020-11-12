@@ -31,7 +31,7 @@ export const Panel = styled(Link)`
     left: 0;
     position: absolute;
     top: 0;
-    transition: opacity ${({ theme }) => theme.durations.level2}s;
+    transition: opacity ${({ theme }) => theme.durations.level3}s;
     width: 100%;
   }
 

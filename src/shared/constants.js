@@ -25,6 +25,7 @@ export const siteNames = {
   PARISH_COMMUNITIES: 'parafia-wspolnoty-parafialne',
   PARISH_COMMUNITY_DETAILS: 'parafia-wspolnoty-parafialne',
   HOSPICE: 'parafia-hospicjum',
+  CITY_HOSPITAL: 'parafia-szpital-miejski',
   ANNOUCEMENTS: 'ogloszenia',
   MASS_INTENTIONS: 'intencje',
   HOLY_BAPTISM: 'sakramenty-chrzest-swiety',
@@ -36,10 +37,10 @@ export const siteNames = {
   MARRIAGE: 'sakramenty-malzenstwo',
   PARISH_OFFICE: 'kancelaria',
   MARRIAGE_COUNCELING: 'poradnia-malzenska',
-  LINKS: 'linki',
   GALLERY: 'galeria',
   GALLERY_YEAR: 'galeria-rok',
   GALLERY_DETAILS: 'galeria-szczegoly',
+  LINKS: 'linki',
   CONTACT: 'kontakt',
 };
 

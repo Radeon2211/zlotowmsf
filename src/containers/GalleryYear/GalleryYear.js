@@ -9,7 +9,7 @@ import Pagination from '../../components/Pagination/Pagination';
 import HeadingImage from '../../components/UI/HeadingImage';
 import Loader from '../../components/UI/Loader';
 import Heading from '../../components/UI/Heading/Heading';
-import CommunityAndGalleryList from '../../components/CommunityAndGalleryList/ComumunityAndGalleryList';
+import CommunityAndGalleryList from '../../components/CommunityAndGalleryList/CommunityAndGalleryList';
 import { headingImages, maxQuantityPerPage } from '../../shared/constants';
 
 const GalleryYear = (props) => {
