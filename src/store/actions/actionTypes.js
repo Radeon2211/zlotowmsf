@@ -1,5 +1,6 @@
 export const SET_SITE = 'SET_SITE';
 export const SET_BASIC_DATA = 'SET_BASIC_DATA';
+export const SET_PRIESTS = 'SET_PRIESTS';
 export const SET_NEWS = 'SET_NEWS';
 export const SET_NEWS_DETAILS = 'SET_NEWS_DETAILS';
 export const SET_GALLERIES = 'SET_GALLERIES';

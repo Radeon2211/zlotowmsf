@@ -1,8 +1,7 @@
-import React from 'react';
 import styled from 'styled-components';
 
-const SC = {};
-SC.Wrapper = styled.footer`
+// eslint-disable-next-line import/prefer-default-export
+export const Wrapper = styled.footer`
   align-items: center;
   background-color: ${({ theme }) => theme.colors.blue};
   color: ${({ theme }) => theme.colors.light1};
@@ -20,8 +19,10 @@ SC.Wrapper = styled.footer`
     font-size: ${({ theme }) => theme.fontSizes.level1};
   }
 
-  & .author-name {
+  & .darken-text {
+    cursor: pointer;
     color: ${({ theme }) => theme.colors.light2};
+    font-size: ${({ theme }) => theme.fontSizes.level1};
     transition: color ${({ theme }) => theme.durations.level1}s;
 
     @media (hover: hover) {
@@ -43,26 +44,3 @@ SC.Wrapper = styled.footer`
     margin-left: 0;
   }
 `;
-
-const Footer = () => {
-  return (
-    <SC.Wrapper>
-      <span className="copyright">
-        &copy;2020 Parafia Rzymskokatolicka w Złotowie pw. Wniebowzięcia Najświętszej Maryi Panny
-      </span>
-      <span className="author">
-        Stworzone przez
-        <a
-          href="https://linkedin.com/in/rados%C5%82aw-mikrut-a8600b198/"
-          rel="noopener noreferrer"
-          target="_blank"
-          className="author-name"
-        >
-          &nbsp;Radosław Mikrut
-        </a>
-      </span>
-    </SC.Wrapper>
-  );
-};
-
-export default Footer;

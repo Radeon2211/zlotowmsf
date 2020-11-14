@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import * as SC from './NavList.sc';
 import ParishSubmenu from './Submenus/ParishSubmenu/ParishSubmenu';
@@ -24,6 +25,11 @@ const NavList = (props) => {
 
   const [isParishMenuVisible, setIsParishMenuVisible] = useState(false);
   const [isSacramentsMenuVisible, setIsSacramentsMenuVisible] = useState(false);
+
+  const { basic } = useSelector((state) => state.data);
+
+  const facebookLink = basic?.extraInfo?.parishFacebookLink;
+  const kostkaProjectLink = basic?.extraInfo?.kostkaProjectLink;
 
   return (
     <SC.Wrapper>
@@ -136,7 +142,7 @@ const NavList = (props) => {
         </li>
         <li>
           <a
-            href="https://www.facebook.com/Parafia-Wniebowzi%C4%99cia-NMP-w-Z%C5%82otowie-101235951660702"
+            href={facebookLink}
             target="_blank"
             rel="noopener noreferrer"
             className="link"
@@ -170,7 +176,7 @@ const NavList = (props) => {
         </li>
         <li>
           <a
-            href="https://projektkostka.pl"
+            href={kostkaProjectLink}
             target="_blank"
             rel="noopener noreferrer"
             className="link"

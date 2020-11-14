@@ -12,6 +12,18 @@ export const backdropVariants = {
   },
 };
 
+export const modalVariants = {
+  hidden: {
+    opacity: 0,
+    pointerEvents: 'none',
+  },
+  visible: {
+    opacity: 1,
+    pointerEvents: 'initial',
+    transition: { delay: theme.durations.level1, duration: theme.durations.level3 },
+  },
+};
+
 export const sidebarVariants = {
   hidden: {
     pointerEvents: 'none',

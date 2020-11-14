@@ -10,9 +10,10 @@ export const List = styled.div`
 `;
 
 export const Panel = styled(Link)`
-  padding: ${({ theme }) => theme.spacings.level2};
   background-color: ${({ theme }) => theme.colors.darkTransparent2};
+  border-bottom: 3px solid ${({ theme }) => theme.colors.blue};
   height: min-content;
+  padding: ${({ theme }) => theme.spacings.level2};
 
   & .image-wrapper {
     overflow: hidden;

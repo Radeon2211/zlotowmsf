@@ -19,7 +19,7 @@ const theme = {
   fonts: {
     text: 'Roboto, cursive',
     heading: 'Fira Sans, sans-serif',
-    logo: 'Kavoon, sans-serif',
+    logo: 'Ubuntu, sans-serif',
   },
   spacings: {
     level1: '0.8rem',

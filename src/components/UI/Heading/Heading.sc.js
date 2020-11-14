@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 import React from 'react';
 import styled from 'styled-components';
 
@@ -61,7 +62,8 @@ const StyledHeading = styled.h1`
     switch (variant) {
       case 'h1':
         return `
-          font-size: 3rem;
+          font-size: 3.5rem;
+          font-weight: 500;
           font-family: ${theme.fonts.logo};
           letter-spacing: 2px;
           line-height: 1;
@@ -114,7 +116,7 @@ const StyledHeading = styled.h1`
   }}
 `;
 
-// eslint-disable-next-line import/prefer-default-export
+// eslint-disable-next-line react/prop-types
 export const Heading = ({ variant, ...rest }) => (
   <StyledHeading as={variant} variant={variant} {...rest} />
 );

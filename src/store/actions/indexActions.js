@@ -1,4 +1,4 @@
-export { fetchBasicData, fetchSite } from './dataActions';
+export { fetchBasicData, fetchSite, fetchPriests } from './dataActions';
 export { fetchNews, fetchNewsDetails, setNewsDetails } from './newsActions';
 export {
   fetchGalleries,

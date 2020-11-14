@@ -15,6 +15,7 @@ describe('Data reducer', () => {
     const basic = {
       slides: [{ id: 1 }, { id: 2 }],
       lastNewsSlug: 'test-slug',
+      extraInfo: { privacyPolicy: 'test privacy policy' },
     };
     expect(
       dataReducer(undefined, {
@@ -56,6 +57,19 @@ describe('Data reducer', () => {
     ).toEqual({
       ...initialState,
       sites: correctSites,
+    });
+  });
+
+  it('Should return new state after SET_PRIESTS', () => {
+    const priests = [{ id: 1 }];
+    expect(
+      dataReducer(undefined, {
+        type: actionTypes.SET_PRIESTS,
+        priests,
+      }),
+    ).toEqual({
+      ...initialState,
+      priests,
     });
   });
 });

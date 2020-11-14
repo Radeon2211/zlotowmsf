@@ -15,7 +15,7 @@
     <meta name="keywords" content="Złotów, parafia, MSF, WNMP, pw. Wniebowzięcia NMP, MSF Złotów, parafia MSF Złotów" />
     <link rel="apple-touch-icon" href="<?php echo $TEMPLATE_PATH; ?>/logo192.png" />
     <link rel="manifest" href="<?php echo $TEMPLATE_PATH; ?>/manifest.json" />
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@700&family=Kavoon&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@700&family=Roboto:wght@400;700&family=Ubuntu:wght@500&display=swap" rel="stylesheet">
     <title>Parafia Wniebowzięcia NMP w Złotowie</title>
     <?php wp_head() ?>
   </head>

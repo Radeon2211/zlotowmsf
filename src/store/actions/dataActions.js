@@ -1,5 +1,6 @@
 import * as actionTypes from './actionTypes';
 import axios from '../../axios';
+import * as uiActions from './uiActions';
 
 export const setBasicData = (data) => ({
   type: actionTypes.SET_BASIC_DATA,
@@ -11,24 +12,18 @@ export const setSite = (site) => ({
   site,
 });
 
-export const fetchStart = () => ({
-  type: actionTypes.FETCH_START,
-});
-
-export const fetchSuccess = () => ({
-  type: actionTypes.FETCH_SUCCESS,
-});
-
-export const fetchFail = () => ({
-  type: actionTypes.FETCH_FAIL,
+export const setPriests = (priests) => ({
+  type: actionTypes.SET_PRIESTS,
+  priests,
 });
 
 export const fetchBasicData = () => {
   return async (dispatch) => {
-    dispatch(fetchStart());
+    dispatch(uiActions.fetchStart());
     try {
       const fetchSlides = axios.get('/wp/v2/slides?order=asc');
       const fetchLastestNews = axios.get('/wp/v2/posts?per_page=1');
+      const fetchExtraInfo = axios.get('/wp/v2/extra_info?per_page=1');
       const [
         {
           value: { data: slides },
@@ -36,7 +31,12 @@ export const fetchBasicData = () => {
         {
           value: { data: news },
         },
-      ] = await Promise.allSettled([fetchSlides, fetchLastestNews]);
+        {
+          value: {
+            data: [{ acf: extraInfo }],
+          },
+        },
+      ] = await Promise.allSettled([fetchSlides, fetchLastestNews, fetchExtraInfo]);
       const latestNews = {
         title: '',
         slug: '',
@@ -47,23 +47,36 @@ export const fetchBasicData = () => {
         latestNews.slug = news[0].slug;
         latestNews.thumbnail = news[0].acf.thumbnail;
       }
-      dispatch(setBasicData({ slides, latestNews }));
-      dispatch(fetchSuccess());
+      dispatch(setBasicData({ slides, latestNews, extraInfo }));
+      dispatch(uiActions.fetchSuccess());
     } catch (error) {
-      dispatch(fetchFail());
+      dispatch(uiActions.fetchFail());
     }
   };
 };
 
 export const fetchSite = (siteSlug) => {
   return async (dispatch) => {
-    dispatch(fetchStart());
+    dispatch(uiActions.fetchStart());
     try {
       const { data } = await axios.get(`/wp/v2/pages?slug=${siteSlug}`);
       dispatch(setSite({ [siteSlug]: data[0] }));
-      dispatch(fetchSuccess());
+      dispatch(uiActions.fetchSuccess());
     } catch (error) {
-      dispatch(fetchFail());
+      dispatch(uiActions.fetchFail());
+    }
+  };
+};
+
+export const fetchPriests = () => {
+  return async (dispatch) => {
+    dispatch(uiActions.fetchStart());
+    try {
+      const { data } = await axios.get(`/wp/v2/priests`);
+      dispatch(setPriests(data));
+      dispatch(uiActions.fetchSuccess());
+    } catch (error) {
+      dispatch(uiActions.fetchFail());
     }
   };
 };
