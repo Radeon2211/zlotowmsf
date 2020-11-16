@@ -2,18 +2,29 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
+import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
+import configureMockStore from 'redux-mock-store';
 import Sidebar from './Sidebar';
 import * as SC from './Sidebar.sc';
 import { checkProps } from '../../../../shared/utility';
 import theme from '../../../../styled/theme';
 
+const mockStore = configureMockStore([thunk]);
+
+const defaultStore = mockStore({
+  data: { basic: { extraInfo: { parishFacebookLink: 'link', kostkaProjectLink: 'link' } } },
+});
+
 const setUp = (props) => {
   return mount(
-    <Router>
-      <ThemeProvider theme={theme}>
-        <Sidebar {...props} />
-      </ThemeProvider>
-    </Router>,
+    <Provider store={defaultStore}>
+      <Router>
+        <ThemeProvider theme={theme}>
+          <Sidebar {...props} />
+        </ThemeProvider>
+      </Router>
+    </Provider>,
   );
 };
 

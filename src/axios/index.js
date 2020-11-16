@@ -7,7 +7,7 @@ const baseURLs = {
 };
 
 const instance = axios.create({
-  baseURL: baseURLs.localhost,
+  baseURL: baseURLs.server,
   headers: {
     'Cache-Control': 'no-cache',
   },

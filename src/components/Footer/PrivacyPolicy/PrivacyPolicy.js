@@ -15,7 +15,7 @@ const PrivacyPolicy = (props) => {
   return (
     <AnimatePresence exitBeforeEnter>
       {isOpen && (
-        <>
+        <SC.Wrapper>
           <SC.Backdrop
             variants={backdropVariants}
             initial="hidden"
@@ -33,7 +33,7 @@ const PrivacyPolicy = (props) => {
             >
               <CloseIcon />
             </div>
-            <Heading variant="h4" align="center" margin="medium">
+            <Heading variant="h4" align="center" margin="medium" data-test="heading">
               Polityka prywatności
             </Heading>
             <div className="content">
@@ -41,7 +41,7 @@ const PrivacyPolicy = (props) => {
                 'Wystąpił problem z pobieraniem polityki prywatności'}
             </div>
           </SC.Modal>
-        </>
+        </SC.Wrapper>
       )}
     </AnimatePresence>
   );

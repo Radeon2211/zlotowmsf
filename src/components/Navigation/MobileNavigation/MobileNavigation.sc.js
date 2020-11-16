@@ -19,7 +19,7 @@ export const Wrapper = styled.div`
     display: flex;
   }
 
-  & .logo {
+  & .parish-logo {
     margin-right: ${({ theme }) => theme.spacings.level2};
     width: 4.9rem;
   }
