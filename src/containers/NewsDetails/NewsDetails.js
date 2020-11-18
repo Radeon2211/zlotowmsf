@@ -9,7 +9,7 @@ import FreeSides from '../../components/UI/FreeSides';
 import * as SC from './NewsDetails.sc';
 import Heading from '../../components/UI/Heading/Heading';
 import Loader from '../../components/UI/Loader';
-import ImagesGallery from '../../components/ImageGallery/ImageGallery';
+import ImageGallery from '../../components/ImageGallery/ImageGallery';
 import EditorContent from '../../components/UI/EditorContent';
 
 moment.locale('pl');
@@ -65,7 +65,7 @@ const NewsDetails = (props) => {
         </Heading>
         <span className="date">{moment(date).format('LL')}</span>
         <EditorContent content={content.rendered} />
-        <ImagesGallery images={images} galleryHeading />
+        <ImageGallery images={images} galleryHeading />
       </SC.Wrapper>
     );
   }

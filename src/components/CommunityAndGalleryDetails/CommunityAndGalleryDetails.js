@@ -5,7 +5,7 @@ import decodeEntities from 'parse-entities';
 import FreeSides from '../UI/FreeSides';
 import Heading from '../UI/Heading/Heading';
 import Loader from '../UI/Loader';
-import ImagesGallery from '../ImageGallery/ImageGallery';
+import ImageGallery from '../ImageGallery/ImageGallery';
 import EditorContent from '../UI/EditorContent';
 import { siteNames } from '../../shared/constants';
 
@@ -38,7 +38,7 @@ const CommunityAndGalleryDetails = (props) => {
           {decodeEntities(title.rendered)}
         </Heading>
         <EditorContent content={content.rendered} />
-        <ImagesGallery images={images} />
+        <ImageGallery images={images} />
       </SC.Wrapper>
     );
   }
