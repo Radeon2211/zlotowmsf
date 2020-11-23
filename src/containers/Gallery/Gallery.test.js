@@ -37,6 +37,8 @@ const setUp = (
 };
 
 describe('<Gallery />', () => {
+  global.scrollTo = jest.fn();
+
   describe('Check if elements render correctly', () => {
     it('Should render <Loader />', () => {
       const wrapper = setUp(null, null, true);

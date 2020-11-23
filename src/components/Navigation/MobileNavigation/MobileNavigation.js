@@ -12,7 +12,7 @@ const MobileNavigation = () => {
 
   return windowWidth <= 900 ? (
     <SC.Wrapper>
-      <Link to="/">
+      <Link to="/" aria-label="main page">
         <header className="header">
           <img src={logo} alt="Parafia pw. Wniebowzięcia NMP w Złotowie" className="parish-logo" />
           <Heading variant="h1">MSF Złotów</Heading>

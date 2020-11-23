@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import decodeEntities from 'parse-entities';
@@ -19,6 +19,14 @@ SC.Wrapper = styled.div`
 
 const CommunityAndGalleryDetails = (props) => {
   const { data, isError, siteName } = props;
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
+  });
 
   let siteContent = <Loader />;
   if (data === undefined) {

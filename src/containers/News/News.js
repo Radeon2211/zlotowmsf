@@ -24,7 +24,11 @@ const News = () => {
   const onClearError = useCallback(() => dispatch(actions.fetchSuccess()), [dispatch]);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
     const { p: urlPage } = queryString.parse(search);
     const urlPageNumber = +urlPage || 1;
     const oneExtra = urlPageNumber === 1;

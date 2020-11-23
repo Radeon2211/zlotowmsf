@@ -6,7 +6,7 @@ import { sanitizeHtml } from '../../shared/utility';
 const SC = {};
 SC.Wrapper = styled.section`
   font-size: ${({ theme }) => theme.fontSizes.level4};
-  line-height: 1.32;
+  line-height: 1.33;
 `;
 
 const EditorContent = (props) => {

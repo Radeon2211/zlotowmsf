@@ -42,6 +42,8 @@ const setUp = (galleries, galleryCount = 0, isError = false) => {
 };
 
 describe('<GalleryYear />', () => {
+  global.scrollTo = jest.fn();
+
   describe('Check prop types', () => {
     it('Should NOT throw a warning', () => {
       expect(checkProps(GalleryYear, defaultProps)).toBeUndefined();

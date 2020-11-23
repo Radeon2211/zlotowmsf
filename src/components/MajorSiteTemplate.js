@@ -9,6 +9,7 @@ import { sanitizeHtml } from '../shared/utility';
 const SC = {};
 SC.Wrapper = styled.div`
   font-size: ${({ theme }) => theme.fontSizes.level4};
+  line-height: 1.33;
 `;
 
 const MajorSiteTemplate = (props) => {
@@ -22,6 +23,11 @@ const MajorSiteTemplate = (props) => {
   const onClearError = useCallback(() => dispatch(actions.fetchSuccess()), [dispatch]);
 
   useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
     if (!siteData) {
       onFetchSite(siteSlug);
     }

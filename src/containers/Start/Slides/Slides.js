@@ -87,6 +87,7 @@ const Slides = () => {
           childRotation={180}
           clicked={prevButtonClickHandle}
           data-test="prev-slide-button"
+          aria-label="previous"
         >
           <ArrowIcon />
         </DarkButton>
@@ -95,6 +96,7 @@ const Slides = () => {
           shape="square"
           clicked={nextButtonClickHandle}
           data-test="next-slide-button"
+          aria-label="next"
         >
           <ArrowIcon />
         </DarkButton>

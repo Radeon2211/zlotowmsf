@@ -19,6 +19,11 @@ const Gallery = () => {
   const onClearError = useCallback(() => dispatch(actions.fetchSuccess()), [dispatch]);
 
   useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
     if (!oldestGalleryYear) {
       onFetchGalleriesDates();
     }

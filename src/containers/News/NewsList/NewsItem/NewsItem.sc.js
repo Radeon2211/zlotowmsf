@@ -24,6 +24,7 @@ export const Wrapper = styled.div`
 
   & .excerpt {
     font-size: ${({ theme }) => theme.fontSizes.level4};
+    line-height: 1.33;
     margin: ${({ theme }) => theme.spacings.level3} 0;
     text-align: justify;
 

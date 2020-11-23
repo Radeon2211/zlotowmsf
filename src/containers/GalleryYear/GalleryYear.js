@@ -34,6 +34,11 @@ const GalleryYear = (props) => {
   const onClearError = useCallback(() => dispatch(actions.fetchSuccess()), [dispatch]);
 
   useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
     const urlYear = +year;
     if (!Number.isInteger(urlYear)) {
       const actualYear = new Date().getFullYear();
