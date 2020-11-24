@@ -48,7 +48,7 @@ export const Panel = styled(Link)`
     opacity: 0;
     padding: ${({ theme }) => theme.spacings.level1} ${({ theme }) => theme.spacings.level2};
     position: absolute;
-    text-shadow: ${({ theme }) => theme.shadows.level3};
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
     top: 50%;
     transform: translate(-50%, 300%) scale(0.8);
     transition: all ${({ theme }) => theme.durations.level3}s;

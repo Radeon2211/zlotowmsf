@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as actions from './store/actions/indexActions';
 import Start from './containers/Start/Start';
 import Main from './components/UI/Main';
+import ScrollToTop from './components/UI/ScrollToTop';
 import DesktopNavigation from './components/Navigation/DesktopNavigation';
 import MobileNavigation from './components/Navigation/MobileNavigation/MobileNavigation';
 import Loader from './components/UI/Loader';
@@ -52,6 +53,7 @@ const App = () => {
   if (basicData) {
     appContent = (
       <>
+        <ScrollToTop />
         <MobileNavigation />
         <DesktopNavigation />
         <Main>

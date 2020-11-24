@@ -1,5 +1,17 @@
 import theme from '../styled/theme';
 
+export const scrollToTopVariants = {
+  hidden: {
+    opacity: 0,
+    pointerEvents: 'none',
+  },
+  visible: {
+    opacity: 1,
+    pointerEvents: 'initial',
+    transition: { duration: theme.durations.level2 },
+  },
+};
+
 export const backdropVariants = {
   hidden: {
     opacity: 0,

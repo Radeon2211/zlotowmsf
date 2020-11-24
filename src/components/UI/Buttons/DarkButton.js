@@ -5,7 +5,6 @@ import styled from 'styled-components';
 const SC = {};
 SC.Wrapper = styled.button`
   align-items: center;
-  background-color: ${({ theme }) => theme.colors.darkTransparent1};
   border: 2px solid transparent;
   color: ${({ theme }) => theme.colors.light1};
   cursor: pointer;
@@ -25,6 +24,17 @@ SC.Wrapper = styled.button`
       border-color: ${({ theme }) => theme.colors.light1};
     }
   }
+
+  ${({ color, theme }) => {
+    if (color === 'blue') {
+      return `
+        background-color: ${theme.colors.blue};
+      `;
+    }
+    return `
+      background-color: ${theme.colors.darkTransparent1};
+    `;
+  }}
 
   ${({ shape }) => {
     switch (shape) {
@@ -131,6 +141,7 @@ const DarkButton = (props) => {
 DarkButton.defaultProps = {
   active: false,
   childRotation: undefined,
+  color: '',
   clicked: () => {},
   disabled: false,
 };
@@ -139,6 +150,7 @@ DarkButton.propTypes = {
   shape: PropTypes.string.isRequired,
   size: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
+  color: PropTypes.string,
   clicked: PropTypes.func,
   active: PropTypes.bool,
   disabled: PropTypes.bool,

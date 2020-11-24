@@ -10,12 +10,6 @@ const theme = {
     darkTransparent1: '#00000066',
     darkTransparent2: '#00000008',
   },
-  shadows: {
-    level1: '0 0 1px rgba(0, 0, 0, .1)',
-    level2: '0 0 2px rgba(0, 0, 0, .3)',
-    level3: '0 0 3px rgba(0, 0, 0, .3)',
-    level4: '0 0 5px rgba(0, 0, 0, .3)',
-  },
   fonts: {
     text: 'Roboto, cursive',
     heading: 'Fira Sans, sans-serif',
