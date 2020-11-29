@@ -15,3 +15,8 @@ export const checkProps = (component, expectedProps) => {
 export const sanitizeHtml = (html) => {
   return DOMPurify.sanitize(html, { ADD_TAGS: ['iframe'] });
 };
+
+export const validateURL = (url) => {
+  const parsed = new URL(url);
+  return ['https:', 'http:'].includes(parsed.protocol);
+};

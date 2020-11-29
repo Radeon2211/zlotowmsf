@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import * as SC from './Footer.sc';
 import PrivacyPolicy from './PrivacyPolicy/PrivacyPolicy';
+import { validateURL } from '../../shared/utility';
 
 const Footer = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -27,7 +28,12 @@ const Footer = () => {
       </span>
       <span className="author">
         Stworzone przez
-        <a href={authorLink} rel="noopener noreferrer" target="_blank" className="darken-text">
+        <a
+          href={validateURL(authorLink) ? authorLink : ''}
+          rel="noopener noreferrer"
+          target="_blank"
+          className="darken-text"
+        >
           &nbsp;Radosław Mikrut
         </a>
       </span>

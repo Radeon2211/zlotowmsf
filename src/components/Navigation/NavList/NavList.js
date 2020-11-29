@@ -19,6 +19,7 @@ import { ReactComponent as LinksIcon } from '../../../images/SVG/links.svg';
 import { ReactComponent as ContactIcon } from '../../../images/SVG/contact.svg';
 import { ReactComponent as ArrowIcon } from '../../../images/SVG/arrow.svg';
 import kostkaProjectLogo from '../../../images/kostka-project-logo.png';
+import { validateURL } from '../../../shared/utility';
 
 const NavList = (props) => {
   const { sidebarClosed } = props;
@@ -142,7 +143,7 @@ const NavList = (props) => {
         </li>
         <li>
           <a
-            href={facebookLink}
+            href={validateURL(facebookLink) ? facebookLink : ''}
             target="_blank"
             rel="noopener noreferrer"
             className="link"
@@ -176,7 +177,7 @@ const NavList = (props) => {
         </li>
         <li>
           <a
-            href={kostkaProjectLink}
+            href={validateURL(kostkaProjectLink) ? kostkaProjectLink : ''}
             target="_blank"
             rel="noopener noreferrer"
             className="link"

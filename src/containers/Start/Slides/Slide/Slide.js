@@ -13,6 +13,7 @@ import * as SC from './Slide.sc';
 import Heading from '../../../../components/UI/Heading/Heading';
 import MainButton from '../../../../components/UI/Buttons/MainButton';
 import { slidesExtraInfo } from '../../../../shared/constants';
+import { validateURL } from '../../../../shared/utility';
 
 const Slide = (props) => {
   const { data, isVisible } = props;
@@ -80,7 +81,12 @@ const Slide = (props) => {
     } else {
       buttonWrapper = (
         <motion.div variants={slideForegroundElementVariants} data-test="button-wrapper">
-          <a href={btnOuterLink} target="_blank" rel="noopener noreferrer" data-test="html-link">
+          <a
+            href={validateURL(btnOuterLink) ? btnOuterLink : ''}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-test="html-link"
+          >
             {button}
           </a>
         </motion.div>
