@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 export const Sidebar = styled(motion.div)`
   background-color: ${({ theme }) => theme.colors.blue};
   height: calc(100vh - 6.5rem);
-  padding-top: ${({ theme }) => theme.spacings.level3};
+  padding-top: ${({ theme }) => theme.spacings.level2};
   position: fixed;
   top: 6.5rem;
   z-index: ${({ theme }) => theme.zIndexes.level2};

@@ -13,7 +13,15 @@ import theme from '../../../../styled/theme';
 const mockStore = configureMockStore([thunk]);
 
 const defaultStore = mockStore({
-  data: { basic: { extraInfo: { parishFacebookLink: 'link', kostkaProjectLink: 'link' } } },
+  data: {
+    basic: {
+      extraInfo: {
+        parishFacebookLink: 'https://facebook.com',
+        kostkaProjectLink: 'http://projektkostka.pl',
+        obituariesLink: 'http://nekrologizlotow.pl/wnmpzlotow.php',
+      },
+    },
+  },
 });
 
 const setUp = (props) => {

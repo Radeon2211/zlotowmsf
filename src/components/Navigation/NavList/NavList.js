@@ -11,6 +11,7 @@ import { ReactComponent as ParishIcon } from '../../../images/SVG/parish.svg';
 import { ReactComponent as AnnoucementsIcon } from '../../../images/SVG/annoucements.svg';
 import { ReactComponent as IntentionsIcon } from '../../../images/SVG/intentions.svg';
 import { ReactComponent as SacramentsIcon } from '../../../images/SVG/sacraments.svg';
+import { ReactComponent as ObituariesIcon } from '../../../images/SVG/obituaries.svg';
 import { ReactComponent as OfficeIcon } from '../../../images/SVG/office.svg';
 import { ReactComponent as MarriageCounselingIcon } from '../../../images/SVG/marriage-counseling.svg';
 import { ReactComponent as FacebookIcon } from '../../../images/SVG/facebook.svg';
@@ -31,6 +32,7 @@ const NavList = (props) => {
 
   const facebookLink = basic?.extraInfo?.parishFacebookLink;
   const kostkaProjectLink = basic?.extraInfo?.kostkaProjectLink;
+  const obituariesLink = basic?.extraInfo?.obituariesLink;
 
   return (
     <SC.Wrapper>
@@ -97,6 +99,17 @@ const NavList = (props) => {
             <IntentionsIcon />
             Intencje
           </NavLink>
+        </li>
+        <li>
+          <a
+            href={validateURL(obituariesLink) ? obituariesLink : ''}
+            rel="noopener noreferrer"
+            className="link"
+            onClick={sidebarClosed}
+          >
+            <ObituariesIcon />
+            Nekrologi
+          </a>
         </li>
         <li>
           <div
