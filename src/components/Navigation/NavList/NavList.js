@@ -1,26 +1,25 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
-import * as SC from './NavList.sc';
-import ParishSubmenu from './Submenus/ParishSubmenu/ParishSubmenu';
-import SacramentsSubmenu from './Submenus/SacramentsSubmenu/SacramentsSubmenu';
-import { ReactComponent as StartIcon } from '../../../images/SVG/start.svg';
-import { ReactComponent as NewsIcon } from '../../../images/SVG/news.svg';
-import { ReactComponent as ParishIcon } from '../../../images/SVG/parish.svg';
-import { ReactComponent as AnnoucementsIcon } from '../../../images/SVG/annoucements.svg';
-import { ReactComponent as IntentionsIcon } from '../../../images/SVG/intentions.svg';
-import { ReactComponent as SacramentsIcon } from '../../../images/SVG/sacraments.svg';
-import { ReactComponent as ObituariesIcon } from '../../../images/SVG/obituaries.svg';
-import { ReactComponent as OfficeIcon } from '../../../images/SVG/office.svg';
-import { ReactComponent as MarriageCounselingIcon } from '../../../images/SVG/marriage-counseling.svg';
-import { ReactComponent as FacebookIcon } from '../../../images/SVG/facebook.svg';
-import { ReactComponent as GalleryIcon } from '../../../images/SVG/gallery.svg';
-import { ReactComponent as LinksIcon } from '../../../images/SVG/links.svg';
-import { ReactComponent as ContactIcon } from '../../../images/SVG/contact.svg';
-import { ReactComponent as ArrowIcon } from '../../../images/SVG/arrow.svg';
-import kostkaProjectLogo from '../../../images/kostka-project-logo.png';
-import { validateURL } from '../../../shared/utility';
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import { useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
+import * as SC from "./NavList.sc";
+import ParishSubmenu from "./Submenus/ParishSubmenu/ParishSubmenu";
+import SacramentsSubmenu from "./Submenus/SacramentsSubmenu/SacramentsSubmenu";
+import { ReactComponent as StartIcon } from "../../../images/SVG/start.svg";
+import { ReactComponent as NewsIcon } from "../../../images/SVG/news.svg";
+import { ReactComponent as ParishIcon } from "../../../images/SVG/parish.svg";
+import { ReactComponent as AnnoucementsIcon } from "../../../images/SVG/annoucements.svg";
+import { ReactComponent as IntentionsIcon } from "../../../images/SVG/intentions.svg";
+import { ReactComponent as SacramentsIcon } from "../../../images/SVG/sacraments.svg";
+import { ReactComponent as OfficeIcon } from "../../../images/SVG/office.svg";
+import { ReactComponent as MarriageCounselingIcon } from "../../../images/SVG/marriage-counseling.svg";
+import { ReactComponent as FacebookIcon } from "../../../images/SVG/facebook.svg";
+import { ReactComponent as GalleryIcon } from "../../../images/SVG/gallery.svg";
+import { ReactComponent as LinksIcon } from "../../../images/SVG/links.svg";
+import { ReactComponent as ContactIcon } from "../../../images/SVG/contact.svg";
+import { ReactComponent as ArrowIcon } from "../../../images/SVG/arrow.svg";
+import kostkaProjectLogo from "../../../images/kostka-project-logo.png";
+import { validateURL } from "../../../shared/utility";
 
 const NavList = (props) => {
   const { sidebarClosed } = props;
@@ -32,7 +31,6 @@ const NavList = (props) => {
 
   const facebookLink = basic?.extraInfo?.parishFacebookLink;
   const kostkaProjectLink = basic?.extraInfo?.kostkaProjectLink;
-  const obituariesLink = basic?.extraInfo?.obituariesLink;
 
   return (
     <SC.Wrapper>
@@ -70,7 +68,9 @@ const NavList = (props) => {
           >
             <ParishIcon />
             Parafia
-            <ArrowIcon className={`arrow${isParishMenuVisible ? ' rotated' : ''}`} />
+            <ArrowIcon
+              className={`arrow${isParishMenuVisible ? " rotated" : ""}`}
+            />
             <ParishSubmenu
               isVisible={isParishMenuVisible}
               sidebarClosed={sidebarClosed}
@@ -101,27 +101,20 @@ const NavList = (props) => {
           </NavLink>
         </li>
         <li>
-          <a
-            href={validateURL(obituariesLink) ? obituariesLink : ''}
-            rel="noopener noreferrer"
-            className="link"
-            onClick={sidebarClosed}
-          >
-            <ObituariesIcon />
-            Nekrologi
-          </a>
-        </li>
-        <li>
           <div
             className="link submenu-trigger"
             id="sacraments-submenu-trigger"
             role="button"
             aria-hidden="true"
-            onClick={() => setIsSacramentsMenuVisible((prevState) => !prevState)}
+            onClick={() =>
+              setIsSacramentsMenuVisible((prevState) => !prevState)
+            }
           >
             <SacramentsIcon />
             Sakramenty
-            <ArrowIcon className={`arrow${isSacramentsMenuVisible ? ' rotated' : ''}`} />
+            <ArrowIcon
+              className={`arrow${isSacramentsMenuVisible ? " rotated" : ""}`}
+            />
             <SacramentsSubmenu
               isVisible={isSacramentsMenuVisible}
               sidebarClosed={sidebarClosed}
@@ -156,7 +149,7 @@ const NavList = (props) => {
         </li>
         <li>
           <a
-            href={validateURL(facebookLink) ? facebookLink : ''}
+            href={validateURL(facebookLink) ? facebookLink : ""}
             target="_blank"
             rel="noopener noreferrer"
             className="link"
@@ -190,7 +183,7 @@ const NavList = (props) => {
         </li>
         <li>
           <a
-            href={validateURL(kostkaProjectLink) ? kostkaProjectLink : ''}
+            href={validateURL(kostkaProjectLink) ? kostkaProjectLink : ""}
             target="_blank"
             rel="noopener noreferrer"
             className="link"

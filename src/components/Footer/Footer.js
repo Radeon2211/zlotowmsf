@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import * as SC from './Footer.sc';
-import PrivacyPolicy from './PrivacyPolicy/PrivacyPolicy';
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import * as SC from "./Footer.sc";
+import PrivacyPolicy from "./PrivacyPolicy/PrivacyPolicy";
 
 const Footer = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -12,9 +12,13 @@ const Footer = () => {
 
   return (
     <SC.Wrapper>
-      <PrivacyPolicy isOpen={isModalOpen} closed={() => setIsModalOpen(false)} />
+      <PrivacyPolicy
+        isOpen={isModalOpen}
+        closed={() => setIsModalOpen(false)}
+      />
       <span className="copyright">
-        &copy;2021 Parafia Rzymskokatolicka w Złotowie pw. Wniebowzięcia Najświętszej Maryi Panny
+        &copy;2022 Parafia Rzymskokatolicka w Złotowie pw. Wniebowzięcia
+        Najświętszej Maryi Panny
       </span>
       <span
         className="darken-text"
@@ -27,7 +31,12 @@ const Footer = () => {
       </span>
       <span className="author">
         Stworzone przez
-        <a href={authorLink} rel="noopener noreferrer" target="_blank" className="darken-text">
+        <a
+          href={authorLink}
+          rel="noopener noreferrer"
+          target="_blank"
+          className="darken-text"
+        >
           &nbsp;Radosław Mikrut
         </a>
       </span>

@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import churchIndoor from '../../../images/church-indoor.jpg';
+import styled from "styled-components";
+import churchIndoor from "../../../images/church-indoor.jpg";
 
 // eslint-disable-next-line import/prefer-default-export
 export const Wrapper = styled.section`
@@ -11,7 +11,11 @@ export const Wrapper = styled.section`
   position: relative;
 
   & .bg-image {
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.55),
+        rgba(0, 0, 0, 0.55)
+      ),
       url(${churchIndoor});
     background-position: center;
     background-size: cover;
@@ -23,17 +27,16 @@ export const Wrapper = styled.section`
   }
 
   & .buttons-wrapper {
-    align-items: center;
-    display: grid;
-    gap: ${({ theme }) => theme.spacings.level3};
-    grid-gap: ${({ theme }) => theme.spacings.level3};
-    grid-template-columns: repeat(4, 1fr);
-    justify-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
     width: 100%;
     z-index: ${({ theme }) => theme.zIndexes.level1};
   }
 
   & .link {
+    margin: ${({ theme }) => theme.spacings.level2};
+
     & > button {
       align-items: center;
       display: flex;
@@ -52,12 +55,6 @@ export const Wrapper = styled.section`
           }
         }
       }
-    }
-  }
-
-  @media only screen and (max-width: 75em) {
-    & .buttons-wrapper {
-      grid-template-columns: repeat(2, 1fr);
     }
   }
 `;
